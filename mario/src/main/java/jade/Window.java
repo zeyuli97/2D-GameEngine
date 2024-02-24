@@ -41,10 +41,11 @@ public class Window {
     switch (newScene) {
       case 0:
         currentScene = new LevelEditorScene();
-        //currentScene.init();
+        currentScene.init();
         break;
       case 1:
         currentScene = new LevelScene();
+        currentScene.init();
         break;
       default:
         assert false : "Unknown scene '" + newScene + "'";
@@ -79,40 +80,46 @@ public class Window {
   }
 
   public void init() {
-    // Setup error call back which is where the error should show.
+    // Setup error call back, which is where the error should show.
     GLFWErrorCallback.createPrint(System.err).set(); // Tell GLFW show error in System.err
 
     // Initialize GLFW by glfwInit() function.
-    // If init successfully, it wil return ture.
+    // If init successfully, it will return true.
     if (!glfwInit()) {
       throw new IllegalStateException("Unable to initialize GLFW.");
     }
 
     // Configure GLFW
-    glfwDefaultWindowHints();
+    glfwDefaultWindowHints(); // Set to Default keep a clean state.
     // We first set GLFW_VISIBLE false
-    // so that user will not notice the modification of window size etc.
+    // so that the user will not notice the modification of window size etc.
     // Once the window is set, we will reshow the window.
     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
     glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
-    // Create the window. The function return the window memory address in long.
+    // Some new window hints needed so that shader could run.
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+    // Create the window.
+    // The function returns the window memory address in long.
     // The NULL here is a special keep of NULL.
     glfwWindow = glfwCreateWindow(this.width, this.height, this.title, NULL, NULL);
     if (glfwWindow == NULL) {
       throw new IllegalStateException("The glfw window creation failed.");
     }
 
-    glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
-    glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
-    glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
-    glfwSetKeyCallback(glfwWindow, KeyListerner::keyCallback);
+    glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback); // reaction for mouse movement
+    glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback); // reaction for mouse button click
+    glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback); // reaction for scroll the mouse.
+    glfwSetKeyCallback(glfwWindow, KeyListerner::keyCallback); // reaction when keyboard is pressed.
 
     // Make the OpenGL context current
     glfwMakeContextCurrent(glfwWindow);
     // Enable v-sync
-    glfwSwapInterval(1);
+    glfwSwapInterval(1); // 0 will disable. V sync makes rendering more smooth.
 
     // Make the window visible
     glfwShowWindow(glfwWindow);
@@ -128,16 +135,18 @@ public class Window {
   }
 
   public void loop() {
-    float beginTime = Time.getTime();
-    float endTime = Time.getTime();
+    double beginTime = Time.getTime();
+    double endTime = Time.getTime();
 
-    float dt = -1.0f;
+    double dt = -1.0;
 
     while (!glfwWindowShouldClose(glfwWindow)) {
-      // Poll events
+      // Poll events that we setup in the init() -- all the callback functions.
       glfwPollEvents();
 
       glClearColor(r, g, b, a);
+      // glClear() called at the beginning of each iteration of the rendering loop to clear the color buffer.
+      // This ensures that the framebuffer starts with a clean slate before rendering new content for the current frame.
       glClear(GL_COLOR_BUFFER_BIT);
 
 
@@ -145,7 +154,7 @@ public class Window {
         currentScene.update(dt);
       }
 
-
+      // Now we perform color buffer swap.
       glfwSwapBuffers(glfwWindow);
 
 
