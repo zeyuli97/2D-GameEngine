@@ -6,7 +6,6 @@ import renders.Shader;
 import java.awt.event.KeyEvent;
 import java.nio.DoubleBuffer;
 import java.nio.IntBuffer;
-import java.sql.SQLOutput;
 
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
