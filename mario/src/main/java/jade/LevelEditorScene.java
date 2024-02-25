@@ -1,5 +1,6 @@
 package jade;
 
+import org.joml.Vector2d;
 import org.lwjgl.BufferUtils;
 import renders.Shader;
 
@@ -16,10 +17,10 @@ public class LevelEditorScene extends Scene{
 
   private double[] vertexArray = {
           // Position(xyz)              //and then Color(rgba).
-          0.5, -0.5, 0.0,               1.0, 0.0, 0.0, 1.0, // Bottom right. Treat as 0.
-          -0.5, 0.5, 0.0,               0.0, 1.0, 0.0, 1.0, // Top left.              1.
-          0.5, 0.5, 0.0,                0.0, 0.0, 1.0, 1.0, // Top right.             2.
-          -0.5, -0.5, 0.0,              1.0, 1.0, 0.0, 1.0 // Bottom left.            3.
+          100.5, 0.5, 0.0,               1.0, 0.0, 0.0, 1.0, // Bottom right. Treat as 0.
+          0.5, 100.5, 0.0,               0.0, 1.0, 0.0, 1.0, // Top left.              1.
+          100.5, 100.5, 0.0,                0.0, 0.0, 1.0, 1.0, // Top right.             2.
+          0.5, 0.5, 0.0,              1.0, 1.0, 0.0, 1.0 // Bottom left.            3.
   };
 
   // This must be in the counterclockwise order. This is important when describe the shape!!!
@@ -37,6 +38,7 @@ public class LevelEditorScene extends Scene{
 
   @Override
   public void init() {
+    //this.camera = new Camera(new Vector2d()); // Vector init to 0.
     defaultShader = new Shader("assets/shaders/default.glsl");
     defaultShader.compile();
 
@@ -79,7 +81,11 @@ public class LevelEditorScene extends Scene{
 
   @Override
   public void update(double dt) {
+    camera.position.x -= dt * 50;
+
     defaultShader.use();
+    defaultShader.uploadMat4d("uProjection", camera.getProjectionMatrix());
+    defaultShader.uploadMat4d("uView", camera.getViewMatrix());
     // Bind the VAO that we are using.
     glBindVertexArray(vaoID);
 
