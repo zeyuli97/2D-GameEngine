@@ -67,8 +67,8 @@ public class Window {
   public void run() {
     System.out.println("Hello LWJGL" + Version.getVersion() + "!");
 
-    init();
-    loop();
+    this.init();
+    this.loop();
 
     // For being proper, we need to free the memory.
     glfwFreeCallbacks(glfwWindow);
@@ -144,10 +144,10 @@ public class Window {
       // Poll events that we setup in the init() -- all the callback functions.
       glfwPollEvents();
 
-      glClearColor(r, g, b, a);
+      glClearColor(r, g, b, a); // Set clear color to a tone defined by rgba.
       // glClear() called at the beginning of each iteration of the rendering loop to clear the color buffer.
       // This ensures that the framebuffer starts with a clean slate before rendering new content for the current frame.
-      glClear(GL_COLOR_BUFFER_BIT);
+      glClear(GL_COLOR_BUFFER_BIT); // Use the clear color to fill the color buffer
 
 
       if (dt >= 0) {

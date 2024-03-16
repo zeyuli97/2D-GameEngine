@@ -1,7 +1,7 @@
 package renders;
 
 
-import org.joml.Matrix4d;
+import org.joml.*;
 import org.lwjgl.BufferUtils;
 
 import java.io.IOException;
@@ -25,6 +25,7 @@ public class Shader {
   private String vertexSrc;
   private String fragmentSrc;
   private String filepath;
+  private boolean beingUsed = false;
 
   public Shader(String filepath) {
     this.filepath = filepath;
@@ -59,10 +60,6 @@ public class Shader {
       e.printStackTrace();
       assert false : "Error: Could not open file for shader: '" + filepath + "'";
     }
-
-    System.out.println(vertexSrc);
-    System.out.println(fragmentSrc);
-
   }
 
   public void compile() {
@@ -115,21 +112,81 @@ public class Shader {
     }
   }
 
+  /**
+   * Let openGl use the current shader.
+   * */
   public void use() {
-    // Bind shader program.
-    glUseProgram(shaderProgramID); // shaderProgram is an ID.
+    if (!beingUsed) {
+      // Bind shader program.
+      glUseProgram(shaderProgramID); // shaderProgram is an ID.
+      beingUsed = true;
+    }
   }
 
 
   public void detach() {
     glUseProgram(0); // 0 means bind nothing.
+    beingUsed = false;
   }
 
+  /**
+   * Upload the information to the glsl file.
+   * Upload can be done only when there is a shader in use.
+   * */
   public void uploadMat4d(String varName, Matrix4d mat4) {
-    int varLocation = glGetUniformLocation(shaderProgramID, varName);
+    // Inside our linked shaders, we are matching uniform variable name with varName.
+    // The mat4 will be assigned to that variable in our shaders.
+    int varLocation = glGetUniformLocation(shaderProgramID, varName); // Find the location of varName inside shader.
+    this.use();
     FloatBuffer matBuffer = BufferUtils.createFloatBuffer(16);
-    mat4.get(matBuffer); // copy mat4 into matBuffer.
-    glUniformMatrix4fv(varLocation, false, matBuffer);
+    mat4.get(matBuffer); // copy mat4 into matBuffer which OpenGl could understand.
+    glUniformMatrix4fv(varLocation, false, matBuffer); // upload
 
+  }
+
+  public void uploadMat3d(String varName, Matrix3d mat3) {
+    int varLocation = glGetUniformLocation(shaderProgramID, varName);
+    this.use();
+    FloatBuffer matBuffer = BufferUtils.createFloatBuffer(9);
+    mat3.get(matBuffer);
+    glUniformMatrix4fv(varLocation, false, matBuffer); // upload
+  }
+
+  public void uploadFloat(String varName, Float num) {
+    int varLocation = glGetUniformLocation(shaderProgramID, varName);
+    this.use();
+    glUniform1f(varLocation, num);
+  }
+
+  public void uploadVec4d(String varName, Vector4d vec4) {
+    int varLocation = glGetUniformLocation(shaderProgramID, varName);
+    this.use();
+    FloatBuffer vecBuffer = BufferUtils.createFloatBuffer(4);
+    vec4.get(vecBuffer); // load double into float buffer works converted itself.
+    glUniform4fv(varLocation, vecBuffer);
+  }
+
+  public void uploadVec3d(String varName, Vector3d vec3) {
+    int varLocation = glGetUniformLocation(shaderProgramID, varName);
+    this.use();
+    glUniform3f(varLocation, (float) vec3.x, (float) vec3.y, (float) vec3.z);
+  }
+
+  public void uploadVec2d(String varName, Vector2d vec2) {
+    int varLocation = glGetUniformLocation(shaderProgramID, varName);
+    this.use();
+    glUniform2f(varLocation, (float) vec2.x, (float) vec2.y);
+  }
+
+  public void uploadInt(String varName, int value) {
+    int varLocation = glGetUniformLocation(shaderProgramID, varName);
+    this.use();
+    glUniform1i(varLocation, value);
+  }
+
+  public void uploadTexture(String varName, int slotNum) {
+    int varLocation = glGetUniformLocation(shaderProgramID, varName);
+    this.use();
+    glUniform1i(varLocation, slotNum);
   }
 }
