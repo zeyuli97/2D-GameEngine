@@ -30,7 +30,7 @@ void main() {
 #version 330 core
 
 uniform float uTime;
-uniform sampler2D textureSampler;
+uniform sampler2D textureSampler; // slot number in Shader.uploadTexture().
 
 in vec4 fColor;
 in vec2 fTextureCoord;

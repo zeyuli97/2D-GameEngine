@@ -12,10 +12,19 @@ import static org.lwjgl.opengl.GL13.glActiveTexture;
 import static org.lwjgl.stb.STBImage.stbi_image_free;
 import static org.lwjgl.stb.STBImage.stbi_load;
 
+/**
+ * Texture class that read the given file and upload to the GPU.
+ * */
+
 public class Texture {
 
   private int textID;
 
+  /**
+   * Constructor of the Texture class.
+   * @param filePath the file path. Note check file type;
+   * Allowed: JPEG, PNG, TGA, BMP, PSD, GIF, HDR, and PIC.
+   * */
   public Texture(String filePath) {
 
     //Let openGL create texture in GPU.

@@ -1,5 +1,6 @@
 package jade;
 
+import components.SpriteRender;
 import org.joml.Vector2d;
 import org.lwjgl.BufferUtils;
 import renders.Shader;
@@ -18,6 +19,10 @@ public class LevelEditorScene extends Scene{
   private Shader defaultShader;
 
   private Texture texture;
+
+  private boolean isFirstTime = true;
+
+  private GameObject<Component> gameObject;
 
   private double[] vertexArray = {
           // Position(xyz)              //and Color(rgba).            // UV Coordinate
@@ -44,7 +49,6 @@ public class LevelEditorScene extends Scene{
   public void init() {
     //this.camera = new Camera(new Vector2d()); // Vector init to 0.
     defaultShader = new Shader("assets/shaders/default.glsl");
-    texture = new Texture("assets/images/pixelMario.png");
     defaultShader.compile();
 
     // Generate VAO, VBO, and EBO. Send them to GPU.
@@ -86,6 +90,13 @@ public class LevelEditorScene extends Scene{
 
     glVertexAttribPointer(2, uvSize, GL_DOUBLE, false, vertexSizeBytes, (positionSize + colorSize) * Double.BYTES);
     glEnableVertexAttribArray(2);
+
+    // init the Texture class.
+    texture = new Texture("assets/images/pixelMario.png");
+    System.out.println("Creating the test game object.");
+    gameObject = new GameObject<>("Test object");
+    this.gameObject.addComponent(new SpriteRender());
+    this.addGameToScene(gameObject); // Method inherited from the Scene class.
   }
 
   @Override
@@ -110,6 +121,7 @@ public class LevelEditorScene extends Scene{
     // Enable the vertex attribute pointers
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
 
     glDrawElements(GL_TRIANGLES, elementArray.length, GL_UNSIGNED_INT, 0);
 
@@ -117,9 +129,23 @@ public class LevelEditorScene extends Scene{
     // Unbind everything
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(2);
 
     glBindVertexArray(0); // 0 means bind nothing.
     defaultShader.detach();
+
+    if (isFirstTime) {
+      System.out.println("Creating the second Game Object test.");
+      GameObject<Component> go = new GameObject<>("Game test 2");
+      go.addComponent(new SpriteRender());
+      this.addGameToScene(go);
+      isFirstTime = false;
+    }
+
+    // Note this is gameObjects the Scene List that contains all the Game Objects.
+    for (GameObject<Component> go : this.gameObjects) {
+      go.update(dt);
+    }
   }
 
 }
