@@ -3,7 +3,7 @@ package jade;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameObject <T extends Component> {
+public class GameObject {
 
   private String name;
 
@@ -19,7 +19,7 @@ public class GameObject <T extends Component> {
    * Method will return the desired component class.
    * If the class is not found in the List, return null.
    * */
-  public T getComponent(Class<T> componentClass) {
+  public <T extends Component> T getComponent(Class<? extends T> componentClass) {
     for (Component c : componets) {
       // isAssignableFrom() allows same class or superclass/superinterface to pass.
       if (componentClass.isAssignableFrom(c.getClass())) {
@@ -33,7 +33,7 @@ public class GameObject <T extends Component> {
     return null; // not found
   }
 
-  public void removeComponent(Class<T> componentClass) {
+  public<T extends Component> void removeComponent(Class<? extends T> componentClass) {
     for (int i = 0; i < componets.size(); i++) {
       Component c = componets.get(i);
       if (componentClass.isAssignableFrom(c.getClass())) {
@@ -45,10 +45,9 @@ public class GameObject <T extends Component> {
   }
 
   public void addComponent(Component component) {
-    if (!componets.contains(component)) {
-      componets.add(component);
-      component.gameObject = this; // tie the component with the current game object.
-    }
+    componets.add(component);
+    component.gameObject = this; // tie the component with the current game object.
+
   }
 
   public void update(double dt) {

@@ -11,7 +11,7 @@ public abstract class Scene {
 
   private boolean isRunning = false;
 
-  protected List<GameObject<Component>> gameObjects = new ArrayList<>();
+  protected List<GameObject> gameObjects = new ArrayList<>();
 
   public Scene() {
 
@@ -21,7 +21,7 @@ public abstract class Scene {
   }
 
   public void start() {
-    for (GameObject<Component> go : gameObjects) {
+    for (GameObject go : gameObjects) {
       go.start();
     }
     isRunning = true;
@@ -32,7 +32,7 @@ public abstract class Scene {
    * 1. If the game is currently running, we add the GameObject and start the GameObject.
    * 2. If not running, we only add the GameObject into the list.
    * */
-  public void addGameToScene(GameObject<Component> go) {
+  public void addGameToScene(GameObject go) {
     if (!isRunning) {
       gameObjects.add(go);
     } else {

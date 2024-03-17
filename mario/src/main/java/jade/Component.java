@@ -1,8 +1,14 @@
 package jade;
 
+
+/**
+ * The Component class that interact with both Scene and GameObject.
+ * The relationship: Scene remembers all the Game Objects; Game Object remembers Components;
+ * Component also remembers which gameObject it belongs to.
+ * */
 public abstract class Component {
 
-  public GameObject gameObject = null;
+  protected GameObject gameObject = null;
 
   public void start() {
 

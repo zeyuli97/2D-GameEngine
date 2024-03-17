@@ -1,5 +1,6 @@
 package jade;
 
+import components.FontRender;
 import components.SpriteRender;
 import org.joml.Vector2d;
 import org.lwjgl.BufferUtils;
@@ -22,7 +23,7 @@ public class LevelEditorScene extends Scene{
 
   private boolean isFirstTime = true;
 
-  private GameObject<Component> gameObject;
+  private GameObject gameObject;
 
   private double[] vertexArray = {
           // Position(xyz)              //and Color(rgba).            // UV Coordinate
@@ -94,8 +95,9 @@ public class LevelEditorScene extends Scene{
     // init the Texture class.
     texture = new Texture("assets/images/pixelMario.png");
     System.out.println("Creating the test game object.");
-    gameObject = new GameObject<>("Test object");
+    gameObject = new GameObject("Test object");
     this.gameObject.addComponent(new SpriteRender());
+    this.gameObject.addComponent(new FontRender());
     this.addGameToScene(gameObject); // Method inherited from the Scene class.
   }
 
@@ -136,14 +138,14 @@ public class LevelEditorScene extends Scene{
 
     if (isFirstTime) {
       System.out.println("Creating the second Game Object test.");
-      GameObject<Component> go = new GameObject<>("Game test 2");
+      GameObject go = new GameObject("Game test 2");
       go.addComponent(new SpriteRender());
       this.addGameToScene(go);
       isFirstTime = false;
     }
 
     // Note this is gameObjects the Scene List that contains all the Game Objects.
-    for (GameObject<Component> go : this.gameObjects) {
+    for (GameObject go : this.gameObjects) {
       go.update(dt);
     }
   }
