@@ -1,11 +1,14 @@
 package jade;
 
 import org.joml.Vector2d;
+import renders.Render;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Scene {
+
+  protected Render theRender = new Render();
 
   protected Camera camera = new Camera(new Vector2d());
 
@@ -23,6 +26,7 @@ public abstract class Scene {
   public void start() {
     for (GameObject go : gameObjects) {
       go.start();
+      this.theRender.add(go);
     }
     isRunning = true;
   }
@@ -38,8 +42,14 @@ public abstract class Scene {
     } else {
       gameObjects.add(go);
       go.start();
+      this.theRender.add(go);
     }
   }
 
   public abstract void update(double dt);
+
+
+  public Camera getCamera() {
+    return camera;
+  }
 }

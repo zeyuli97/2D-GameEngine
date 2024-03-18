@@ -9,9 +9,19 @@ public class GameObject {
 
   private List<Component> componets;
 
+  private Transform transform;
+
   public GameObject(String name) {
     this.name = name;
     componets = new ArrayList<>();
+    this.transform = new Transform();
+
+  }
+
+  public GameObject(String name, Transform transform) {
+    this.name = name;
+    componets = new ArrayList<>();
+    this.transform = transform;
 
   }
 
@@ -62,7 +72,9 @@ public class GameObject {
     }
   }
 
-
+  public Transform getTransform() {
+    return transform;
+  }
 
 }
 

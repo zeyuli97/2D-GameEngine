@@ -1,20 +1,26 @@
 package components;
 
 import jade.Component;
+import org.joml.Vector4d;
 
 public class SpriteRender extends Component {
 
-  private boolean isFirstTime = true;
+  private Vector4d color;
+
+  public SpriteRender(Vector4d color) {
+    this.color = color;
+  }
 
   @Override
   public void start() {
-    System.out.println("I am starting");
+
   }
   @Override
   public void update(double dt) {
-    if (isFirstTime) {
-      System.out.println("I am updating.");
-      isFirstTime = false;
-    }
+
+  }
+
+  public Vector4d getColor() {
+    return color;
   }
 }

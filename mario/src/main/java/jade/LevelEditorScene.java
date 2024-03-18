@@ -1,46 +1,11 @@
 package jade;
 
-import components.FontRender;
 import components.SpriteRender;
 import org.joml.Vector2d;
-import org.lwjgl.BufferUtils;
-import renders.Shader;
-import renders.Texture;
-import util.Time;
-
-import java.awt.event.KeyEvent;
-import java.nio.DoubleBuffer;
-import java.nio.IntBuffer;
-
-import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL30.glBindVertexArray;
-import static org.lwjgl.opengl.GL30.glGenVertexArrays;
+import org.joml.Vector4d;
 
 public class LevelEditorScene extends Scene{
-  private Shader defaultShader;
 
-  private Texture texture;
-
-  private boolean isFirstTime = true;
-
-  private GameObject gameObject;
-
-  private double[] vertexArray = {
-          // Position(xyz)              //and Color(rgba).            // UV Coordinate
-          100.5, 0.5, 0.0,               1.0, 0.0, 0.0, 1.0,          0, 1,          // Bottom right. Treat as 0.
-          0.5, 100.5, 0.0,               0.0, 1.0, 0.0, 1.0,          1, 0,          // Top left.              1.
-          100.5, 100.5, 0.0,             0.0, 0.0, 1.0, 1.0,          0, 0,          // Top right.             2.
-          0.5, 0.5, 0.0,                 1.0, 1.0, 0.0, 1.0,          1, 1           // Bottom left.           3.
-  };
-
-  // This must be in the counterclockwise order. This is important when describe the shape!!!
-  private int[] elementArray = {
-          // for counterclockwise
-          2,1,0, // Top right triangle
-          0,1,3 // Bottom left triangle
-  };
-
-  private int vaoID, vboID, eboID;
 
   public LevelEditorScene() {
 
@@ -48,106 +13,44 @@ public class LevelEditorScene extends Scene{
 
   @Override
   public void init() {
-    //this.camera = new Camera(new Vector2d()); // Vector init to 0.
-    defaultShader = new Shader("assets/shaders/default.glsl");
-    defaultShader.compile();
+    this.camera = new Camera(new Vector2d(-250, 0));
 
-    // Generate VAO, VBO, and EBO. Send them to GPU.
-    vaoID = glGenVertexArrays();
-    // All future operations should use this VAO's settings and buffers.
-    glBindVertexArray(vaoID); // VAO is like a manager for VBO and EBO.
+    int xOffset = 10;
+    int yOffset = 10;
 
+    double totalWidth = (600 - xOffset * 2);
+    double totalHeight = (600 - yOffset * 2);
 
-    // create a buffer of vertices and store into VBO.
-    DoubleBuffer vertexBuffer = BufferUtils.createDoubleBuffer(vertexArray.length);
-    vertexBuffer.put(vertexArray); // writen mode.
-    vertexBuffer.flip(); // flip into read mode.
-    // Create VBO upload the vertex buffer.
-    vboID = glGenBuffers();
-    glBindBuffer(GL_ARRAY_BUFFER, vboID);
-    glBufferData(GL_ARRAY_BUFFER, vertexBuffer, GL_STATIC_DRAW);
+    double sizeX = totalWidth / 100;
+    double sizeY = totalHeight / 100;
+    double padding = 3;
 
-    // Create the indices and upload.
-    IntBuffer elementBuffer = BufferUtils.createIntBuffer(elementArray.length);
-    elementBuffer.put(elementArray);
-    elementBuffer.flip();
+    for (int x = 0; x < 100; x ++) {
+      for (int y = 0 ; y < 100; y ++) {
+        double xPos = xOffset + (x * sizeX) + padding * x;
+        double yPose = yOffset + (y * sizeY) + padding * y;
 
-    eboID = glGenBuffers();
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, eboID);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, elementBuffer, GL_STATIC_DRAW);
+        GameObject go = new GameObject("Obj" + x + y, new Transform(new Vector2d(xPos, yPose), new Vector2d(sizeX, sizeY)));
+        go.addComponent(new SpriteRender(new Vector4d(xPos/totalWidth, yPose/totalHeight, 1, 1)));
+        this.addGameToScene(go);
+      }
+    }
 
-    // Add the vertex attribute pointers.
-    int positionSize = 3; // xyz
-    int colorSize = 4; // rgba
-    int uvSize = 2; // UV coordinate size
-    int vertexSizeBytes = (positionSize + colorSize + uvSize) * Double.BYTES; // size of stride for the next vertex.
-
-    // In our default.glsl file, we have 0 as position and 1 as color.
-    glVertexAttribPointer(0, positionSize, GL_DOUBLE, false, vertexSizeBytes, 0);
-    glEnableVertexAttribArray(0); // This allows vertex data be accessed by Vertex shader.
-
-    glVertexAttribPointer(1, colorSize, GL_DOUBLE, false, vertexSizeBytes, positionSize * Double.BYTES);
-    glEnableVertexAttribArray(1);
-
-    glVertexAttribPointer(2, uvSize, GL_DOUBLE, false, vertexSizeBytes, (positionSize + colorSize) * Double.BYTES);
-    glEnableVertexAttribArray(2);
-
-    // init the Texture class.
-    texture = new Texture("assets/images/pixelMario.png");
-    System.out.println("Creating the test game object.");
-    gameObject = new GameObject("Test object");
-    this.gameObject.addComponent(new SpriteRender());
-    this.gameObject.addComponent(new FontRender());
-    this.addGameToScene(gameObject); // Method inherited from the Scene class.
   }
 
   @Override
   public void update(double dt) {
     // camera is inherited from the Scene class.
     //System.out.println(Time.getTime());
-    camera.position.x -= dt * 50; // The Object is not moving, instead we are move camera in opposite direction.
-    camera.position.y -= dt * 20;
-
-    defaultShader.use();
-
-    // Upload texture to shader.
-    defaultShader.uploadTexture("textureSampler", 0);
-    //glActiveTexture(GL_TEXTURE0);
-    //texture.bind();
-    defaultShader.uploadMat4d("uProjection", camera.getProjectionMatrix());
-    defaultShader.uploadMat4d("uView", camera.getViewMatrix());
-    defaultShader.uploadFloat("uTime", (float) Time.getTime());
-    // Bind the VAO that we are using.
-    glBindVertexArray(vaoID);
-
-    // Enable the vertex attribute pointers
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
-    glEnableVertexAttribArray(2);
-
-    glDrawElements(GL_TRIANGLES, elementArray.length, GL_UNSIGNED_INT, 0);
-
-
-    // Unbind everything
-    glDisableVertexAttribArray(0);
-    glDisableVertexAttribArray(1);
-    glDisableVertexAttribArray(2);
-
-    glBindVertexArray(0); // 0 means bind nothing.
-    defaultShader.detach();
-
-    if (isFirstTime) {
-      System.out.println("Creating the second Game Object test.");
-      GameObject go = new GameObject("Game test 2");
-      go.addComponent(new SpriteRender());
-      this.addGameToScene(go);
-      isFirstTime = false;
-    }
+    //camera.position.x -= dt * 50; // The Object is not moving, instead we are move camera in opposite direction.
+    //camera.position.y -= dt * 20;
 
     // Note this is gameObjects the Scene List that contains all the Game Objects.
     for (GameObject go : this.gameObjects) {
       go.update(dt);
     }
+
+    this.theRender.render();
   }
 
 }
