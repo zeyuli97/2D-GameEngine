@@ -2,8 +2,13 @@ package renders;
 
 import components.SpriteRender;
 import jade.Window;
+import org.joml.Vector2d;
+import org.joml.Vector2f;
 import org.joml.Vector4d;
 import util.AssetPool;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
@@ -16,19 +21,27 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
  * */
 public class RenderBatch {
   // The Vertex Array has followed information in order.
-  // Pos -> RGBA.
-  // double, double          double, double, double, double.
+  // Pos -> RGBA -> Texture coordinates -> texture id
+  // double, double          double, double, double, double,      double, double,       double.
 
   private final int POS_SIZE = 2;
   private final int COLOR_SIZE = 4;
 
   private final int POS_OFFSET = 0;
-  private final int COLOR_OFFSET =POS_OFFSET + POS_SIZE * Double.BYTES;
 
-  private final int VERTEX_SIZE = 6; // For each vertex we have 6 double in it
-  private final int VERTEX_SIZE_BYTE = 6 * Double.BYTES;
+  private final int TEXTURE_COORDS_SIZE = 2;
+  private final int TEXTURE_ID_SIZE = 1;
+  private final int COLOR_OFFSET = POS_OFFSET + POS_SIZE * Double.BYTES;
 
+  private final int TEXTURE_COORDS_OFFSET = COLOR_OFFSET + COLOR_SIZE * Double.BYTES;
 
+  private final int TEXTURE_ID_OFFSET = TEXTURE_COORDS_OFFSET + TEXTURE_COORDS_SIZE * Double.BYTES;
+  private final int VERTEX_SIZE = 9; // For each vertex we have 6 double in it
+  private final int VERTEX_SIZE_BYTE = VERTEX_SIZE * Double.BYTES;
+
+  private List<Texture> textures;
+
+  private int[] textureSlots = {0,1,2,3,4,5,6,7};
   private SpriteRender[] sprites;
   private int numSprites;
 
@@ -52,6 +65,7 @@ public class RenderBatch {
 
     this.numSprites = 0;
     this.hasRoom = true;
+    this.textures = new ArrayList<>();
   }
 
 
@@ -80,6 +94,12 @@ public class RenderBatch {
 
     glVertexAttribPointer(1, COLOR_SIZE, GL_DOUBLE, false, VERTEX_SIZE_BYTE, COLOR_OFFSET);
     glEnableVertexAttribArray(1);
+
+    glVertexAttribPointer(2, TEXTURE_COORDS_SIZE, GL_DOUBLE, false, VERTEX_SIZE_BYTE, TEXTURE_COORDS_OFFSET);
+    glEnableVertexAttribArray(2);
+
+    glVertexAttribPointer(3, TEXTURE_ID_SIZE, GL_DOUBLE, false, VERTEX_SIZE_BYTE, TEXTURE_ID_OFFSET);
+    glEnableVertexAttribArray(3);
   }
 
   public void render() {
@@ -95,6 +115,13 @@ public class RenderBatch {
     shader.uploadMat4d("uProjection", Window.getCurrentScene().getCamera().getProjectionMatrix());
     shader.uploadMat4d("uView", Window.getCurrentScene().getCamera().getViewMatrix());
 
+    // Bind all textures GPU could memorize multiple textures.
+    for (int i = 0; i < textures.size(); i++) {
+      glActiveTexture(GL_TEXTURE0 + i + 1);
+      textures.get(i).bind();
+    }
+    shader.uploadIntArray("uTextures", textureSlots);
+
     glBindVertexArray(vaoID);
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
@@ -105,6 +132,9 @@ public class RenderBatch {
     glDisableVertexAttribArray(1);
 
     glBindVertexArray(0);
+    for (Texture texture : textures) {
+      texture.unbind();
+    }
     shader.detach();
   }
 
@@ -140,11 +170,22 @@ public class RenderBatch {
     elements[offsetArrayIndex + 5] = offset + 1;
   }
 
+  /**
+   * We add a SpriteRender to our Render Batch.
+   * SpriteRender contains color, texture and texture coordinates.
+   * We want all that information loaded into our Render Batch.
+   * */
   public void addSprite(SpriteRender render) {
     // Get index and add render object
     int index = this.numSprites;
     this.sprites[index] = render;
     this.numSprites++;
+
+    if (render.getTexture() != null) {
+      if (!textures.contains(render.getTexture())) {
+        textures.add(render.getTexture());
+      }
+    }
 
     // add properties to local vertices array
     loadVertexProperties(index);
@@ -157,10 +198,19 @@ public class RenderBatch {
   private void loadVertexProperties(int index) {
     SpriteRender sprite = this.sprites[index];
 
+    int targetTexID = 0; // I currently default to 0.
+    if (sprite.getTexture() != null) {
+      for (int i = 0; i < textures.size(); i++) {
+        if (textures.get(i) == sprite.getTexture()) {
+          targetTexID = i + 1;
+        }
+      }
+    }
     // Find offset within the array
     int offset = index * 4 * VERTEX_SIZE;
 
     Vector4d color = sprite.getColor();
+    Vector2f[] coords = sprite.getTextureCoords();
 
     // Add vertices with the appropriate properties.
     // (0,1)  (1,1)
@@ -186,6 +236,13 @@ public class RenderBatch {
       vertices[offset + 3] = color.y;
       vertices[offset + 4] = color.z;
       vertices[offset + 5] = color.w;
+
+      // load texture coords
+      vertices[offset + 6] = coords[i].x;
+      vertices[offset + 7] = coords[i].y;
+
+      // load texture ID
+      vertices[offset + 8] = targetTexID;
 
       offset += VERTEX_SIZE;
     }

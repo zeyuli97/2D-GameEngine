@@ -189,4 +189,13 @@ public class Shader {
     this.use();
     glUniform1i(varLocation, slotNum);
   }
+
+  /**
+   * This Method will upload multiple textures into GPU.
+   * */
+  public void uploadIntArray(String varName, int[] array) {
+    int varLocation = glGetUniformLocation(shaderProgramID, varName);
+    this.use();
+    glUniform1iv(varLocation, array);
+  }
 }

@@ -16,28 +16,15 @@ public class LevelEditorScene extends Scene{
   public void init() {
     this.camera = new Camera(new Vector2d(-250, 0));
 
-    int xOffset = 10;
-    int yOffset = 10;
+    GameObject obj1 = new GameObject("Object 1", new Transform(new Vector2d(100, 100), new Vector2d(256, 256)));
+    obj1.addComponent(new SpriteRender(AssetPool.getTexture("assets/images/pixelMario.png")));
+    this.addGameToScene(obj1);
 
-    double totalWidth = (600 - xOffset * 2);
-    double totalHeight = (600 - yOffset * 2);
+    GameObject obj2 = new GameObject("Second Object", new Transform(new Vector2d(400, 400), new Vector2d(256, 256)));
+    obj2.addComponent(new SpriteRender(AssetPool.getTexture("assets/images/testImage.jpg")));
+    this.addGameToScene(obj2);
 
-    double sizeX = totalWidth / 100;
-    double sizeY = totalHeight / 100;
-    double padding = 3;
-
-    for (int x = 0; x < 100; x ++) {
-      for (int y = 0 ; y < 100; y ++) {
-        double xPos = xOffset + (x * sizeX) + padding * x;
-        double yPose = yOffset + (y * sizeY) + padding * y;
-
-        GameObject go = new GameObject("Obj" + x + y, new Transform(new Vector2d(xPos, yPose), new Vector2d(sizeX, sizeY)));
-        go.addComponent(new SpriteRender(new Vector4d(xPos/totalWidth, yPose/totalHeight, 1, 1)));
-        this.addGameToScene(go);
-      }
-    }
-
-    loadResources();
+    //loadResources();
   }
 
   private void loadResources() {
@@ -57,6 +44,8 @@ public class LevelEditorScene extends Scene{
     }
 
     this.theRender.render();
+
+
   }
 
 }

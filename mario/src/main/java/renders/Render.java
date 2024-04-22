@@ -17,12 +17,12 @@ public class Render {
   public void add(GameObject go) {
     SpriteRender sprite = go.getComponent(SpriteRender.class);
     if (sprite != null) {
-      add(sprite);
+      add_helper(sprite);
     }
   }
 
 
-  private void add(SpriteRender sprite) {
+  private void add_helper(SpriteRender sprite) {
     boolean added = false;
     for (RenderBatch batch : batches) {
       if (batch.getHasRoom()) {

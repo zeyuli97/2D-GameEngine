@@ -15,6 +15,10 @@ public class AssetPool {
 
   private static Map<String, Texture> textures = new HashMap<>();
 
+  /**
+   * Resource manager for the shaders.
+   * If shader exits, we will just return, else we store and return.
+   * */
   public static Shader getShader(String resourcePath) {
     File file = new File(resourcePath);
     if (AssetPool.shaders.containsKey(file.getAbsolutePath())) {
@@ -28,6 +32,9 @@ public class AssetPool {
   }
 
 
+  /**
+   * Resource manager for texture.
+   * */
   public static Texture getTexture(String resourcePath) {
     File file = new File(resourcePath);
     if (AssetPool.textures.containsKey(file.getAbsolutePath())) {

@@ -142,7 +142,7 @@ public class Window {
 
   public void loop() {
     double beginTime = Time.getTime();
-    double endTime = Time.getTime();
+    double endTime;
 
     double dt = -1.0;
 

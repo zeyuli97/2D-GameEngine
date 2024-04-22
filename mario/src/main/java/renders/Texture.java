@@ -9,8 +9,7 @@ import java.nio.IntBuffer;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL13.GL_TEXTURE0;
 import static org.lwjgl.opengl.GL13.glActiveTexture;
-import static org.lwjgl.stb.STBImage.stbi_image_free;
-import static org.lwjgl.stb.STBImage.stbi_load;
+import static org.lwjgl.stb.STBImage.*;
 
 /**
  * Texture class that read the given file and upload to the GPU.
@@ -48,6 +47,7 @@ public class Texture {
     IntBuffer height = BufferUtils.createIntBuffer(1);
     IntBuffer channel = BufferUtils.createIntBuffer(1); // Channel record whether pixel is RGBA or RGB.
 
+    stbi_set_flip_vertically_on_load(true);
     // This is loading the filepath file into the ByteBuffer.
     ByteBuffer image = stbi_load(filePath, width, height, channel, 0); // Allocate memory, need to free.
 
