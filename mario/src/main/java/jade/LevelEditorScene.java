@@ -1,8 +1,11 @@
 package jade;
 
+import components.Sprite;
 import components.SpriteRender;
+import components.SpriteSheet;
 import org.joml.Vector2d;
 import org.joml.Vector4d;
+import renders.Texture;
 import util.AssetPool;
 
 public class LevelEditorScene extends Scene{
@@ -14,21 +17,24 @@ public class LevelEditorScene extends Scene{
 
   @Override
   public void init() {
+    loadResources();
     this.camera = new Camera(new Vector2d(-250, 0));
 
-    GameObject obj1 = new GameObject("Object 1", new Transform(new Vector2d(100, 100), new Vector2d(256, 256)));
-    obj1.addComponent(new SpriteRender(AssetPool.getTexture("assets/images/pixelMario.png")));
+    SpriteSheet spriteSheet = AssetPool.getSpriteSheet("assets/images/spritesheet.png");
+
+    GameObject obj1 = new GameObject("Object 1", new Transform(new Vector2d(100, 100), new Vector2d(100, 100)));
+    obj1.addComponent(new SpriteRender(spriteSheet.getSprite(0)));
     this.addGameToScene(obj1);
 
     GameObject obj2 = new GameObject("Second Object", new Transform(new Vector2d(400, 400), new Vector2d(256, 256)));
-    obj2.addComponent(new SpriteRender(AssetPool.getTexture("assets/images/testImage.jpg")));
+    obj2.addComponent(new SpriteRender(spriteSheet.getSprite(10)));
     this.addGameToScene(obj2);
-
-    //loadResources();
   }
 
   private void loadResources() {
     AssetPool.getShader("assets/shaders/default.glsl");
+    AssetPool.addSpriteSheet("assets/images/spritesheet.png", new SpriteSheet(
+            new Texture("assets/images/spritesheet.png"), 16, 16, 26, 0));
   }
 
   @Override

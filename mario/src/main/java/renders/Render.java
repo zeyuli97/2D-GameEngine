@@ -2,6 +2,7 @@ package renders;
 
 import components.SpriteRender;
 import jade.GameObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +27,12 @@ public class Render {
     boolean added = false;
     for (RenderBatch batch : batches) {
       if (batch.getHasRoom()) {
-        batch.addSprite(sprite);
-        added = true;
-        break;
+        Texture texture = sprite.getTexture();
+        if (texture == null || batch.containsTexture(texture) || batch.hasTextureRoom()) {
+          batch.addSprite(sprite);
+          added = true;
+          break;
+        }
       }
     }
 
