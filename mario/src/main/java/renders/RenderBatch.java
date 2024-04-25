@@ -60,7 +60,7 @@ public class RenderBatch {
     this.maxBatchSize = maxBatchSize;
     this.sprites = new SpriteRender[maxBatchSize];
 
-    // For each, we have 4 vertices and each vertex has 6 double values.
+    // For each, we have 4 vertices and each vertex has 9 double values.
     vertices = new double[maxBatchSize * 4 * VERTEX_SIZE];
 
     this.numSprites = 0;
@@ -103,11 +103,21 @@ public class RenderBatch {
   }
 
   public void render() {
-    // Re-buffer data every frame.
-    glBindBuffer(GL_ARRAY_BUFFER, vboID);
-    // Update subset (potential all data) of buffer.
-    glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
-
+    boolean thereIsUpdate = false;
+    for (int i = 0; i < numSprites; i++) {
+      SpriteRender sprite = sprites[i];
+      if (sprite.isDirty()) {
+        this.loadVertexProperties(i);
+        sprite.setDirtyToClean();
+        thereIsUpdate = true;
+      }
+    }
+    if (thereIsUpdate) {
+      // Re-buffer data if there is update occurred.
+      glBindBuffer(GL_ARRAY_BUFFER, vboID);
+      // Update subset (potential all data) of buffer.
+      glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
+    }
 
     // shader part.
     shader.use();

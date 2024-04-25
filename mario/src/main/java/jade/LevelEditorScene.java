@@ -10,6 +10,8 @@ import util.AssetPool;
 
 public class LevelEditorScene extends Scene{
 
+  private GameObject obj1;
+  private SpriteSheet spriteSheet;
 
   public LevelEditorScene() {
 
@@ -20,15 +22,17 @@ public class LevelEditorScene extends Scene{
     loadResources();
     this.camera = new Camera(new Vector2d(-250, 0));
 
-    SpriteSheet spriteSheet = AssetPool.getSpriteSheet("assets/images/spritesheet.png");
+    spriteSheet = AssetPool.getSpriteSheet("assets/images/spritesheet.png");
 
-    GameObject obj1 = new GameObject("Object 1", new Transform(new Vector2d(100, 100), new Vector2d(100, 100)));
-    obj1.addComponent(new SpriteRender(spriteSheet.getSprite(0)));
+    obj1 = new GameObject("Object 1", new Transform(new Vector2d(100, 100), new Vector2d(100, 100)));
+    obj1.addComponent(new SpriteRender(spriteSheet.getSprite(10)));
+    //obj1.addComponent(new SpriteRender(spriteSheet.getSprite(0)));
     this.addGameToScene(obj1);
 
     GameObject obj2 = new GameObject("Second Object", new Transform(new Vector2d(400, 400), new Vector2d(256, 256)));
     obj2.addComponent(new SpriteRender(spriteSheet.getSprite(10)));
     this.addGameToScene(obj2);
+
   }
 
   private void loadResources() {
@@ -37,12 +41,25 @@ public class LevelEditorScene extends Scene{
             new Texture("assets/images/spritesheet.png"), 16, 16, 26, 0));
   }
 
+
+  private int spirteIndex = 0;
+  private double spriteFlipTime = 0.4;
+  private double spriteFlipTimeLeft = 0;
+
   @Override
   public void update(double dt) {
-    // camera is inherited from the Scene class.
-    //System.out.println(Time.getTime());
-    //camera.position.x -= dt * 50; // The Object is not moving, instead we are move camera in opposite direction.
-    //camera.position.y -= dt * 20;
+    spriteFlipTimeLeft -= dt;
+    if (spriteFlipTimeLeft <= 0) {
+      spriteFlipTimeLeft = spriteFlipTime;
+      spirteIndex++;
+      if (spirteIndex > 4) {
+        spirteIndex = 0;
+      }
+      obj1.getComponent(SpriteRender.class).setSprite(spriteSheet.getSprite(spirteIndex));
+    }
+
+
+    obj1.getTransform().setPositionX(obj1.getTransform().getPosition().x + 10 * dt);
 
     // Note this is gameObjects the Scene List that contains all the Game Objects.
     for (GameObject go : this.gameObjects) {
