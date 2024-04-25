@@ -13,16 +13,18 @@ public class SpriteRender extends Component {
   private Sprite sprite;
   private Vector4d color;
   private Transform lastTransform;
-  private boolean isDirty = false; // IsDirty will tell whether we need to update the sprite.
+  private boolean isDirty; // IsDirty will tell whether we need to update the sprite.
 
   public SpriteRender(Vector4d color) {
     this.color = color;
     this.sprite = new Sprite(null);
+    this.isDirty = true;
   }
 
   public SpriteRender(Sprite sprite) {
     this.sprite = sprite;
     this.color = new Vector4d(1,1,1,1);
+    this.isDirty = true;
   }
 
   @Override

@@ -19,7 +19,7 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
  * We are combining all the similar vertex data into a huge vertex array.
  * We all only call draw function on this huge vertex array.
  * */
-public class RenderBatch {
+public class RenderBatch implements Comparable<RenderBatch>{
   // The Vertex Array has followed information in order.
   // Pos -> RGBA -> Texture coordinates -> texture id
   // double, double          double, double, double, double,      double, double,       double.
@@ -50,12 +50,13 @@ public class RenderBatch {
   private int vaoID, vboID;
   private int maxBatchSize; // The max number of sprites we can hold in this batch.
   private Shader shader;
+  private int zIndex; // zIndex is used to check the layer of sprite.
 
   /**
    * Constructor that takes one parameter int maxBatchSize.
    * Each batch is a quad or two triangles so total six indices per quad.
    * */
-  public RenderBatch(int maxBatchSize) {
+  public RenderBatch(int maxBatchSize, int zIndex) {
     this.shader = AssetPool.getShader("assets/shaders/default.glsl");
     this.maxBatchSize = maxBatchSize;
     this.sprites = new SpriteRender[maxBatchSize];
@@ -66,6 +67,7 @@ public class RenderBatch {
     this.numSprites = 0;
     this.hasRoom = true;
     this.textures = new ArrayList<>();
+    this.zIndex = zIndex;
   }
 
 
@@ -269,5 +271,14 @@ public class RenderBatch {
 
   public boolean containsTexture(Texture texture) {
     return textures.contains(texture);
+  }
+
+  public int getzIndex() {
+    return zIndex;
+  }
+
+  @Override
+  public int compareTo(RenderBatch o) {
+    return Integer.compare(this.zIndex, o.getzIndex());
   }
 }

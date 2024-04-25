@@ -5,6 +5,8 @@ import jade.GameObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Render {
@@ -26,7 +28,7 @@ public class Render {
   private void add_helper(SpriteRender sprite) {
     boolean added = false;
     for (RenderBatch batch : batches) {
-      if (batch.getHasRoom()) {
+      if (batch.getHasRoom() && batch.getzIndex() == sprite.getGameObject().getzIndex()) {
         Texture texture = sprite.getTexture();
         if (texture == null || batch.containsTexture(texture) || batch.hasTextureRoom()) {
           batch.addSprite(sprite);
@@ -37,14 +39,16 @@ public class Render {
     }
 
     if (!added) {
-      RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE);
+      RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE, sprite.getGameObject().getzIndex());
       newBatch.start();
       batches.add(newBatch);
       newBatch.addSprite(sprite);
+      Collections.sort(batches); // sort the batches according to zIndex.
     }
   }
 
   public void render() {
+
     for (RenderBatch batch : batches) {
       batch.render();
     }

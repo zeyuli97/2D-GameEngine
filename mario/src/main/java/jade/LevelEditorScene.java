@@ -24,13 +24,17 @@ public class LevelEditorScene extends Scene{
 
     spriteSheet = AssetPool.getSpriteSheet("assets/images/spritesheet.png");
 
-    obj1 = new GameObject("Object 1", new Transform(new Vector2d(100, 100), new Vector2d(100, 100)));
-    obj1.addComponent(new SpriteRender(spriteSheet.getSprite(10)));
+    obj1 = new GameObject("Object 1", new Transform(new Vector2d(200, 100), new Vector2d(256, 256)), 2);
+    obj1.addComponent(new SpriteRender( new Sprite(
+            AssetPool.getTexture("assets/images/green.png")
+    )));
     //obj1.addComponent(new SpriteRender(spriteSheet.getSprite(0)));
     this.addGameToScene(obj1);
 
-    GameObject obj2 = new GameObject("Second Object", new Transform(new Vector2d(400, 400), new Vector2d(256, 256)));
-    obj2.addComponent(new SpriteRender(spriteSheet.getSprite(10)));
+    GameObject obj2 = new GameObject("Second Object", new Transform(new Vector2d(400, 100), new Vector2d(256, 256)), 2);
+    obj2.addComponent(new SpriteRender(new Sprite(
+            AssetPool.getTexture("assets/images/red.png")
+    )));
     this.addGameToScene(obj2);
 
   }
@@ -48,18 +52,9 @@ public class LevelEditorScene extends Scene{
 
   @Override
   public void update(double dt) {
-    spriteFlipTimeLeft -= dt;
-    if (spriteFlipTimeLeft <= 0) {
-      spriteFlipTimeLeft = spriteFlipTime;
-      spirteIndex++;
-      if (spirteIndex > 4) {
-        spirteIndex = 0;
-      }
-      obj1.getComponent(SpriteRender.class).setSprite(spriteSheet.getSprite(spirteIndex));
-    }
 
 
-    obj1.getTransform().setPositionX(obj1.getTransform().getPosition().x + 10 * dt);
+    //obj1.getTransform().setPositionX(obj1.getTransform().getPosition().x + 10 * dt);
 
     // Note this is gameObjects the Scene List that contains all the Game Objects.
     for (GameObject go : this.gameObjects) {
