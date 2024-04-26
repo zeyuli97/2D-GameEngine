@@ -2,7 +2,6 @@ package jade;
 
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.openal.SOFTDeferredUpdates;
 import org.lwjgl.opengl.GL;
 import util.Time;
 
@@ -18,9 +17,9 @@ public class Window {
   private static Window window = null;
   private long glfwWindow; // This number is the memory address of the window.
   public float r, g , b, a;
-  private boolean fadeToBlack = false;
-
+  private ImGuiLayer imGuiLayer;
   private static Scene currentScene;
+
 
 
  /**
@@ -106,7 +105,7 @@ public class Window {
 
     // Some new window hints needed so that shader could run.
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Create the window.
@@ -121,6 +120,11 @@ public class Window {
     glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback); // reaction for mouse button click
     glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback); // reaction for scroll the mouse.
     glfwSetKeyCallback(glfwWindow, KeyListerner::keyCallback); // reaction when keyboard is pressed.
+
+    glfwSetWindowSizeCallback(glfwWindow, (w, newWidth, newHeight) -> {
+      Window.setWidth(newWidth);
+      Window.setHeight(newHeight);
+    });
 
     // Make the OpenGL context current
     glfwMakeContextCurrent(glfwWindow);
@@ -139,6 +143,9 @@ public class Window {
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+    this.imGuiLayer = new ImGuiLayer(glfwWindow);
+    this.imGuiLayer.initImGui();
 
     Window.changeScene(0);
   }
@@ -162,10 +169,9 @@ public class Window {
       if (dt >= 0) {
         currentScene.update(dt);
       }
-
+      this.imGuiLayer.update((float) dt, currentScene);
       // Now we perform color buffer swap.
       glfwSwapBuffers(glfwWindow);
-
 
       // The following function will give us the time cost for one iteration.
       endTime = Time.getTime();
@@ -175,7 +181,19 @@ public class Window {
 
   }
 
+  public static int getHeight() {
+    return Window.get().height;
+  }
 
+  public static int getWidth() {
+    return Window.get().width;
+  }
 
+  public static void setWidth(int newWidth) {
+    Window.get().width = newWidth;
+  }
 
+  public static void setHeight(int newHeight) {
+    Window.get().height = newHeight;
+  }
 }

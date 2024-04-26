@@ -1,5 +1,6 @@
 package jade;
 
+import imgui.ImGui;
 import org.joml.Vector2d;
 import renders.Render;
 
@@ -15,6 +16,9 @@ public abstract class Scene {
   private boolean isRunning = false;
 
   protected List<GameObject> gameObjects = new ArrayList<>();
+
+  // activeGameObject is the object what is chosen will be modified.
+  protected GameObject activeGameObject = null;
 
   public Scene() {
 
@@ -51,5 +55,19 @@ public abstract class Scene {
 
   public Camera getCamera() {
     return camera;
+  }
+
+  public void sceneImgui() {
+    if (activeGameObject != null) {
+      ImGui.begin("Inspector");
+      activeGameObject.imgui();
+      ImGui.end();
+    }
+
+    imgui();
+  }
+
+  public void imgui() {
+
   }
 }

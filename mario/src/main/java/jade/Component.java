@@ -14,9 +14,15 @@ public abstract class Component {
 
   }
 
-  public abstract void update(double dt);
+  public void update(double dt) {
+
+  };
 
   public GameObject getGameObject() {
     return gameObject;
+  }
+
+  public void imgui() {
+
   }
 }

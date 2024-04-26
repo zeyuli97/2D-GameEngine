@@ -5,6 +5,7 @@ import jade.Window;
 import org.joml.Vector2d;
 import org.joml.Vector2f;
 import org.joml.Vector4d;
+import org.joml.Vector4f;
 import util.AssetPool;
 
 import java.util.ArrayList;
@@ -221,7 +222,7 @@ public class RenderBatch implements Comparable<RenderBatch>{
     // Find offset within the array
     int offset = index * 4 * VERTEX_SIZE;
 
-    Vector4d color = sprite.getColor();
+    Vector4f color = sprite.getColor();
     Vector2f[] coords = sprite.getTextureCoords();
 
     // Add vertices with the appropriate properties.

@@ -6,6 +6,11 @@ group = 'org.example'
 version = '1.0-SNAPSHOT'
 
 repositories {
+    maven {
+        name "realrobotixImguiJava"
+        url "https://maven.realrobotix.me/imgui-java"
+    }
+
     mavenCentral()
 }
 
@@ -21,8 +26,14 @@ test {
 project.ext.lwjglVersion = "3.3.3"
 project.ext.jomlVersion = "1.10.5"
 project.ext.lwjglNatives = "natives-macos-arm64"
+project.ext.imGuiVersion = "1.86.11"
 
 dependencies {
+    // Imgui files
+    implementation "io.github.spair:imgui-java-app:1.86.11-10-g0dbf36c"
+    implementation "io.github.spair:imgui-java-natives-macos-ft:1.86.11-10-g0dbf36c"
+
+
     implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
 
     implementation "org.lwjgl:lwjgl"

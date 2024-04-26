@@ -3,8 +3,10 @@ package jade;
 import components.Sprite;
 import components.SpriteRender;
 import components.SpriteSheet;
+import imgui.ImGui;
 import org.joml.Vector2d;
 import org.joml.Vector4d;
+import org.joml.Vector4f;
 import renders.Texture;
 import util.AssetPool;
 
@@ -32,10 +34,10 @@ public class LevelEditorScene extends Scene{
     this.addGameToScene(obj1);
 
     GameObject obj2 = new GameObject("Second Object", new Transform(new Vector2d(400, 100), new Vector2d(256, 256)), 2);
-    obj2.addComponent(new SpriteRender(new Sprite(
-            AssetPool.getTexture("assets/images/red.png")
-    )));
+    obj2.addComponent(new SpriteRender(new Vector4f(1,0,0,1)
+    ));
     this.addGameToScene(obj2);
+    this.activeGameObject = obj2;
 
   }
 
@@ -62,8 +64,13 @@ public class LevelEditorScene extends Scene{
     }
 
     this.theRender.render();
+  }
 
-
+  @Override
+  public void imgui() {
+    ImGui.begin("Some random text test.");
+    ImGui.text("Here is the random text");
+    ImGui.end();
   }
 
 }
