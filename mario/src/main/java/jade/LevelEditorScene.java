@@ -1,11 +1,12 @@
 package jade;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import components.Sprite;
 import components.SpriteRender;
 import components.SpriteSheet;
 import imgui.ImGui;
 import org.joml.Vector2d;
-import org.joml.Vector4d;
 import org.joml.Vector4f;
 import renders.Texture;
 import util.AssetPool;
@@ -24,33 +25,47 @@ public class LevelEditorScene extends Scene{
     loadResources();
     this.camera = new Camera(new Vector2d(-250, 0));
 
+    if (levelLoaded) {
+      return;
+    }
+
     spriteSheet = AssetPool.getSpriteSheet("assets/images/spritesheet.png");
 
     obj1 = new GameObject("Object 1", new Transform(new Vector2d(200, 100), new Vector2d(256, 256)), 2);
-    obj1.addComponent(new SpriteRender( new Sprite(
-            AssetPool.getTexture("assets/images/green.png")
-    )));
+    SpriteRender spriteRender1 = new SpriteRender();
+    Sprite sprite1 = new Sprite();
+    sprite1.setTexture(AssetPool.getTexture("assets/images/green.png"));
+
+    spriteRender1.setSprite(sprite1);
+    obj1.addComponent(spriteRender1);
+
+
     //obj1.addComponent(new SpriteRender(spriteSheet.getSprite(0)));
     this.addGameToScene(obj1);
 
     GameObject obj2 = new GameObject("Second Object", new Transform(new Vector2d(400, 100), new Vector2d(256, 256)), 2);
-    obj2.addComponent(new SpriteRender(new Vector4f(1,0,0,1)
-    ));
+
+    SpriteRender spriteRender2 = new SpriteRender();
+    Sprite sprite2 = new Sprite();
+    spriteRender2.setColor(new Vector4f(1,0,0,1));
+    obj2.addComponent(spriteRender2);
     this.addGameToScene(obj2);
     this.activeGameObject = obj2;
 
+    Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Component.class, new ComponentDeserializer()).create();
+    String serialize = gson.toJson(obj1);
+    System.out.println(serialize);
+    GameObject obj3 = gson.fromJson(serialize, GameObject.class);
+    System.out.println(obj3);
   }
 
   private void loadResources() {
+    Texture texture = new Texture();
     AssetPool.getShader("assets/shaders/default.glsl");
     AssetPool.addSpriteSheet("assets/images/spritesheet.png", new SpriteSheet(
-            new Texture("assets/images/spritesheet.png"), 16, 16, 26, 0));
+            AssetPool.getTexture("assets/images/spritesheet.png"), 16, 16, 26, 0));
   }
 
-
-  private int spirteIndex = 0;
-  private double spriteFlipTime = 0.4;
-  private double spriteFlipTimeLeft = 0;
 
   @Override
   public void update(double dt) {

@@ -25,8 +25,11 @@ public class Texture {
    * @param filePath the file path. Note check file type;
    * Allowed: JPEG, PNG, TGA, BMP, PSD, GIF, HDR, and PIC.
    * */
-  public Texture(String filePath) {
+  public Texture() {
+  }
 
+
+  public void init(String filePath) {
     //Let openGL create texture in GPU.
     textID = glGenTextures();
     glActiveTexture(GL_TEXTURE0);
@@ -71,7 +74,6 @@ public class Texture {
     // free allocated memory.
     stbi_image_free(image);
   }
-
 
   public void bind() {
     glBindTexture(GL_TEXTURE_2D, textID);

@@ -7,7 +7,7 @@ public class GameObject {
 
   private String name;
 
-  private List<Component> componets;
+  private List<Component> components;
 
   private Transform transform;
 
@@ -15,14 +15,14 @@ public class GameObject {
 
   public GameObject(String name) {
     this.name = name;
-    componets = new ArrayList<>();
+    components = new ArrayList<>();
     this.transform = new Transform();
     this.zIndex = 0;
   }
 
   public GameObject(String name, Transform transform, int zIndex) {
     this.name = name;
-    componets = new ArrayList<>();
+    components = new ArrayList<>();
     this.transform = transform;
     this.zIndex = zIndex;
   }
@@ -32,7 +32,7 @@ public class GameObject {
    * If the class is not found in the List, return null.
    * */
   public <T extends Component> T getComponent(Class<? extends T> componentClass) {
-    for (Component c : componets) {
+    for (Component c : components) {
       // isAssignableFrom() allows same class or superclass/superinterface to pass.
       if (componentClass.isAssignableFrom(c.getClass())) {
         try {
@@ -46,10 +46,10 @@ public class GameObject {
   }
 
   public<T extends Component> void removeComponent(Class<? extends T> componentClass) {
-    for (int i = 0; i < componets.size(); i++) {
-      Component c = componets.get(i);
+    for (int i = 0; i < components.size(); i++) {
+      Component c = components.get(i);
       if (componentClass.isAssignableFrom(c.getClass())) {
-        componets.remove(i);
+        components.remove(i);
         return;
       }
     }
@@ -57,19 +57,19 @@ public class GameObject {
   }
 
   public void addComponent(Component component) {
-    componets.add(component);
+    components.add(component);
     component.gameObject = this; // tie the component with the current game object.
 
   }
 
   public void update(double dt) {
-    for (Component component : componets) {
+    for (Component component : components) {
       component.update(dt);
     }
   }
 
   public void start() {
-    for (Component component : componets) {
+    for (Component component : components) {
       component.start();
     }
   }
@@ -83,7 +83,7 @@ public class GameObject {
   }
 
   public void imgui() {
-    for (Component component : componets) {
+    for (Component component : components) {
       component.imgui();
     }
   }

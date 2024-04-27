@@ -29,6 +29,9 @@ project.ext.lwjglNatives = "natives-macos-arm64"
 project.ext.imGuiVersion = "1.86.11"
 
 dependencies {
+    // Gson
+    implementation 'com.google.code.gson:gson:2.10.1'
+
     // Imgui files
     implementation "io.github.spair:imgui-java-app:1.86.11-10-g0dbf36c"
     implementation "io.github.spair:imgui-java-natives-macos-ft:1.86.11-10-g0dbf36c"

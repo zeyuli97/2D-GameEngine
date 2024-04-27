@@ -156,6 +156,8 @@ public class Window {
 
     double dt = -1.0;
 
+    currentScene.load();
+
     while (!glfwWindowShouldClose(glfwWindow)) {
       // Poll events that we setup in the init() -- all the callback functions.
       glfwPollEvents();
@@ -178,6 +180,7 @@ public class Window {
       dt = endTime - beginTime;
       beginTime = endTime;
     }
+    currentScene.saveExit();
 
   }
 

@@ -54,7 +54,9 @@ public class SpriteSheet {
               new Vector2f(leftX,topY)
       };
 
-      Sprite sprite = new Sprite(texture, textureCoords);
+      Sprite sprite = new Sprite();
+      sprite.setTexture(texture);
+      sprite.setTextCoords(textureCoords);
       sprites.add(sprite);
 
       currentX += spriteWidth + spacing;

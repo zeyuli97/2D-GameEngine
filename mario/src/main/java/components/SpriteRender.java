@@ -13,22 +13,24 @@ import renders.Texture;
 
 public class SpriteRender extends Component {
 
-  private Sprite sprite;
-  private Vector4f color;
-  private Transform lastTransform;
-  private boolean isDirty; // IsDirty will tell whether we need to update the sprite.
+  private Sprite sprite = new Sprite();
+  private Vector4f color = new Vector4f(1,1,1,1);
 
-  public SpriteRender(Vector4f color) {
-    this.color = color;
-    this.sprite = new Sprite(null);
-    this.isDirty = true;
-  }
+  //transient is a key word for gson, let gson not serialize the transient variable.
+  private transient Transform lastTransform;
+  private transient boolean isDirty; // IsDirty will tell whether we need to update the sprite.
 
-  public SpriteRender(Sprite sprite) {
-    this.sprite = sprite;
-    this.color = new Vector4f(1,1,1,1);
-    this.isDirty = true;
-  }
+//  public SpriteRender(Vector4f color) {
+//    this.color = color;
+//    this.sprite = new Sprite(null);
+//    this.isDirty = true;
+//  }
+//
+//  public SpriteRender(Sprite sprite) {
+//    this.sprite = sprite;
+//    this.color = new Vector4f(1,1,1,1);
+//    this.isDirty = true;
+//  }
 
   @Override
   public void start() {
