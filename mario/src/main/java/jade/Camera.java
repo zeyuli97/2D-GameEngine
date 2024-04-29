@@ -5,13 +5,15 @@ import org.joml.Vector2d;
 import org.joml.Vector3d;
 
 public class Camera {
-  private Matrix4d projectionMatrix, viewMatrix;
+  private Matrix4d projectionMatrix, viewMatrix, inverseViewMatrix, inverseProjectionMatrix;
   protected Vector2d position;
 
   public Camera(Vector2d position) {
     this.position = position;
     this.projectionMatrix = new Matrix4d();
     this.viewMatrix = new Matrix4d();
+    this.inverseViewMatrix = new Matrix4d();
+    this.inverseProjectionMatrix = new Matrix4d();
     adjustProjection();
   }
 
@@ -20,6 +22,7 @@ public class Camera {
     projectionMatrix.identity();
     // Init an orthography matrix, each parameter defines a clipping plane.
     projectionMatrix.ortho(0, 32 * 40, 0, 32 * 21, 0, 100);
+    projectionMatrix.invert(inverseProjectionMatrix);
   }
 
   public Matrix4d getViewMatrix() {
@@ -31,6 +34,7 @@ public class Camera {
             cameraFront.add(position.x, position.y, 0),
             cameraUp);
 
+    viewMatrix.invert(inverseViewMatrix);
     return this.viewMatrix;
   }
 
@@ -38,4 +42,11 @@ public class Camera {
     return this.projectionMatrix;
   }
 
+  public Matrix4d getInverseViewMatrix() {
+    return this.inverseViewMatrix;
+  }
+
+  public Matrix4d getInverseProjectionMatrix() {
+    return inverseProjectionMatrix;
+  }
 }

@@ -16,20 +16,6 @@ public class Sprite {
           new Vector2f(0,0),
           new Vector2f(0,1)};
 
-//  public Sprite(Texture texture) {
-//    this.texture = texture;
-//    this.textCoords = new Vector2f[] {
-//            new Vector2f(1,1),
-//            new Vector2f(1,0),
-//            new Vector2f(0,0),
-//            new Vector2f(0,1)
-//    };
-//  }
-//
-//  public Sprite(Texture texture, Vector2f[] array) {
-//    this.texture = texture;
-//    this.textCoords = array;
-//  }
 
   public Texture getTexture() {
     return this.texture;

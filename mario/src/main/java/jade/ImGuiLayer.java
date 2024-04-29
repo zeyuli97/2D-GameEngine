@@ -176,7 +176,7 @@ public class ImGuiLayer {
   }
 
   public void update(float dt, Scene currentScene) {
-    //startFrame(dt);
+    startFrame(dt);
     implGlfw.newFrame();
     // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
     ImGui.newFrame();

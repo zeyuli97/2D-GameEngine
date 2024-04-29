@@ -47,7 +47,7 @@ public abstract class Scene {
    * 1. If the game is currently running, we add the GameObject and start the GameObject.
    * 2. If not running, we only add the GameObject into the list.
    * */
-  public void addGameToScene(GameObject go) {
+  public void addGameObjectToScene(GameObject go) {
     if (!isRunning) {
       gameObjects.add(go);
     } else {
@@ -107,7 +107,7 @@ public abstract class Scene {
     if (!inFile.equals("")) {
       GameObject[] gameObjects = gson.fromJson(inFile, GameObject[].class);
       for (GameObject go : gameObjects) {
-        addGameToScene(go);
+        addGameObjectToScene(go);
 
       }
     }
