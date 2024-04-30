@@ -1,8 +1,10 @@
 package jade;
 
+import Scene.*;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
+import renders.DebugDraw;
 import util.Time;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
@@ -162,6 +164,9 @@ public class Window {
       // Poll events that we setup in the init() -- all the callback functions.
       glfwPollEvents();
 
+      DebugDraw.beginFrame();
+
+
       glClearColor(r, g, b, a); // Set clear color to a tone defined by rgba.
       // glClear() called at the beginning of each iteration of the rendering loop to clear the color buffer.
       // This ensures that the framebuffer starts with a clean slate before rendering new content for the current frame.
@@ -169,6 +174,7 @@ public class Window {
 
 
       if (dt >= 0) {
+        DebugDraw.draw();
         currentScene.update(dt);
       }
       this.imGuiLayer.update((float) dt, currentScene);

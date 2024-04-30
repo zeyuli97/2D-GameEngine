@@ -1,14 +1,9 @@
 package components;
 
 import imgui.ImGui;
-import jade.Component;
-import jade.ImGuiLayer;
 import jade.Transform;
-import org.joml.Vector2d;
 import org.joml.Vector2f;
-import org.joml.Vector4d;
 import org.joml.Vector4f;
-import org.w3c.dom.Text;
 import renders.Texture;
 
 public class SpriteRender extends Component {
@@ -18,7 +13,7 @@ public class SpriteRender extends Component {
 
   //transient is a key word for gson, let gson not serialize the transient variable.
   private transient Transform lastTransform;
-  private transient boolean isDirty; // IsDirty will tell whether we need to update the sprite.
+  private transient boolean isDirty = true; // IsDirty will tell whether we need to update the sprite.
 
 
   @Override

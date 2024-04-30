@@ -1,25 +1,26 @@
-package jade;
+package Scene;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import components.RigidBody;
-import components.Sprite;
-import components.SpriteRender;
-import components.SpriteSheet;
+import components.*;
 import imgui.ImGui;
 import imgui.ImVec2;
+import jade.Camera;
+import jade.GameObject;
+import jade.Prefabs;
+import jade.Transform;
 import org.joml.Vector2d;
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 import org.joml.Vector4f;
-import renders.Texture;
+import renders.DebugDraw;
 import util.AssetPool;
 
-public class LevelEditorScene extends Scene{
+public class LevelEditorScene extends Scene {
 
   private GameObject obj1;
   private SpriteSheet sprites;
   private SpriteRender obj1Sprite;
   private SpriteRender obj2Sprite;
+  private MouseControl mouseControl = new MouseControl();
 
   public LevelEditorScene() {
 
@@ -30,11 +31,12 @@ public class LevelEditorScene extends Scene{
     loadResources();
     this.camera = new Camera(new Vector2d(-250, 0));
     sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png");
+
     if (levelLoaded) {
       this.activeGameObject = gameObjects.get(0);
+      DebugDraw.addLine2D(new Vector2f(0,0), new Vector2f(800, 800), new Vector3f(1, 0, 0), 400);
       return;
     }
-
 
     obj1 = new GameObject("Object 1", new Transform(new Vector2d(200, 100), new Vector2d(256, 256)), 2);
     obj1Sprite = new SpriteRender();
@@ -74,7 +76,7 @@ public class LevelEditorScene extends Scene{
     for (GameObject go : this.gameObjects) {
       go.update(dt);
     }
-
+    mouseControl.update(dt);
     this.theRender.render();
   }
 
@@ -99,7 +101,9 @@ public class LevelEditorScene extends Scene{
 
       ImGui.pushID(i);
       if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
-        System.out.println("Button " + i + "clicked");
+        GameObject genSprite = Prefabs.generateSpriteWithinGameObject(sprite, spriteWidth, spriteHeight);
+        // Attach this to the cursor.
+        mouseControl.pickupObject(genSprite);
       }
       ImGui.popID();
 

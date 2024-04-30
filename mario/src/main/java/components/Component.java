@@ -1,7 +1,8 @@
-package jade;
+package components;
 
 
 import imgui.ImGui;
+import jade.GameObject;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
@@ -14,6 +15,8 @@ import java.lang.reflect.Modifier;
  * Component also remembers which gameObject it belongs to.
  * */
 public abstract class Component {
+  private static int ID_COUNTER = 0; // this is global id.
+  private int uid = -1;
 
   protected transient GameObject gameObject = null;
 
@@ -27,6 +30,10 @@ public abstract class Component {
 
   public GameObject getGameObject() {
     return gameObject;
+  }
+
+  public void setGameObject(GameObject gameObject) {
+    this.gameObject = gameObject;
   }
 
   public void imgui() {
@@ -80,4 +87,19 @@ public abstract class Component {
       e.printStackTrace();
     }
   }
+
+  public void generateID() {
+    if (this.uid == -1) {
+      this.uid = ID_COUNTER++;
+    }
+  }
+
+  public int getUid() {
+    return this.uid;
+  }
+
+  public static void init(int maxID) {
+    ID_COUNTER = maxID;
+  }
+
 }

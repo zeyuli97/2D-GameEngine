@@ -1,15 +1,22 @@
-package jade;
+package Scene;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import components.Component;
+import components.ComponentDeserializer;
 import imgui.ImGui;
+import jade.Camera;
+import jade.GameObject;
+import jade.GameObjectDeserializer;
 import org.joml.Vector2d;
 import renders.Render;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,6 +86,13 @@ public abstract class Scene {
   }
 
   public void saveExit() {
+    try {
+      Files.writeString(Paths.get("level.txt"), "", StandardOpenOption.TRUNCATE_EXISTING);
+    } catch (IOException e) {
+      System.err.println("Error emptying the file.");
+      e.printStackTrace();
+    }
+
     Gson gson = new GsonBuilder().setPrettyPrinting()
             .registerTypeAdapter(Component.class, new ComponentDeserializer())
             .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
@@ -105,12 +119,26 @@ public abstract class Scene {
       e.printStackTrace();
     }
     if (!inFile.equals("")) {
+      int maxGameObjectsId = -1;
+      int maxComponentId = -1;
       GameObject[] gameObjects = gson.fromJson(inFile, GameObject[].class);
       for (GameObject go : gameObjects) {
         addGameObjectToScene(go);
-
+        for (Component component : go.getComponents()) {
+          if (component.getUid() > maxComponentId) {
+            maxComponentId = component.getUid();
+          }
+        }
+        if (go.getUid() > maxGameObjectsId) {
+          maxGameObjectsId = go.getUid();
+        }
       }
+
+      maxComponentId++;
+      maxGameObjectsId++;
+      GameObject.init(maxGameObjectsId);
+      Component.init(maxComponentId);
+      levelLoaded = true;
     }
-    levelLoaded = true;
   }
 }
