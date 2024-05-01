@@ -19,17 +19,34 @@ public class Texture {
   private int width;
   private int height;
   private int textID;
+  private String filePath;
+
+  public Texture() {
+  }
+
+  /**
+   * This constructor is serve for the framebuffer.
+   * Shall not be used for regular texture loading.
+   * For regular texture, call new Texture() then init(String filepath).
+   * */
+  public Texture(int width, int height) {
+    this.filePath = "Generated Texture without specific path root.";
+
+    textID = glGenTextures();
+    glBindTexture(GL_TEXTURE_2D, textID);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+  }
+
 
   /**
    * Constructor of the Texture class.
    * @param filePath the file path. Note check file type;
    * Allowed: JPEG, PNG, TGA, BMP, PSD, GIF, HDR, and PIC.
    * */
-  public Texture() {
-  }
-
-
   public void init(String filePath) {
+    this.filePath = filePath;
+
     //Let openGL create texture in GPU.
     textID = glGenTextures();
     glActiveTexture(GL_TEXTURE0);
@@ -94,5 +111,17 @@ public class Texture {
 
   public int getTextID() {
     return textID;
+  }
+
+  public String getFilePath() {
+    return this.filePath;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Texture texture = (Texture) o;
+    return width == texture.getWidth() && height == texture.getHeight() && textID == texture.getTextID() && filePath.equals(texture.getFilePath());
   }
 }

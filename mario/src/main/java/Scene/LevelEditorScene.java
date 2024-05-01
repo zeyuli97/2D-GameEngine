@@ -71,7 +71,6 @@ public class LevelEditorScene extends Scene {
 
   @Override
   public void update(double dt) {
-    //obj1.getTransform().setPositionX(obj1.getTransform().getPosition().x + 10 * dt);
 
     levelEditorStuff.update(dt);
     DebugDraw.addBox2D(new Vector2f(200,200), new Vector2f(64, 32), new Vector3f(0,1,0), 1, 30);

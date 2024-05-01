@@ -5,6 +5,7 @@ import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 import renders.DebugDraw;
+import renders.FrameBuffer;
 import util.Time;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
@@ -21,6 +22,7 @@ public class Window {
   public float r, g , b, a;
   private ImGuiLayer imGuiLayer;
   private static Scene currentScene;
+  private FrameBuffer frameBuffer;
 
 
 
@@ -154,6 +156,8 @@ public class Window {
     this.imGuiLayer = new ImGuiLayer(glfwWindow);
     this.imGuiLayer.initImGui();
 
+    this.frameBuffer = new FrameBuffer(3456, 2234);
+
     Window.changeScene(0);
   }
 
@@ -177,10 +181,15 @@ public class Window {
       glClear(GL_COLOR_BUFFER_BIT); // Use the clear color to fill the color buffer
 
 
+      this.frameBuffer.bind();
+
       if (dt >= 0) {
         DebugDraw.draw();
         currentScene.update(dt);
       }
+
+      this.frameBuffer.unbind();
+
       this.imGuiLayer.update((float) dt, currentScene);
       // Now we perform color buffer swap.
       glfwSwapBuffers(glfwWindow);
