@@ -1,19 +1,18 @@
 package jade;
 
-import org.joml.Matrix4d;
-import org.joml.Vector2d;
-import org.joml.Vector3d;
+import org.joml.*;
 
 public class Camera {
-  private Matrix4d projectionMatrix, viewMatrix, inverseViewMatrix, inverseProjectionMatrix;
-  protected Vector2d position;
+  private Matrix4f projectionMatrix, viewMatrix, inverseViewMatrix, inverseProjectionMatrix;
+  protected Vector2f position;
+  private Vector2f projectionSize = new Vector2f(32f * 40f, 32f * 21f);
 
-  public Camera(Vector2d position) {
+  public Camera(Vector2f position) {
     this.position = position;
-    this.projectionMatrix = new Matrix4d();
-    this.viewMatrix = new Matrix4d();
-    this.inverseViewMatrix = new Matrix4d();
-    this.inverseProjectionMatrix = new Matrix4d();
+    this.projectionMatrix = new Matrix4f();
+    this.viewMatrix = new Matrix4f();
+    this.inverseViewMatrix = new Matrix4f();
+    this.inverseProjectionMatrix = new Matrix4f();
     adjustProjection();
   }
 
@@ -21,16 +20,16 @@ public class Camera {
     // A usual way to start working on a matrix. Identity matrix makes sure future transformation will not be affected.
     projectionMatrix.identity();
     // Init an orthography matrix, each parameter defines a clipping plane.
-    projectionMatrix.ortho(0, 32 * 40, 0, 32 * 21, 0, 100);
+    projectionMatrix.ortho(0, projectionSize.x, 0, projectionSize.y, 0, 100);
     projectionMatrix.invert(inverseProjectionMatrix);
   }
 
-  public Matrix4d getViewMatrix() {
-    Vector3d cameraFront = new Vector3d(0,0,-1); // Negative z is into the screen.
-    Vector3d cameraUp = new Vector3d(0,1,0);
+  public Matrix4f getViewMatrix() {
+    Vector3f cameraFront = new Vector3f(0,0,-1); // Negative z is into the screen.
+    Vector3f cameraUp = new Vector3f(0,1,0);
     this.viewMatrix.identity();
     // lookAt: This method sets up the view matrix based on a camera position, a target position, and an up vector.
-    viewMatrix.lookAt(new Vector3d(position.x, position.y, 20), // z = 20 bird eye view
+    viewMatrix.lookAt(new Vector3f(position.x, position.y, 20), // z = 20 bird eye view
             cameraFront.add(position.x, position.y, 0),
             cameraUp);
 
@@ -38,15 +37,23 @@ public class Camera {
     return this.viewMatrix;
   }
 
-  public Matrix4d getProjectionMatrix() {
+  public Matrix4f getProjectionMatrix() {
     return this.projectionMatrix;
   }
 
-  public Matrix4d getInverseViewMatrix() {
+  public Matrix4f getInverseViewMatrix() {
     return this.inverseViewMatrix;
   }
 
-  public Matrix4d getInverseProjectionMatrix() {
+  public Matrix4f getInverseProjectionMatrix() {
     return inverseProjectionMatrix;
+  }
+
+  public Vector2f getProjectionSize() {
+    return projectionSize;
+  }
+
+  public Vector2f getPosition() {
+    return position;
   }
 }

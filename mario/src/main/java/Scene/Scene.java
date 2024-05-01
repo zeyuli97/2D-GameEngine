@@ -9,6 +9,7 @@ import jade.Camera;
 import jade.GameObject;
 import jade.GameObjectDeserializer;
 import org.joml.Vector2d;
+import org.joml.Vector2f;
 import renders.Render;
 
 import java.io.FileWriter;
@@ -24,7 +25,7 @@ public abstract class Scene {
 
   protected Render theRender = new Render();
 
-  protected Camera camera = new Camera(new Vector2d());
+  protected Camera camera = new Camera(new Vector2f());
 
   private boolean isRunning = false;
 
@@ -72,7 +73,9 @@ public abstract class Scene {
   }
 
   public void sceneImgui() {
+    //System.out.println("Before if");
     if (activeGameObject != null) {
+      //System.out.println("Inside of if");
       ImGui.begin("Inspector");
       activeGameObject.imgui();
       ImGui.end();
@@ -86,12 +89,12 @@ public abstract class Scene {
   }
 
   public void saveExit() {
-    try {
-      Files.writeString(Paths.get("level.txt"), "", StandardOpenOption.TRUNCATE_EXISTING);
-    } catch (IOException e) {
-      System.err.println("Error emptying the file.");
-      e.printStackTrace();
-    }
+//    try {
+//      Files.writeString(Paths.get("level.txt"), "", StandardOpenOption.TRUNCATE_EXISTING);
+//    } catch (IOException e) {
+//      System.err.println("Error emptying the file.");
+//      e.printStackTrace();
+//    }
 
     Gson gson = new GsonBuilder().setPrettyPrinting()
             .registerTypeAdapter(Component.class, new ComponentDeserializer())
@@ -138,7 +141,7 @@ public abstract class Scene {
       maxGameObjectsId++;
       GameObject.init(maxGameObjectsId);
       Component.init(maxComponentId);
-      levelLoaded = true;
     }
+    levelLoaded = true;
   }
 }

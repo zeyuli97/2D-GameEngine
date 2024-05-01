@@ -133,7 +133,7 @@ public class Shader {
    * Upload the information to the glsl file.
    * Upload can be done only when there is a shader in use.
    * */
-  public void uploadMat4d(String varName, Matrix4d mat4) {
+  public void uploadMat4f(String varName, Matrix4f mat4) {
     // Inside our linked shaders, we are matching uniform variable name with varName.
     // The mat4 will be assigned to that variable in our shaders.
     int varLocation = glGetUniformLocation(shaderProgramID, varName); // Find the location of varName inside shader.
@@ -144,7 +144,7 @@ public class Shader {
 
   }
 
-  public void uploadMat3d(String varName, Matrix3d mat3) {
+  public void uploadMat3f(String varName, Matrix3f mat3) {
     int varLocation = glGetUniformLocation(shaderProgramID, varName);
     this.use();
     FloatBuffer matBuffer = BufferUtils.createFloatBuffer(9);

@@ -37,6 +37,8 @@ public class SpriteSheet {
   public SpriteSheet(Texture texture, int spriteWidth, int spriteHeight, int numSprites, int spacing) {
     this.sprites = new ArrayList<>();
     this.texture = texture;
+    this.spriteWidth = spriteWidth;
+    this.spriteHeight = spriteHeight;
 
     // This is the top left most sprite's bottom right coords.
     int currentX = 0;
@@ -57,6 +59,8 @@ public class SpriteSheet {
       Sprite sprite = new Sprite();
       sprite.setTexture(texture);
       sprite.setTextCoords(textureCoords);
+      sprite.setWidth(spriteWidth);
+      sprite.setHeight(spriteHeight);
       sprites.add(sprite);
 
       currentX += spriteWidth + spacing;
@@ -75,5 +79,13 @@ public class SpriteSheet {
 
   public int size() {
     return this.sprites.size();
+  }
+
+  public int getSpriteHeight() {
+    return spriteHeight;
+  }
+
+  public int getSpriteWidth() {
+    return spriteWidth;
   }
 }

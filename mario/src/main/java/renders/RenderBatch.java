@@ -125,8 +125,8 @@ public class RenderBatch implements Comparable<RenderBatch>{
     // shader part.
     shader.use();
 
-    shader.uploadMat4d("uProjection", Window.getCurrentScene().getCamera().getProjectionMatrix());
-    shader.uploadMat4d("uView", Window.getCurrentScene().getCamera().getViewMatrix());
+    shader.uploadMat4f("uProjection", Window.getCurrentScene().getCamera().getProjectionMatrix());
+    shader.uploadMat4f("uView", Window.getCurrentScene().getCamera().getViewMatrix());
 
     // Bind all textures GPU could memorize multiple textures.
     for (int i = 0; i < textures.size(); i++) {

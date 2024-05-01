@@ -1,6 +1,6 @@
 package jade;
 
-import org.joml.Vector2d;
+import org.joml.Vector2f;
 
 /**
  * The Transform Class stores two key information.
@@ -9,36 +9,36 @@ import org.joml.Vector2d;
  * */
 public class Transform {
 
-  private Vector2d position;
-  private Vector2d scale;
+  private Vector2f position;
+  private Vector2f scale;
 
   public Transform() {
-    init(new Vector2d(), new Vector2d());
+    init(new Vector2f(), new Vector2f());
   }
 
-  public Transform(Vector2d position) {
-    init(position, new Vector2d());
+  public Transform(Vector2f position) {
+    init(position, new Vector2f());
   }
 
-  public Transform(Vector2d position, Vector2d scale) {
+  public Transform(Vector2f position, Vector2f scale) {
     init(position, scale);
   }
 
-  private void init(Vector2d position, Vector2d scale) {
+  private void init(Vector2f position, Vector2f scale) {
     this.position = position;
     this.scale = scale;
   }
 
-  public Vector2d getPosition() {
+  public Vector2f getPosition() {
     return position;
   }
 
-  public Vector2d getScale() {
+  public Vector2f getScale() {
     return scale;
   }
 
   public Transform copy() {
-    return new Transform(new Vector2d(position), new Vector2d(scale));
+    return new Transform(new Vector2f(position), new Vector2f(scale));
   }
 
 
@@ -47,11 +47,11 @@ public class Transform {
     transform.scale.set(this.scale);
   }
 
-  public void setPositionX(double x) {
+  public void setPositionX(float x) {
     this.position.x = x;
   }
 
-  public void setPositionY(double y) {
+  public void setPositionY(float y) {
     this.position.y = y;
   }
 

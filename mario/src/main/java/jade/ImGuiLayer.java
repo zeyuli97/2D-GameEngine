@@ -168,7 +168,7 @@ public class ImGuiLayer {
 
     // Fonts merge example
     fontConfig.setPixelSnapH(true);
-    fontAtlas.addFontFromFileTTF("assets/fonts/Monaco.ttf", 32, fontConfig);
+    fontAtlas.addFontFromFileTTF("assets/fonts/Monaco.ttf", 21, fontConfig);
 
     fontConfig.destroy(); // After all fonts were added we don't need this config more
 
@@ -190,7 +190,7 @@ public class ImGuiLayer {
     // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
     ImGui.newFrame();
     currentScene.sceneImgui();
-    ImGui.showDemoWindow();
+    //ImGui.showDemoWindow();
     ImGui.render();
 
     endFrame();

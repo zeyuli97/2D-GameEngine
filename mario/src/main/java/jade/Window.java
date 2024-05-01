@@ -52,8 +52,12 @@ public class Window {
         assert false : "Unknown scene '" + newScene + "'";
         break;
     }
-    currentScene.load();
+
+    System.out.println("I am about init current scene");
     currentScene.init();
+    System.out.println("I am about load current scene");
+    currentScene.load();
+    System.out.println("I am about start current scene");
     currentScene.start();
   }
 
@@ -165,7 +169,7 @@ public class Window {
       glfwPollEvents();
 
       DebugDraw.beginFrame();
-
+      //currentScene.init();
 
       glClearColor(r, g, b, a); // Set clear color to a tone defined by rgba.
       // glClear() called at the beginning of each iteration of the rendering loop to clear the color buffer.

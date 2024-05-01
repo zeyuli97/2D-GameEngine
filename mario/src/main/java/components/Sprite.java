@@ -8,6 +8,7 @@ import renders.Texture;
  * Sprite is all about the texture.
  * */
 public class Sprite {
+  private int width, height;
 
   private Texture texture = null;
   private Vector2f[] textCoords = new Vector2f[] {
@@ -31,5 +32,21 @@ public class Sprite {
 
   public void setTextCoords(Vector2f[] textCoords) {
     this.textCoords = textCoords;
+  }
+
+  public void setHeight(int height) {
+    this.height = height;
+  }
+
+  public void setWidth(int width) {
+    this.width = width;
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
+  public int getWidth() {
+    return width;
   }
 }
