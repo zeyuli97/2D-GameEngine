@@ -27,17 +27,17 @@ public class RenderBatch implements Comparable<RenderBatch>{
 
   private final int POS_SIZE = 2;
   private final int COLOR_SIZE = 4;
-
   private final int POS_OFFSET = 0;
-
   private final int TEXTURE_COORDS_SIZE = 2;
   private final int TEXTURE_ID_SIZE = 1;
+  private final int ENTITY_ID_SIZE = 1;
   private final int COLOR_OFFSET = POS_OFFSET + POS_SIZE * Double.BYTES;
 
   private final int TEXTURE_COORDS_OFFSET = COLOR_OFFSET + COLOR_SIZE * Double.BYTES;
 
   private final int TEXTURE_ID_OFFSET = TEXTURE_COORDS_OFFSET + TEXTURE_COORDS_SIZE * Double.BYTES;
-  private final int VERTEX_SIZE = 9; // For each vertex we have 6 double in it
+  private final int ENTITY_ID_OFFSET = TEXTURE_ID_OFFSET + TEXTURE_ID_SIZE * Double.BYTES;
+  private final int VERTEX_SIZE = 10; // For each vertex we have 6 double in it
   private final int VERTEX_SIZE_BYTE = VERTEX_SIZE * Double.BYTES;
 
   private List<Texture> textures;
@@ -50,7 +50,7 @@ public class RenderBatch implements Comparable<RenderBatch>{
   private double[] vertices;
   private int vaoID, vboID;
   private int maxBatchSize; // The max number of sprites we can hold in this batch.
-  private Shader shader;
+  //private Shader shader;
   private int zIndex; // zIndex is used to check the layer of sprite.
 
   /**
@@ -58,7 +58,7 @@ public class RenderBatch implements Comparable<RenderBatch>{
    * Each batch is a quad or two triangles so total six indices per quad.
    * */
   public RenderBatch(int maxBatchSize, int zIndex) {
-    this.shader = AssetPool.getShader("assets/shaders/default.glsl");
+    //this.shader = AssetPool.getShader("assets/shaders/default.glsl");
     this.maxBatchSize = maxBatchSize;
     this.sprites = new SpriteRender[maxBatchSize];
 
@@ -103,6 +103,9 @@ public class RenderBatch implements Comparable<RenderBatch>{
 
     glVertexAttribPointer(3, TEXTURE_ID_SIZE, GL_DOUBLE, false, VERTEX_SIZE_BYTE, TEXTURE_ID_OFFSET);
     glEnableVertexAttribArray(3);
+
+    glVertexAttribPointer(4, ENTITY_ID_SIZE, GL_DOUBLE, false, VERTEX_SIZE_BYTE, ENTITY_ID_OFFSET);
+    glEnableVertexAttribArray(4);
   }
 
   public void render() {
@@ -123,6 +126,7 @@ public class RenderBatch implements Comparable<RenderBatch>{
     }
 
     // shader part.
+    Shader shader = Render.getCurrentShader();
     shader.use();
 
     shader.uploadMat4f("uProjection", Window.getCurrentScene().getCamera().getProjectionMatrix());
@@ -257,6 +261,9 @@ public class RenderBatch implements Comparable<RenderBatch>{
 
       // load texture ID
       vertices[offset + 8] = targetTexID;
+
+      // load entity id for picking.
+      vertices[offset + 9] = sprite.getGameObject().getUid() + 1;
 
       offset += VERTEX_SIZE;
     }

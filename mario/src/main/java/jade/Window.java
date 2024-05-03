@@ -4,8 +4,8 @@ import Scene.*;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
-import renders.DebugDraw;
-import renders.FrameBuffer;
+import renders.*;
+import util.AssetPool;
 import util.Time;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
@@ -23,6 +23,7 @@ public class Window {
   private ImGuiLayer imGuiLayer;
   private static Scene currentScene;
   private FrameBuffer frameBuffer;
+  private PickingTexture pickingTexture;
 
 
 
@@ -157,7 +158,9 @@ public class Window {
     this.imGuiLayer.initImGui();
 
     this.frameBuffer = new FrameBuffer(3456, 2234);
-    glViewport(0,0, 3456, 2234);
+    // We are mimic the above frame buffer and replace color info with component's uid.
+    this.pickingTexture = new PickingTexture(3456, 2234);
+    glViewport(0,0,3456, 2234);
 
     Window.changeScene(0);
   }
@@ -168,15 +171,39 @@ public class Window {
 
     double dt = -1.0;
 
+    Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
+    Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
+
 
     while (!glfwWindowShouldClose(glfwWindow)) {
       // Poll events that we setup in the init() -- all the callback functions.
       glfwPollEvents();
 
+      // Render path 1. Render to picking texture.
+      glDisable(GL_BLEND); // We do not want blend, we just want pure pixel data.
+      pickingTexture.enableWriting();
+      glViewport(0, 0, 3456, 2234);
+      glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+      Render.bindShader(pickingShader);
+      currentScene.render();
+
+      if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+        int x = (int) MouseListener.getScreenX();
+        int y = (int) MouseListener.getScreenY();
+        System.out.println(pickingTexture.readPixel(x, y));
+      }
+
+      pickingTexture.disableWriting();
+      glEnable(GL_BLEND);
+
+      // Render path 2. Render actual game engine related.
       DebugDraw.beginFrame();
-      //currentScene.init();
+      Render.bindShader(defaultShader);
 
       this.frameBuffer.bind();
+
       glClearColor(r, g, b, a); // Set clear color to a tone defined by rgba.
       // glClear() called at the beginning of each iteration of the rendering loop to clear the color buffer.
       // This ensures that the framebuffer starts with a clean slate before rendering new content for the current frame.
@@ -186,6 +213,7 @@ public class Window {
       if (dt >= 0) {
         DebugDraw.draw();
         currentScene.update(dt);
+        currentScene.render();
       }
 
       this.frameBuffer.unbind();

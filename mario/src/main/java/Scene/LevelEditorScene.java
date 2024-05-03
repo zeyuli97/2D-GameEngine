@@ -89,12 +89,16 @@ public class LevelEditorScene extends Scene {
   public void update(double dt) {
 
     levelEditorStuff.update(dt);
-    DebugDraw.addBox2D(new Vector2f(200,200), new Vector2f(64, 32), new Vector3f(0,1,0), 1, 30);
-    DebugDraw.addCircle(new Vector2f(400,400), 80, new Vector3f(1, 0, 0), 1);
+    //DebugDraw.addBox2D(new Vector2f(200,200), new Vector2f(64, 32), new Vector3f(0,1,0), 1, 30);
+    //DebugDraw.addCircle(new Vector2f(400,400), 80, new Vector3f(1, 0, 0), 1);
     // Note this is gameObjects the Scene List that contains all the Game Objects.
     for (GameObject go : this.gameObjects) {
       go.update(dt);
     }
+  }
+
+  @Override
+  public void render() {
     this.theRender.render();
   }
 

@@ -67,6 +67,7 @@ public abstract class Scene {
 
   public abstract void update(double dt);
 
+  public abstract void render();
 
   public Camera getCamera() {
     return camera;

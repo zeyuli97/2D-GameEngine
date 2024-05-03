@@ -2,6 +2,8 @@ package Scene;
 
 import jade.Window;
 
+import java.awt.*;
+
 public class LevelScene extends Scene {
   public LevelScene() {
     System.out.println("Inside level scene.");
@@ -12,6 +14,11 @@ public class LevelScene extends Scene {
 
   @Override
   public void update(double dt) {
+
+  }
+
+  @Override
+  public void render() {
 
   }
 

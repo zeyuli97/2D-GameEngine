@@ -130,7 +130,7 @@ public class ImGuiLayer {
         ImGui.setWindowFocus(null);
       }
 
-      if (!io.getWantCaptureMouse()) {
+      if (!io.getWantCaptureMouse() || GameViewWindow.getWantCaptureMouse()) {
         MouseListener.mouseButtonCallback(w, button, action, mods);
       }
     });
@@ -197,6 +197,7 @@ public class ImGuiLayer {
     currentScene.sceneImgui();
     ImGui.showDemoWindow();
     GameViewWindow.imgui();
+
     ImGui.end();
     ImGui.render();
 
@@ -253,7 +254,6 @@ public class ImGuiLayer {
 
 
     // DocSpace
-
     ImGui.dockSpace(ImGui.getID("Dock Space"));
   }
 

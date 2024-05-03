@@ -12,6 +12,7 @@ import java.util.List;
 public class Render {
   private final int MAX_BATCH_SIZE = 1000;
   private List<RenderBatch> batches;
+  private static Shader currentShader;
 
   public Render() {
     this.batches = new ArrayList<>();
@@ -45,6 +46,14 @@ public class Render {
       newBatch.addSprite(sprite);
       Collections.sort(batches); // sort the batches according to zIndex.
     }
+  }
+
+  public static void bindShader(Shader shader) {
+    currentShader = shader;
+  }
+
+  public static Shader getCurrentShader() {
+    return currentShader;
   }
 
   public void render() {
