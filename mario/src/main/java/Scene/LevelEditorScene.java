@@ -36,6 +36,12 @@ public class LevelEditorScene extends Scene {
     this.camera = new Camera(new Vector2f(-250, 0));
     sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png");
 
+    if (levelLoaded) {
+      if (gameObjects.size() > 0) {
+        this.activeGameObject = gameObjects.get(0);
+      }
+    }
+
 
     //this.activeGameObject = obj1;
 
@@ -66,6 +72,16 @@ public class LevelEditorScene extends Scene {
     AssetPool.addSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png",
             new SpriteSheet(AssetPool.getTexture("assets/images/spritesheets/decorationsAndBlocks.png"),
                     16, 16, 81, 0));
+
+
+    for (GameObject go : gameObjects) {
+      if (go.getComponent(SpriteRender.class) != null) {
+        SpriteRender sr = go.getComponent(SpriteRender.class);
+        if (sr.getTexture() != null) {
+          sr.setTexture(AssetPool.getTexture(sr.getTexture().getFilePath()));
+        }
+      }
+    }
   }
 
 

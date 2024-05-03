@@ -55,10 +55,10 @@ public class Window {
         break;
     }
 
-    System.out.println("I am about init current scene");
-    currentScene.init();
     System.out.println("I am about load current scene");
     currentScene.load();
+    System.out.println("I am about init current scene");
+    currentScene.init();
     System.out.println("I am about start current scene");
     currentScene.start();
   }
