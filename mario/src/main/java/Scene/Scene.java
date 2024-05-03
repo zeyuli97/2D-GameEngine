@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class Scene {
 
@@ -32,7 +33,6 @@ public abstract class Scene {
   protected List<GameObject> gameObjects = new ArrayList<>();
 
   // activeGameObject is the object what is chosen will be modified.
-  protected GameObject activeGameObject = null;
   protected boolean levelLoaded = false;
 
   public Scene() {
@@ -65,24 +65,18 @@ public abstract class Scene {
     }
   }
 
+  public GameObject getGameObject(int targetID) {
+    Optional<GameObject> result = this.gameObjects.stream()
+            .filter(gameObject -> gameObject.getUid() == targetID).findFirst();
+    return result.orElse(null);
+  }
+
   public abstract void update(double dt);
 
   public abstract void render();
 
   public Camera getCamera() {
     return camera;
-  }
-
-  public void sceneImgui() {
-    //System.out.println("Before if");
-    if (activeGameObject != null) {
-      //System.out.println("Inside of if");
-      ImGui.begin("Inspector");
-      activeGameObject.imgui();
-      ImGui.end();
-    }
-
-    imgui();
   }
 
   public void imgui() {

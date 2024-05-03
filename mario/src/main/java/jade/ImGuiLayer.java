@@ -2,6 +2,7 @@ package jade;
 
 import Scene.Scene;
 import editor.GameViewWindow;
+import editor.WindowProperties;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
 import imgui.ImGui;
@@ -12,6 +13,7 @@ import imgui.flag.*;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
 import imgui.type.ImBoolean;
+import renders.PickingTexture;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -20,6 +22,10 @@ import static org.lwjgl.glfw.GLFW.*;
  * The ImGuiLayer follow the Window structure inside imgui-java by SpaiR.
  * */
 public class ImGuiLayer {
+
+  private WindowProperties windowProperties;
+
+  private GameViewWindow gameViewWindow = new GameViewWindow();
 
   private long glfwWindow;
 
@@ -30,8 +36,9 @@ public class ImGuiLayer {
   private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
   private final ImGuiImplGlfw implGlfw = new ImGuiImplGlfw();
 
-  public ImGuiLayer(long glfwWindow) {
+  public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture) {
     this.glfwWindow = glfwWindow;
+    this.windowProperties = new WindowProperties(pickingTexture);
   }
 
   // Initialize Dear ImGui.
@@ -130,7 +137,7 @@ public class ImGuiLayer {
         ImGui.setWindowFocus(null);
       }
 
-      if (!io.getWantCaptureMouse() || GameViewWindow.getWantCaptureMouse()) {
+      if (!io.getWantCaptureMouse() || gameViewWindow.getWantCaptureMouse()) {
         MouseListener.mouseButtonCallback(w, button, action, mods);
       }
     });
@@ -194,10 +201,11 @@ public class ImGuiLayer {
     // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
     ImGui.newFrame();
     setupDockSpace();
-    currentScene.sceneImgui();
+    currentScene.imgui();
     ImGui.showDemoWindow();
-    GameViewWindow.imgui();
-
+    gameViewWindow.imgui();
+    windowProperties.update(dt, currentScene);
+    windowProperties.imgui();
     ImGui.end();
     ImGui.render();
 

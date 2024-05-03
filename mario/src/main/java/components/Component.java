@@ -16,7 +16,7 @@ import java.lang.reflect.Modifier;
  * */
 public abstract class Component {
   private static int ID_COUNTER = 0; // this is global id.
-  private int uid = -1;
+  private int componentID = -1;
 
   protected transient GameObject gameObject = null;
 
@@ -69,13 +69,13 @@ public abstract class Component {
           }
         } else if (type == Vector3f.class) {
           Vector3f val = (Vector3f) object;
-          float[] imFloat = {val.x(), val.y(), val.z()};
+          float[] imFloat = {val.x, val.y, val.z};
           if (ImGui.dragFloat3(name + ": ", imFloat)) {
             val.set(imFloat[0], imFloat[1], imFloat[2]);
           }
         } else if (type == Vector4f.class) {
           Vector4f val = (Vector4f) object;
-          float[] imFloat = {val.x(), val.y(), val.z(), val.w()};
+          float[] imFloat = {val.x, val.y, val.z, val.w};
           if (ImGui.dragFloat4(name + ": ", imFloat)) {
             val.set(imFloat[0], imFloat[1], imFloat[2], imFloat[3]);
           }
@@ -89,13 +89,13 @@ public abstract class Component {
   }
 
   public void generateID() {
-    if (this.uid == -1) {
-      this.uid = ID_COUNTER++;
+    if (this.componentID == -1) {
+      this.componentID = ID_COUNTER++;
     }
   }
 
   public int getUid() {
-    return this.uid;
+    return this.componentID;
   }
 
   public static void init(int maxID) {

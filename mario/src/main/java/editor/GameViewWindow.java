@@ -9,9 +9,9 @@ import org.joml.Vector2f;
 
 public class GameViewWindow {
 
-  private static float leftX, rightX, topY, bottomY;
+  private float leftX, rightX, topY, bottomY;
 
-  public static void imgui() {
+  public void imgui() {
     ImGui.begin("Game Viewport", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse);
 
     ImVec2 windowSize = getLargestSizeForViewport();
@@ -39,12 +39,12 @@ public class GameViewWindow {
     ImGui.end();
   }
 
-  public static boolean getWantCaptureMouse() {
+  public boolean getWantCaptureMouse() {
     return MouseListener.getxPos() >= leftX && MouseListener.getxPos() <= rightX
             && MouseListener.getyPos() >= bottomY && MouseListener.getyPos() <= topY;
   }
 
-  private static ImVec2 getLargestSizeForViewport() {
+  private ImVec2 getLargestSizeForViewport() {
     ImVec2 windowSize = new ImVec2();
     ImGui.getContentRegionAvail(windowSize);
     windowSize.x -= ImGui.getScrollX();
@@ -61,7 +61,7 @@ public class GameViewWindow {
     return new ImVec2(aspectWidth, aspectHeight);
   }
 
-  private static ImVec2 getCenteredPositionForViewport(ImVec2 aspectSize) {
+  private ImVec2 getCenteredPositionForViewport(ImVec2 aspectSize) {
     ImVec2 windowSize = new ImVec2();
     ImGui.getContentRegionAvail(windowSize);
     windowSize.x -= ImGui.getScrollX();

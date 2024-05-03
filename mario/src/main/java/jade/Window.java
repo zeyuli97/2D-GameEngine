@@ -154,13 +154,13 @@ public class Window {
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-    this.imGuiLayer = new ImGuiLayer(glfwWindow);
-    this.imGuiLayer.initImGui();
-
     this.frameBuffer = new FrameBuffer(3456, 2234);
     // We are mimic the above frame buffer and replace color info with component's uid.
     this.pickingTexture = new PickingTexture(3456, 2234);
     glViewport(0,0,3456, 2234);
+
+    this.imGuiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
+    this.imGuiLayer.initImGui();
 
     Window.changeScene(0);
   }
@@ -189,11 +189,6 @@ public class Window {
       Render.bindShader(pickingShader);
       currentScene.render();
 
-      if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
-        int x = (int) MouseListener.getScreenX();
-        int y = (int) MouseListener.getScreenY();
-        System.out.println(pickingTexture.readPixel(x, y));
-      }
 
       pickingTexture.disableWriting();
       glEnable(GL_BLEND);

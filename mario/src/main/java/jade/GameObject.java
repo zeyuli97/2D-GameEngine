@@ -15,7 +15,7 @@ public class GameObject {
 
   private int zIndex;
   private static int id_Counter = 0;
-  private int uid = -1;
+  private int gameObjectID = -1;
 
   public GameObject(String name, Transform transform, int zIndex) {
     this.name = name;
@@ -23,7 +23,7 @@ public class GameObject {
     this.transform = transform;
     this.zIndex = zIndex;
 
-    this.uid = id_Counter++;
+    this.gameObjectID = id_Counter++;
   }
 
   /**
@@ -93,7 +93,7 @@ public class GameObject {
   }
 
   public int getUid() {
-    return uid;
+    return gameObjectID;
   }
 
   public List<Component> getComponents() {
