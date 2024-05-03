@@ -157,6 +157,7 @@ public class Window {
     this.imGuiLayer.initImGui();
 
     this.frameBuffer = new FrameBuffer(3456, 2234);
+    glViewport(0,0, 3456, 2234);
 
     Window.changeScene(0);
   }
@@ -175,20 +176,19 @@ public class Window {
       DebugDraw.beginFrame();
       //currentScene.init();
 
+      this.frameBuffer.bind();
       glClearColor(r, g, b, a); // Set clear color to a tone defined by rgba.
       // glClear() called at the beginning of each iteration of the rendering loop to clear the color buffer.
       // This ensures that the framebuffer starts with a clean slate before rendering new content for the current frame.
       glClear(GL_COLOR_BUFFER_BIT); // Use the clear color to fill the color buffer
 
 
-      //this.frameBuffer.bind();
-
       if (dt >= 0) {
         DebugDraw.draw();
         currentScene.update(dt);
       }
 
-      //this.frameBuffer.unbind();
+      this.frameBuffer.unbind();
 
       this.imGuiLayer.update((float) dt, currentScene);
       // Now we perform color buffer swap.
@@ -217,5 +217,13 @@ public class Window {
 
   public static void setHeight(int newHeight) {
     Window.get().height = newHeight;
+  }
+
+  public static FrameBuffer getFrameBuffer() {
+    return get().frameBuffer;
+  }
+
+  public static float getTargetAspectRatio() {
+    return 16f / 9f;
   }
 }

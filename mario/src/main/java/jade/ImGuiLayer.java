@@ -1,6 +1,7 @@
 package jade;
 
 import Scene.Scene;
+import editor.GameViewWindow;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
 import imgui.ImGui;
@@ -189,11 +190,13 @@ public class ImGuiLayer {
   public void update(float dt, Scene currentScene) {
     startFrame(dt);
     implGlfw.newFrame();
+
     // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
     ImGui.newFrame();
+    setupDockSpace();
     currentScene.sceneImgui();
     ImGui.showDemoWindow();
-    setupDockSpace();
+    GameViewWindow.imgui();
     ImGui.end();
     ImGui.render();
 
