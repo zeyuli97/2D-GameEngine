@@ -217,6 +217,8 @@ public class Window {
       // Now we perform color buffer swap.
       glfwSwapBuffers(glfwWindow);
 
+      MouseListener.endFrame();
+
       // The following function will give us the time cost for one iteration.
       endTime = Time.getTime();
       dt = endTime - beginTime;

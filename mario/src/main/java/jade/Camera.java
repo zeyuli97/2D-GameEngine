@@ -4,8 +4,9 @@ import org.joml.*;
 
 public class Camera {
   private Matrix4f projectionMatrix, viewMatrix, inverseViewMatrix, inverseProjectionMatrix;
-  protected Vector2f position;
+  private Vector2f position;
   private Vector2f projectionSize = new Vector2f(32f * 40f, 32f * 21f);
+  private float zoom = 1f;
 
   public Camera(Vector2f position) {
     this.position = position;
@@ -19,8 +20,9 @@ public class Camera {
   public void adjustProjection() {
     // A usual way to start working on a matrix. Identity matrix makes sure future transformation will not be affected.
     projectionMatrix.identity();
+    //System.out.println(zoom);
     // Init an orthography matrix, each parameter defines a clipping plane.
-    projectionMatrix.ortho(0, projectionSize.x, 0, projectionSize.y, 0, 100);
+    projectionMatrix.ortho(0, projectionSize.x * zoom, 0, projectionSize.y * zoom, 0, 100);
     projectionMatrix.invert(inverseProjectionMatrix);
   }
 
@@ -55,5 +57,21 @@ public class Camera {
 
   public Vector2f getPosition() {
     return position;
+  }
+
+  public void setPosition(Vector2f position) {
+    this.position = position;
+  }
+
+  public float getZoom() {
+    return zoom;
+  }
+
+  public void setZoom(float zoom) {
+    this.zoom = zoom;
+  }
+
+  public void addZoom(float value) {
+    this.zoom += value;
   }
 }

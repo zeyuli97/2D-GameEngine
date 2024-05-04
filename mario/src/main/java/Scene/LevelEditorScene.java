@@ -29,11 +29,13 @@ public class LevelEditorScene extends Scene {
 
   @Override
   public void init() {
+    this.camera = new Camera(new Vector2f(-250, 0));
+
     levelEditorStuff.addComponent(new MouseControl());
     levelEditorStuff.addComponent(new GridLines());
+    levelEditorStuff.addComponent(new EditorCamera(this.camera));
 
     loadResources();
-    this.camera = new Camera(new Vector2f(-250, 0));
     sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png");
 
 
@@ -83,6 +85,9 @@ public class LevelEditorScene extends Scene {
   public void update(double dt) {
 
     levelEditorStuff.update(dt);
+
+    this.camera.adjustProjection();
+
     //DebugDraw.addBox2D(new Vector2f(200,200), new Vector2f(64, 32), new Vector3f(0,1,0), 1, 30);
     //DebugDraw.addCircle(new Vector2f(400,400), 80, new Vector3f(1, 0, 0), 1);
     // Note this is gameObjects the Scene List that contains all the Game Objects.
