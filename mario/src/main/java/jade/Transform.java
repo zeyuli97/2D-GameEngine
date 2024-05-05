@@ -1,5 +1,6 @@
 package jade;
 
+import components.Component;
 import org.joml.Vector2f;
 
 /**
@@ -12,6 +13,7 @@ public class Transform {
   private Vector2f position;
   private Vector2f scale;
   private float rotation = 0f;
+  //private int zIndex;
 
   public Transform() {
     init(new Vector2f(), new Vector2f());
@@ -28,6 +30,7 @@ public class Transform {
   private void init(Vector2f position, Vector2f scale) {
     this.position = position;
     this.scale = scale;
+    //this.zIndex = 1;
   }
 
   public Vector2f getPosition() {
@@ -65,7 +68,10 @@ public class Transform {
       return false;
     }
     Transform transform = (Transform) obj;
-    return this.position.equals(transform.position) && this.scale.equals(transform.scale);
+    return this.position.equals(transform.getPosition())
+            && this.scale.equals(transform.getScale())
+            //&& this.zIndex == transform.getZIndex()
+            && this.rotation == transform.getRotation();
   }
 
   public void setPosition(Vector2f newPosition) {
@@ -79,4 +85,13 @@ public class Transform {
   public void setRotation(float rotation) {
     this.rotation = rotation;
   }
+
+  public void setScaleX(float scaleX) {
+    this.scale.x = scaleX;
+  }
+
+  public void setScaleY(float scaleY) {
+    this.scale.y = scaleY;
+  }
+
 }

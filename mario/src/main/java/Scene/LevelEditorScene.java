@@ -18,7 +18,7 @@ public class LevelEditorScene extends Scene {
   private SpriteRender obj1Sprite;
   private SpriteRender obj2Sprite;
   private MouseControl mouseControl = new MouseControl();
-  private GameObject levelEditorStuff = new GameObject("LevelEditor", new Transform(new Vector2f()), 0);
+  private GameObject levelEditorStuff = new GameObject("LevelEditor", new Transform(), 0);
 
   public LevelEditorScene() {
 
@@ -27,41 +27,20 @@ public class LevelEditorScene extends Scene {
   @Override
   public void init() {
     loadResources();
+
     SpriteSheet gizmos = AssetPool.getSpriteSheet("assets/images/gizmos.png");
+    sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png");
+
     this.camera = new Camera(new Vector2f(-250, 0));
 
+    //levelEditorStuff.addComponent(new Transform());
     levelEditorStuff.addComponent(new MouseControl());
     levelEditorStuff.addComponent(new GridLines());
     levelEditorStuff.addComponent(new EditorCamera(this.camera));
-    levelEditorStuff.addComponent(new TranslateGizmo(gizmos.getSprite(1),
-            Window.getImGuiLayer().getWindowProperties()));
-
-    sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png");
+    levelEditorStuff.addComponent(new GizmoSystem(gizmos));
+    levelEditorStuff.setNoSerialize();
 
     levelEditorStuff.start();
-
-
-    //this.activeGameObject = obj1;
-
-//    System.out.println("first time there is no active go.");
-//    obj1 = new GameObject("Object 1", new Transform(new Vector2f(200, 100), new Vector2f(256, 256)), 2);
-//    obj1Sprite = new SpriteRender();
-//    obj1Sprite.setColor(new Vector4f(1, 0, 0, 1));
-//    obj1.addComponent(obj1Sprite);
-//    obj1.addComponent(new RigidBody());
-//    this.addGameObjectToScene(obj1);
-//
-//    GameObject obj2 = new GameObject("Object 2",
-//            new Transform(new Vector2f(400, 100), new Vector2f(256, 256)), 3);
-//    SpriteRender obj2SpriteRenderer = new SpriteRender();
-//    Sprite obj2Sprite = new Sprite();
-//    obj2Sprite.setTexture(AssetPool.getTexture("assets/images/green.png"));
-//    obj2SpriteRenderer.setSprite(obj2Sprite);
-//    obj2.addComponent(obj2SpriteRenderer);
-//    this.addGameObjectToScene(obj2);
-//    DebugDraw.addLine2D(new Vector2f(0,0), new Vector2f(800, 800), new Vector3f(1, 0, 0), 1000);
-//
-//    this.activeGameObject = obj1;
   }
 
   private void loadResources() {
@@ -71,7 +50,7 @@ public class LevelEditorScene extends Scene {
             new SpriteSheet(AssetPool.getTexture("assets/images/spritesheets/decorationsAndBlocks.png"),
                     16, 16, 81, 0));
     AssetPool.addSpriteSheet("assets/images/gizmos.png",
-            new SpriteSheet(AssetPool.getTexture("assets/images/gizmos.png"), 24, 48, 2, 0));
+            new SpriteSheet(AssetPool.getTexture("assets/images/gizmos.png"), 24, 48, 3, 0));
 
 
 
@@ -93,9 +72,6 @@ public class LevelEditorScene extends Scene {
 
     this.camera.adjustProjection();
 
-    //DebugDraw.addBox2D(new Vector2f(200,200), new Vector2f(64, 32), new Vector3f(0,1,0), 1, 30);
-    //DebugDraw.addCircle(new Vector2f(400,400), 80, new Vector3f(1, 0, 0), 1);
-    // Note this is gameObjects the Scene List that contains all the Game Objects.
     for (GameObject go : this.gameObjects) {
       go.update(dt);
     }
@@ -124,7 +100,7 @@ public class LevelEditorScene extends Scene {
     float windowX2 = windowPos.x + windowSize.x;
     for (int i=0; i < sprites.size(); i++) {
       Sprite sprite = sprites.getSprite(i);
-      float spriteWidth = sprite.getWidth() * 2; // The ratio does not align with the older version
+      float spriteWidth = sprite.getWidth() * 2;
       float spriteHeight = sprite.getHeight() * 2;
       int id = sprite.getTexture().getTextID();
       Vector2f[] texCoords = sprite.getTextCoords();

@@ -105,7 +105,7 @@ public class DebugDraw {
     glEnableVertexAttribArray(1);
 
     // Draw batch
-    glDrawArrays(GL_LINES, 0, lines.size() * 6 * 2);
+    glDrawArrays(GL_LINES, 0, lines.size() * 2);
 
 
     glDisableVertexAttribArray(0);

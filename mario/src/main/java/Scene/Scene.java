@@ -8,6 +8,7 @@ import imgui.ImGui;
 import jade.Camera;
 import jade.GameObject;
 import jade.GameObjectDeserializer;
+import jade.Transform;
 import org.joml.Vector2d;
 import org.joml.Vector2f;
 import renders.Render;
@@ -83,13 +84,16 @@ public abstract class Scene {
 
   }
 
+//  public GameObject createGameObject(String name) {
+//    GameObject go = new GameObject(name);
+//    go.addComponent(new Transform());
+//    go.setTransform(go.getComponent(Transform.class));
+//    return go;
+//  }
+
+
+
   public void saveExit() {
-//    try {
-//      Files.writeString(Paths.get("level.txt"), "", StandardOpenOption.TRUNCATE_EXISTING);
-//    } catch (IOException e) {
-//      System.err.println("Error emptying the file.");
-//      e.printStackTrace();
-//    }
 
     Gson gson = new GsonBuilder().setPrettyPrinting()
             .registerTypeAdapter(Component.class, new ComponentDeserializer())
@@ -126,15 +130,15 @@ public abstract class Scene {
       int maxGameObjectsId = -1;
       int maxComponentId = -1;
       GameObject[] gameObjects = gson.fromJson(inFile, GameObject[].class);
-      for (GameObject go : gameObjects) {
-        addGameObjectToScene(go);
-        for (Component component : go.getComponents()) {
+      for (int i = 0; i < gameObjects.length; i++) {
+        addGameObjectToScene(gameObjects[i]);
+        for (Component component : gameObjects[i].getComponents()) {
           if (component.getUid() > maxComponentId) {
             maxComponentId = component.getUid();
           }
         }
-        if (go.getUid() > maxGameObjectsId) {
-          maxGameObjectsId = go.getUid();
+        if (gameObjects[i].getUid() > maxGameObjectsId) {
+          maxGameObjectsId = gameObjects[i].getUid();
         }
       }
 
@@ -144,5 +148,10 @@ public abstract class Scene {
       Component.init(maxComponentId);
     }
     levelLoaded = true;
+  }
+
+
+  public List<GameObject> getGameObjects() {
+    return gameObjects;
   }
 }

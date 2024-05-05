@@ -62,6 +62,8 @@ public class Window {
     currentScene.init();
     System.out.println("I am about start current scene");
     currentScene.start();
+
+    System.out.println(currentScene.getGameObjects().size());
   }
 
   /**
@@ -223,6 +225,7 @@ public class Window {
       endTime = Time.getTime();
       dt = endTime - beginTime;
       beginTime = endTime;
+      //System.out.println(currentScene.getGameObjects().size());
     }
     currentScene.saveExit();
 
