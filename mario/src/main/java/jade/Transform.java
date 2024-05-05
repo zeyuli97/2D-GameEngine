@@ -11,6 +11,7 @@ public class Transform {
 
   private Vector2f position;
   private Vector2f scale;
+  private float rotation = 0f;
 
   public Transform() {
     init(new Vector2f(), new Vector2f());
@@ -65,5 +66,17 @@ public class Transform {
     }
     Transform transform = (Transform) obj;
     return this.position.equals(transform.position) && this.scale.equals(transform.scale);
+  }
+
+  public void setPosition(Vector2f newPosition) {
+    this.position = newPosition;
+  }
+
+  public float getRotation() {
+    return rotation;
+  }
+
+  public void setRotation(float rotation) {
+    this.rotation = rotation;
   }
 }

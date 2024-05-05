@@ -266,4 +266,7 @@ public class ImGuiLayer {
     ImGui.dockSpace(ImGui.getID("Dock Space"));
   }
 
+  public WindowProperties getWindowProperties() {
+    return windowProperties;
+  }
 }

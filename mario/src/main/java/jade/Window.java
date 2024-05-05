@@ -20,7 +20,7 @@ public class Window {
   private static Window window = null;
   private long glfwWindow; // This number is the memory address of the window.
   public float r, g , b, a;
-  private ImGuiLayer imGuiLayer;
+  private static ImGuiLayer imGuiLayer;
   private static Scene currentScene;
   private FrameBuffer frameBuffer;
   private PickingTexture pickingTexture;
@@ -159,8 +159,8 @@ public class Window {
     this.pickingTexture = new PickingTexture(3456, 2234);
     glViewport(0,0,3456, 2234);
 
-    this.imGuiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
-    this.imGuiLayer.initImGui();
+    imGuiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
+    imGuiLayer.initImGui();
 
     Window.changeScene(0);
   }
@@ -213,7 +213,7 @@ public class Window {
 
       this.frameBuffer.unbind();
 
-      this.imGuiLayer.update((float) dt, currentScene);
+      imGuiLayer.update((float) dt, currentScene);
       // Now we perform color buffer swap.
       glfwSwapBuffers(glfwWindow);
 
@@ -250,5 +250,9 @@ public class Window {
 
   public static float getTargetAspectRatio() {
     return 16f / 9f;
+  }
+
+  public static ImGuiLayer getImGuiLayer() {
+    return imGuiLayer;
   }
 }

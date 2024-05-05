@@ -17,6 +17,8 @@ public class GameObject {
   private static int id_Counter = 0;
   private int gameObjectID = -1;
 
+  private boolean SERIALIZATION = true;
+
   public GameObject(String name, Transform transform, int zIndex) {
     this.name = name;
     components = new ArrayList<>();
@@ -98,6 +100,14 @@ public class GameObject {
 
   public List<Component> getComponents() {
     return components;
+  }
+
+  public void setNoSerialize() {
+    this.SERIALIZATION = false;
+  }
+
+  public boolean isSERIALIZATION() {
+    return SERIALIZATION;
   }
 }
 

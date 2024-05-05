@@ -2,10 +2,8 @@ package renders;
 
 import components.SpriteRender;
 import jade.Window;
-import org.joml.Vector2d;
-import org.joml.Vector2f;
-import org.joml.Vector4d;
-import org.joml.Vector4f;
+import org.joml.*;
+import org.joml.Math;
 import util.AssetPool;
 
 import java.util.ArrayList;
@@ -224,6 +222,14 @@ public class RenderBatch implements Comparable<RenderBatch>{
         }
       }
     }
+
+    boolean isRotated = sprite.getGameObject().getTransform().getRotation() != 0f;
+    Matrix4f transferMatrix = new Matrix4f().identity();
+    if (isRotated) {
+      transferMatrix.translate(sprite.getGameObject().getTransform().getPosition().x, sprite.getGameObject().getTransform().getPosition().y, 0f);
+      transferMatrix.rotate(Math.toRadians(sprite.getGameObject().getTransform().getRotation()), 0f, 0f, 1f);
+      transferMatrix.scale(sprite.getGameObject().getTransform().getScale().x, sprite.getGameObject().getTransform().getScale().y, 1f);
+    }
     // Find offset within the array
     int offset = index * 4 * VERTEX_SIZE;
 
@@ -245,9 +251,17 @@ public class RenderBatch implements Comparable<RenderBatch>{
         yAdd = 1;
       }
 
+      Vector4f currentPos = new Vector4f((float) (sprite.getGameObject().getTransform().getPosition().x + (xAdd * sprite.getGameObject().getTransform().getScale().x)),
+              (float) (sprite.getGameObject().getTransform().getPosition().y + (yAdd * sprite.getGameObject().getTransform().getScale().y)), 0, 1);
+
+      if (isRotated) {
+        currentPos = new Vector4f((float) xAdd, (float) yAdd, 0, 1).mul(transferMatrix);
+        //System.out.println("Rotation occurred.");
+      }
+
       // update position
-      vertices[offset] = sprite.getGameObject().getTransform().getPosition().x + (xAdd * sprite.getGameObject().getTransform().getScale().x);
-      vertices[offset + 1] = sprite.getGameObject().getTransform().getPosition().y + (yAdd * sprite.getGameObject().getTransform().getScale().y);
+      vertices[offset] = currentPos.x;
+      vertices[offset + 1] = currentPos.y;
 
       // load color
       vertices[offset + 2] = color.x;

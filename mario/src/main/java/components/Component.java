@@ -3,6 +3,7 @@ package components;
 
 import imgui.ImGui;
 import jade.GameObject;
+import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
@@ -78,6 +79,12 @@ public abstract class Component {
           float[] imFloat = {val.x, val.y, val.z, val.w};
           if (ImGui.dragFloat4(name + ": ", imFloat)) {
             val.set(imFloat[0], imFloat[1], imFloat[2], imFloat[3]);
+          }
+        } else if (type == Vector2f.class) {
+          Vector2f val = (Vector2f) object;
+          float[] imFloat = {val.x, val.y};
+          if (ImGui.dragFloat2(name + ": ", imFloat)) {
+            val.set(imFloat[0], imFloat[1]);
           }
         }
         field.setAccessible(false);

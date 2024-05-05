@@ -12,18 +12,23 @@ public class WindowProperties {
   private GameObject activeGameObject = null;
   private PickingTexture pickingTexture;
 
+  private float deBounce = 0.2f;
+
   public WindowProperties(PickingTexture pickingTexture) {
     this.pickingTexture = pickingTexture;
   }
 
   public void update(double dt, Scene currentScene) {
-    if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+    deBounce -= dt;
+
+    if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && deBounce < 0) {
       int x = (int) MouseListener.getScreenX();
       int y = (int) MouseListener.getScreenY();
       int gameObjectID = pickingTexture.readPixel(x, y);
       //System.out.println(gameObjectID);
       activeGameObject = currentScene.getGameObject(gameObjectID);
       //System.out.println("Active GameObject: " + activeGameObject.getUid());
+      this.deBounce = 0.2f;
     }
   }
 
@@ -33,5 +38,9 @@ public class WindowProperties {
       activeGameObject.imgui();
       ImGui.end();
     }
+  }
+
+  public GameObject getActiveGameObject() {
+    return activeGameObject;
   }
 }

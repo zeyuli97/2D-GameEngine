@@ -3,10 +3,7 @@ package Scene;
 import components.*;
 import imgui.ImGui;
 import imgui.ImVec2;
-import jade.Camera;
-import jade.GameObject;
-import jade.Prefabs;
-import jade.Transform;
+import jade.*;
 import org.joml.Vector2d;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -29,14 +26,19 @@ public class LevelEditorScene extends Scene {
 
   @Override
   public void init() {
+    loadResources();
+    SpriteSheet gizmos = AssetPool.getSpriteSheet("assets/images/gizmos.png");
     this.camera = new Camera(new Vector2f(-250, 0));
 
     levelEditorStuff.addComponent(new MouseControl());
     levelEditorStuff.addComponent(new GridLines());
     levelEditorStuff.addComponent(new EditorCamera(this.camera));
+    levelEditorStuff.addComponent(new TranslateGizmo(gizmos.getSprite(1),
+            Window.getImGuiLayer().getWindowProperties()));
 
-    loadResources();
     sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png");
+
+    levelEditorStuff.start();
 
 
     //this.activeGameObject = obj1;
@@ -68,6 +70,9 @@ public class LevelEditorScene extends Scene {
     AssetPool.addSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png",
             new SpriteSheet(AssetPool.getTexture("assets/images/spritesheets/decorationsAndBlocks.png"),
                     16, 16, 81, 0));
+    AssetPool.addSpriteSheet("assets/images/gizmos.png",
+            new SpriteSheet(AssetPool.getTexture("assets/images/gizmos.png"), 24, 48, 2, 0));
+
 
 
     for (GameObject go : gameObjects) {
@@ -103,6 +108,10 @@ public class LevelEditorScene extends Scene {
 
   @Override
   public void imgui() {
+    ImGui.begin("LevelEditor");
+    levelEditorStuff.imgui();
+    ImGui.end();
+
     ImGui.begin("Test window");
 
     ImVec2 windowPos = new ImVec2();
