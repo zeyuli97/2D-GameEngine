@@ -1,6 +1,6 @@
 [
   {
-    "gameObjectID": 5,
+    "gameObjectID": 20,
     "name": "Generated",
     "components": [
       {
@@ -90,6 +90,263 @@
           "fixedRotation": false,
           "continuousCollision": true,
           "componentID": 23
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 21,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": -249.0,
+            "y": -0.5
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 44
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.71428573,
+                "y": 1.0
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.5714286,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.5714286,
+                "y": 1.0
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 45
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 22,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": -247.96793,
+            "y": 2.4844763
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": -0.7,
+          "zIndex": 0,
+          "componentID": 46
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.85714287,
+                "y": 1.0
+              },
+              {
+                "x": 0.85714287,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.71428573,
+                "y": 1.0
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 47
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "componentID": 68
+        }
+      },
+      {
+        "type": "physics2d.components.RigidBody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 22.0,
+          "bodyType": "Dynamic",
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "componentID": 72
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 23,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": -248.0,
+            "y": 0.507165
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 69
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.85714287,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.85714287,
+                "y": 0.5833333
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.5833333
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.6666667
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 70
+        }
+      },
+      {
+        "type": "physics2d.components.RigidBody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.5,
+          "bodyType": "Dynamic",
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "componentID": 71
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.55,
+            "y": 0.55
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "componentID": 93
         }
       }
     ],

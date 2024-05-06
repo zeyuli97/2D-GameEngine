@@ -2,8 +2,8 @@ package util;
 
 public class Settings {
 
-  public static int Grid_Width = 32;
-  public static int Grid_Height = 32;
+  public static float Grid_Width = 0.25f;
+  public static float Grid_Height = 0.25f;
 
 
 

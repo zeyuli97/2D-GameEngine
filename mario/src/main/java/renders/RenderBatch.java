@@ -51,12 +51,13 @@ public class RenderBatch implements Comparable<RenderBatch>{
   private int maxBatchSize; // The max number of sprites we can hold in this batch.
   //private Shader shader;
   private int zIndex; // zIndex is used to check the layer of sprite.
+  private Render theRender;
 
   /**
    * Constructor that takes one parameter int maxBatchSize.
    * Each batch is a quad or two triangles so total six indices per quad.
    * */
-  public RenderBatch(int maxBatchSize, int zIndex) {
+  public RenderBatch(int maxBatchSize, int zIndex, Render theRender) {
     //this.shader = AssetPool.getShader("assets/shaders/default.glsl");
     this.maxBatchSize = maxBatchSize;
     this.sprites = new SpriteRender[maxBatchSize];
@@ -68,6 +69,7 @@ public class RenderBatch implements Comparable<RenderBatch>{
     this.hasRoom = true;
     this.textures = new ArrayList<>();
     this.zIndex = zIndex;
+    this.theRender = theRender;
   }
 
 
@@ -116,7 +118,14 @@ public class RenderBatch implements Comparable<RenderBatch>{
         sprite.setDirtyToClean();
         thereIsUpdate = true;
       }
+
+      if (sprite.getGameObject().transform.zIndex != this.zIndex) {
+        destroyIfExists(sprite.getGameObject());
+        theRender.add(sprite.getGameObject());
+        i--;
+      }
     }
+
     if (thereIsUpdate) {
       // Re-buffer data if there is update occurred.
       glBindBuffer(GL_ARRAY_BUFFER, vboID);
@@ -256,15 +265,15 @@ public class RenderBatch implements Comparable<RenderBatch>{
     // (0,1)  (1,1)
     // (0,0)  (1,0)
 
-    double xAdd = 1;
-    double yAdd= 1;
+    double xAdd = 0.5;
+    double yAdd= 0.5;
     for (int i = 0; i < 4; i++) {
       if (i == 1) {
-        yAdd = 0;
+        yAdd = -.5;
       } else if (i == 2) {
-        xAdd = 0;
+        xAdd = -.5;
       } else if (i == 3) {
-        yAdd = 1;
+        yAdd = .5;
       }
 
       Vector4f currentPos = new Vector4f((float) (sprite.getGameObject().getTransform().getPosition().x + (xAdd * sprite.getGameObject().getTransform().getScale().x)),

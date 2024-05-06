@@ -1,8 +1,13 @@
 package jade;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import components.Component;
+import components.ComponentDeserializer;
+import components.SpriteRender;
 import components.Transform;
 import imgui.ImGui;
+import util.AssetPool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -140,6 +145,28 @@ public class GameObject {
 
   public int getZIndex() {
     return this.transform.getZIndex();
+  }
+
+  public GameObject copy() {
+    Gson gson = new GsonBuilder().registerTypeAdapter(Component.class, new ComponentDeserializer())
+            .registerTypeAdapter(GameObject.class, new GameObjectDeserializer()).create();
+    String json = gson.toJson(this);
+
+    GameObject go = gson.fromJson(json, GameObject.class);
+    go.generateUID();
+
+    for (Component component : components) {
+      component.generateID();
+    }
+    SpriteRender spr = go.getComponent(SpriteRender.class);
+    if (spr != null && spr.getTexture() != null) {
+      spr.setTexture(AssetPool.getTexture(spr.getTexture().getFilePath()));
+    }
+    return go;
+  }
+
+  private void generateUID() {
+    this.gameObjectID = id_Counter++;
   }
 }
 
