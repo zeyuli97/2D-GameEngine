@@ -7,39 +7,36 @@ import jade.*;
 import org.joml.Vector2f;
 import util.AssetPool;
 
-public class LevelEditorScene extends Scene {
+public class LevelEditorSceneInitializer extends SceneInitializer {
 
-  private GameObject obj1;
   private SpriteSheet sprites;
-  private SpriteRender obj1Sprite;
-  private SpriteRender obj2Sprite;
-  private MouseControl mouseControl = new MouseControl();
-  private GameObject levelEditorStuff = this.createGameObject("LevelEditor");
+  private GameObject levelEditorStuff;
 
-  public LevelEditorScene() {
+  public LevelEditorSceneInitializer() {
 
   }
 
   @Override
-  public void init() {
-    loadResources();
-
+  public void init(Scene scene) {
     SpriteSheet gizmos = AssetPool.getSpriteSheet("assets/images/gizmos.png");
     sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png");
 
-    this.camera = new Camera(new Vector2f(-250, 0));
-
-    //levelEditorStuff.addComponent(new Transform());
-    levelEditorStuff.addComponent(new MouseControl());
-    levelEditorStuff.addComponent(new GridLines());
-    levelEditorStuff.addComponent(new EditorCamera(this.camera));
-    levelEditorStuff.addComponent(new GizmoSystem(gizmos));
+    levelEditorStuff = scene.createGameObject("levelEditorStuff");
     levelEditorStuff.setNoSerialize();
 
-    levelEditorStuff.start();
+    levelEditorStuff.addComponent(new Transform());
+    levelEditorStuff.addComponent(new MouseControl());
+    levelEditorStuff.addComponent(new GridLines());
+    levelEditorStuff.addComponent(new EditorCamera(scene.getCamera()));
+    levelEditorStuff.addComponent(new GizmoSystem(gizmos));
+
+    scene.addGameObjectToScene(levelEditorStuff);
   }
 
-  private void loadResources() {
+
+
+  @Override
+  public void loadResources(Scene scene) {
     AssetPool.getShader("assets/shaders/default.glsl");
     AssetPool.getTexture("assets/images/green.png");
     AssetPool.addSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png",
@@ -50,7 +47,7 @@ public class LevelEditorScene extends Scene {
 
 
 
-    for (GameObject go : gameObjects) {
+    for (GameObject go : scene.getGameObjects()) {
       if (go.getComponent(SpriteRender.class) != null) {
         SpriteRender sr = go.getComponent(SpriteRender.class);
         if (sr.getTexture() != null) {
@@ -60,23 +57,16 @@ public class LevelEditorScene extends Scene {
     }
   }
 
-
   @Override
+  public void loadScene(Scene scene) {
+
+  }
+
   public void update(double dt) {
 
     levelEditorStuff.update(dt);
-
-    this.camera.adjustProjection();
-
-    for (GameObject go : this.gameObjects) {
-      go.update(dt);
-    }
   }
 
-  @Override
-  public void render() {
-    this.theRender.render();
-  }
 
   @Override
   public void imgui() {

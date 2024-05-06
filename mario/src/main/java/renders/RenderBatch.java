@@ -1,6 +1,7 @@
 package renders;
 
 import components.SpriteRender;
+import jade.GameObject;
 import jade.Window;
 import org.joml.*;
 import org.joml.Math;
@@ -151,6 +152,21 @@ public class RenderBatch implements Comparable<RenderBatch>{
       texture.unbind();
     }
     shader.detach();
+  }
+
+  public boolean destroyIfExists(GameObject go) {
+    SpriteRender sprite = go.getComponent(SpriteRender.class);
+    for (int i = 0; i < numSprites; i++) {
+      if (sprite == sprites[i]) {
+        for (int j = i; j < numSprites - 1; j++) {
+          sprites[j]  = sprites[j + 1];
+          sprites[j].setDirty();
+        }
+        numSprites--;
+        return true;
+      }
+    }
+    return false;
   }
 
 

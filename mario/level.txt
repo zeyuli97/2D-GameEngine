@@ -1,89 +1,14 @@
 [
   {
-    "gameObjectID": 1,
+    "gameObjectID": 5,
     "name": "Generated",
     "components": [
       {
         "type": "components.Transform",
         "properties": {
           "position": {
-            "x": 159.53023,
-            "y": 367.18774
-          },
-          "scale": {
-            "x": 32.0,
-            "y": 32.0
-          },
-          "rotation": 50.4,
-          "zIndex": 0,
-          "componentID": 19
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.85714287,
-                "y": 1.0
-              },
-              {
-                "x": 0.85714287,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.71428573,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.71428573,
-                "y": 1.0
-              }
-            ]
-          },
-          "color": {
-            "x": 0.023529412,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 20
-        }
-      },
-      {
-        "type": "components.RigidBody",
-        "properties": {
-          "velocity": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 0.0
-          },
-          "bodyID": 0,
-          "friction": 0.5,
-          "componentID": 39
-        }
-      }
-    ],
-    "SERIALIZATION": true
-  },
-  {
-    "gameObjectID": 6,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 480.0,
-            "y": 416.0
+            "x": 192.0,
+            "y": 320.0
           },
           "scale": {
             "x": 32.0,
@@ -91,7 +16,7 @@
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "componentID": 58
+          "componentID": 20
         }
       },
       {
@@ -107,19 +32,19 @@
             },
             "textCoords": [
               {
-                "x": 0.2857143,
+                "x": 0.14285715,
                 "y": 0.6666667
               },
               {
-                "x": 0.2857143,
-                "y": 0.5833333
-              },
-              {
                 "x": 0.14285715,
                 "y": 0.5833333
               },
               {
-                "x": 0.14285715,
+                "x": 0.0,
+                "y": 0.5833333
+              },
+              {
+                "x": 0.0,
                 "y": 0.6666667
               }
             ]
@@ -130,21 +55,45 @@
             "z": 1.0,
             "w": 1.0
           },
-          "componentID": 59
+          "componentID": 21
         }
       },
       {
-        "type": "physics2d.components.CircleCollider",
+        "type": "physics2d.components.Box2DCollider",
         "properties": {
-          "radius": 1.0,
+          "halfSize": {
+            "x": 110.0,
+            "y": 110.0
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
           "offset": {
             "x": 0.0,
             "y": 0.0
           },
-          "componentID": 60
+          "componentID": 22
+        }
+      },
+      {
+        "type": "physics2d.components.RigidBody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 11.0,
+          "bodyType": "Dynamic",
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "componentID": 23
         }
       }
     ],
-    "SERIALIZATION": true
+    "SERIALIZATION": true,
+    "isDead": false
   }
 ]

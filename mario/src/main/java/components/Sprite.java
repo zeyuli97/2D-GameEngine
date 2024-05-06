@@ -49,4 +49,5 @@ public class Sprite {
   public int getWidth() {
     return width;
   }
+
 }

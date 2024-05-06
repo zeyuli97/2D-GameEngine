@@ -18,6 +18,7 @@ public class GameObject {
 
   private static int id_Counter = 0;
   private boolean SERIALIZATION = true;
+  private boolean isDead = false;
 
 
   public GameObject(String name) {
@@ -60,6 +61,12 @@ public class GameObject {
     components.add(component);
     component.setGameObject(this); // tie the component with the current game object.
 
+  }
+
+  public void editorUpdate(double dt) {
+    for (int i = 0; i < components.size(); i++) {
+      components.get(i).editorUpdate(dt);
+    }
   }
 
   public void update(double dt) {
@@ -120,6 +127,16 @@ public class GameObject {
   }
 
 
+  public void destroy() {
+    this.isDead = true;
+    for (int i = 0; i < components.size(); i++) {
+      components.get(i).destroy();
+    }
+  }
+
+  public boolean isDead() {
+    return isDead;
+  }
 
   public int getZIndex() {
     return this.transform.getZIndex();

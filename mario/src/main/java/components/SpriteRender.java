@@ -21,8 +21,16 @@ public class SpriteRender extends Component {
     if (this.gameObject.getTransform() != null) {
       this.lastTransform = this.gameObject.getTransform().copy();
     }
-
   }
+
+  @Override
+  public void editorUpdate(double dt) {
+    if (!this.lastTransform.equals(this.gameObject.getTransform())) {
+      this.gameObject.getTransform().copyTo(lastTransform);
+      isDirty = true;
+    }
+  }
+
   @Override
   public void update(double dt) {
     if (!this.lastTransform.equals(this.gameObject.getTransform())) {
@@ -72,5 +80,9 @@ public class SpriteRender extends Component {
 
   public void setTexture(Texture texture) {
     this.sprite.setTexture(texture);
+  }
+
+  public void setDirty() {
+    this.isDirty = true;
   }
 }

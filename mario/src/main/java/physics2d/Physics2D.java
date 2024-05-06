@@ -31,6 +31,9 @@ public class Physics2D {
 
   }
 
+  /**
+   * We are using our rigid body to wrap the body inside Box2D.
+   * */
   public void add(GameObject go) {
     RigidBody2D rb = go.getComponent(RigidBody2D.class);
     if (rb != null && rb.getRawBody() == null) {
@@ -78,6 +81,14 @@ public class Physics2D {
       Body body = this.world.createBody(bodyDef);
       rb.setRawBody(body);
       body.createFixture(shape, rb.getMass());
+    }
+  }
+
+  public void destroyGameObject(GameObject go) {
+    RigidBody2D rb = go.getComponent(RigidBody2D.class);
+    if (rb != null && rb.getRawBody() != null) {
+      world.destroyBody(rb.getRawBody());
+      rb.setRawBody(null);
     }
   }
 }

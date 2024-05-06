@@ -1,5 +1,9 @@
 package jade;
 
+import Observers.EventSystem;
+import Observers.Events.Event;
+import Observers.Events.EventType;
+import Observers.Observer;
 import Scene.*;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -13,7 +17,7 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
-public class Window {
+public class Window implements Observer {
   private int width;
   private int height;
   private String title;
@@ -24,6 +28,7 @@ public class Window {
   private static Scene currentScene;
   private FrameBuffer frameBuffer;
   private PickingTexture pickingTexture;
+  private boolean runTimePlaying = false; // Whether we are currently at runtime or just editing the scene.
 
 
 
@@ -34,28 +39,22 @@ public class Window {
   private Window() {
     this.width = 1920;
     this.height = 1080;
-    this.title = "Mario";
-    r = 1;
-    b = 1;
-    g = 1;
-    a = 1;
+    this.title = "Jade";
+    this.r = 1;
+    this.g = 1;
+    this.b = 1;
+    this.a = 1;
+    EventSystem.addObserver(this);
   }
 
-  public static void changeScene(int newScene) {
-    switch (newScene) {
-      case 0:
-        currentScene = new LevelEditorScene();
-        break;
-
-      case 1:
-        currentScene = new LevelScene();
-        break;
-
-      default:
-        assert false : "Unknown scene '" + newScene + "'";
-        break;
+  public static void changeScene(SceneInitializer sceneInitializer) {
+    if (currentScene != null) {
+      currentScene.destroy();
     }
 
+    imGuiLayer.getWindowProperties().setActiveGameObject(null);
+
+    currentScene = new Scene(sceneInitializer);
     System.out.println("I am about load current scene");
     currentScene.load();
     System.out.println("I am about init current scene");
@@ -164,7 +163,7 @@ public class Window {
     imGuiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
     imGuiLayer.initImGui();
 
-    Window.changeScene(0);
+    Window.changeScene(new LevelEditorSceneInitializer());
   }
 
   public void loop() {
@@ -209,7 +208,12 @@ public class Window {
 
       if (dt >= 0) {
         DebugDraw.draw();
-        currentScene.update(dt);
+        //currentScene.update(dt);
+        if (runTimePlaying) {
+          currentScene.update(dt);
+        } else {
+          currentScene.editorUpdate(dt);
+        }
         currentScene.render();
       }
 
@@ -227,7 +231,6 @@ public class Window {
       beginTime = endTime;
       //System.out.println(currentScene.getGameObjects().size());
     }
-    currentScene.saveExit();
 
   }
 
@@ -257,5 +260,26 @@ public class Window {
 
   public static ImGuiLayer getImGuiLayer() {
     return imGuiLayer;
+  }
+
+  @Override
+  public void onNotify(GameObject gameObject, Event event) {
+    switch (event.getType()) {
+      case GameEngineStartPlay:
+        this.runTimePlaying = true;
+        currentScene.save();
+        Window.changeScene(new LevelEditorSceneInitializer());
+        break;
+      case GameEngineStopPlay:
+        this.runTimePlaying = false;
+        Window.changeScene(new LevelEditorSceneInitializer());
+        break;
+      case LoadLevel:
+        Window.changeScene(new LevelEditorSceneInitializer());
+        break;
+      case SaveLevel:
+        currentScene.save();
+        break;
+    }
   }
 }

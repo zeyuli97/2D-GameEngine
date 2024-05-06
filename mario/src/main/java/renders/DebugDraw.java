@@ -154,6 +154,9 @@ public class DebugDraw {
     addLine2D(vertices[3], vertices[0], color, lifetime);
   }
 
+  public static void addBox2D(Vector2f center, Vector2f dimensions, float rotation) {
+    addBox2D(center, dimensions, new Vector3f(0,1,0), 1, rotation);
+  }
   public static void addBox2D(Vector2f center, Vector2f dimensions, Vector3f color) {
     addBox2D(center, dimensions, color, 1, 0);
   }

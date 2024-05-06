@@ -20,7 +20,7 @@ public class MouseControl extends Component {
     this.holdingObj = null;
   }
 
-  public void update(double dt) {
+  public void editorUpdate(double dt) {
     if (holdingObj != null) {
 
       holdingObj.getTransform().setPositionX(MouseListener.getOrthoX());

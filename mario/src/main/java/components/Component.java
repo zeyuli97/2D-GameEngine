@@ -26,6 +26,10 @@ public abstract class Component {
 
   }
 
+  public void editorUpdate(double dt) {
+
+  }
+
   public void update(double dt) {
 
   };
@@ -36,6 +40,10 @@ public abstract class Component {
 
   public void setGameObject(GameObject gameObject) {
     this.gameObject = gameObject;
+  }
+
+  public void destroy() {
+
   }
 
   public void imgui() {

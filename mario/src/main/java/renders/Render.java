@@ -63,4 +63,15 @@ public class Render {
     }
   }
 
+  public void destroyGameObject(GameObject go) {
+    if (go.getComponent(SpriteRender.class) == null) {
+      return;
+    }
+    for (RenderBatch batch : batches) {
+      if (batch.destroyIfExists(go)) {
+        return;
+      }
+    }
+  }
+
 }

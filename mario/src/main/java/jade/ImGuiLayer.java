@@ -2,6 +2,7 @@ package jade;
 
 import Scene.Scene;
 import editor.GameViewWindow;
+import editor.MenuBar;
 import editor.WindowProperties;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
@@ -36,9 +37,12 @@ public class ImGuiLayer {
   private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
   private final ImGuiImplGlfw implGlfw = new ImGuiImplGlfw();
 
+  private MenuBar menuBar;
+
   public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture) {
     this.glfwWindow = glfwWindow;
     this.windowProperties = new WindowProperties(pickingTexture);
+    this.menuBar = new MenuBar();
   }
 
   // Initialize Dear ImGui.
@@ -207,6 +211,7 @@ public class ImGuiLayer {
     gameViewWindow.imgui();
     windowProperties.update(dt, currentScene);
     windowProperties.imgui();
+    menuBar.imgui();
     ImGui.end();
     ImGui.render();
 
