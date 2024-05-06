@@ -4,6 +4,22 @@
     "name": "Generated",
     "components": [
       {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 159.53023,
+            "y": 367.18774
+          },
+          "scale": {
+            "x": 32.0,
+            "y": 32.0
+          },
+          "rotation": 50.4,
+          "zIndex": 0,
+          "componentID": 19
+        }
+      },
+      {
         "type": "components.SpriteRender",
         "properties": {
           "sprite": {
@@ -16,51 +32,68 @@
             },
             "textCoords": [
               {
-                "x": 0.14285715,
-                "y": 0.41666666
+                "x": 0.85714287,
+                "y": 1.0
               },
               {
-                "x": 0.14285715,
-                "y": 0.33333334
+                "x": 0.85714287,
+                "y": 0.9166667
               },
               {
-                "x": 0.0,
-                "y": 0.33333334
+                "x": 0.71428573,
+                "y": 0.9166667
               },
               {
-                "x": 0.0,
-                "y": 0.41666666
+                "x": 0.71428573,
+                "y": 1.0
               }
             ]
           },
           "color": {
-            "x": 1.0,
+            "x": 0.023529412,
             "y": 1.0,
             "z": 1.0,
             "w": 1.0
           },
-          "componentID": 14
+          "componentID": 20
+        }
+      },
+      {
+        "type": "components.RigidBody",
+        "properties": {
+          "velocity": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "bodyID": 0,
+          "friction": 0.5,
+          "componentID": 39
         }
       }
     ],
-    "transform": {
-      "position": {
-        "x": -32.0,
-        "y": 416.0
-      },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      },
-      "rotation": 0.0
-    },
-    "SERIALIZATION": true,
-    "zIndex": 0
+    "SERIALIZATION": true
   },
   {
-    "gameObjectID": 2,
+    "gameObjectID": 6,
     "name": "Generated",
     "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 480.0,
+            "y": 416.0
+          },
+          "scale": {
+            "x": 32.0,
+            "y": 32.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 58
+        }
+      },
       {
         "type": "components.SpriteRender",
         "properties": {
@@ -75,19 +108,19 @@
             "textCoords": [
               {
                 "x": 0.2857143,
-                "y": 0.41666666
+                "y": 0.6666667
               },
               {
                 "x": 0.2857143,
-                "y": 0.33333334
+                "y": 0.5833333
               },
               {
                 "x": 0.14285715,
-                "y": 0.33333334
+                "y": 0.5833333
               },
               {
                 "x": 0.14285715,
-                "y": 0.41666666
+                "y": 0.6666667
               }
             ]
           },
@@ -97,80 +130,21 @@
             "z": 1.0,
             "w": 1.0
           },
-          "componentID": 15
+          "componentID": 59
         }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 0.0,
-        "y": 416.0
       },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      },
-      "rotation": 0.0
-    },
-    "SERIALIZATION": true,
-    "zIndex": 0
-  },
-  {
-    "gameObjectID": 3,
-    "name": "Generated",
-    "components": [
       {
-        "type": "components.SpriteRender",
+        "type": "physics2d.components.CircleCollider",
         "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.42857143,
-                "y": 0.41666666
-              },
-              {
-                "x": 0.42857143,
-                "y": 0.33333334
-              },
-              {
-                "x": 0.2857143,
-                "y": 0.33333334
-              },
-              {
-                "x": 0.2857143,
-                "y": 0.41666666
-              }
-            ]
+          "radius": 1.0,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
           },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 16
+          "componentID": 60
         }
       }
     ],
-    "transform": {
-      "position": {
-        "x": 29.98175,
-        "y": 416.40387
-      },
-      "scale": {
-        "x": 32.0,
-        "y": 32.0
-      },
-      "rotation": 0.0
-    },
-    "SERIALIZATION": true,
-    "zIndex": 0
+    "SERIALIZATION": true
   }
 ]

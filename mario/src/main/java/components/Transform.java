@@ -1,6 +1,6 @@
-package jade;
+package components;
 
-import components.Component;
+import editor.JImGui;
 import org.joml.Vector2f;
 
 /**
@@ -8,12 +8,12 @@ import org.joml.Vector2f;
  * The first information is the position of the game object.
  * The second is the scale of the game object.
  * */
-public class Transform {
+public class Transform extends Component{
 
-  private Vector2f position;
-  private Vector2f scale;
-  private float rotation = 0f;
-  //private int zIndex;
+  public Vector2f position;
+  public Vector2f scale;
+  public float rotation = 0f;
+  public int zIndex;
 
   public Transform() {
     init(new Vector2f(), new Vector2f());
@@ -30,7 +30,15 @@ public class Transform {
   private void init(Vector2f position, Vector2f scale) {
     this.position = position;
     this.scale = scale;
-    //this.zIndex = 1;
+    this.zIndex = 0;
+  }
+
+  @Override
+  public void imgui() {
+    JImGui.drawVector2Control("Position", this.position);
+    JImGui.drawVector2Control("Scale", this.scale, 32f);
+    this.rotation = JImGui.dragFloat("Rotation", this.rotation);
+    this.zIndex = JImGui.dragInt("Z Index", this.zIndex);
   }
 
   public Vector2f getPosition() {
@@ -70,7 +78,7 @@ public class Transform {
     Transform transform = (Transform) obj;
     return this.position.equals(transform.getPosition())
             && this.scale.equals(transform.getScale())
-            //&& this.zIndex == transform.getZIndex()
+            && this.zIndex == transform.getZIndex()
             && this.rotation == transform.getRotation();
   }
 
@@ -94,4 +102,15 @@ public class Transform {
     this.scale.y = scaleY;
   }
 
+  public void setScale(Vector2f scale) {
+    this.scale = scale;
+  }
+
+  public int getZIndex() {
+    return zIndex;
+  }
+
+  public void setZIndex(int zIndex) {
+    this.zIndex = zIndex;
+  }
 }

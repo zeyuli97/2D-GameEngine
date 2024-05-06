@@ -4,21 +4,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import components.Component;
 import components.ComponentDeserializer;
-import imgui.ImGui;
+import components.Transform;
 import jade.Camera;
 import jade.GameObject;
 import jade.GameObjectDeserializer;
-import jade.Transform;
-import org.joml.Vector2d;
 import org.joml.Vector2f;
 import renders.Render;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -84,12 +80,13 @@ public abstract class Scene {
 
   }
 
-//  public GameObject createGameObject(String name) {
-//    GameObject go = new GameObject(name);
-//    go.addComponent(new Transform());
-//    go.setTransform(go.getComponent(Transform.class));
-//    return go;
-//  }
+  public GameObject createGameObject(String name) {
+    GameObject go = new GameObject(name);
+    go.addComponent(new Transform());
+    //go.transform = go.getComponent(Transform.class);
+    go.setTransform(go.getComponent(Transform.class));
+    return go;
+  }
 
 
 

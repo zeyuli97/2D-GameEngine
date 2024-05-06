@@ -2,10 +2,13 @@ package editor;
 
 import Scene.Scene;
 import components.NonActiveGameObjectClass;
+import components.RigidBody;
 import components.TranslateGizmo;
 import imgui.ImGui;
 import jade.GameObject;
 import jade.MouseListener;
+import physics2d.components.Box2DCollider;
+import physics2d.components.CircleCollider;
 import renders.PickingTexture;
 
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
@@ -40,6 +43,30 @@ public class WindowProperties {
   public void imgui() {
     if (activeGameObject != null) {
       ImGui.begin("Property Window");
+
+      if (ImGui.beginPopupContextWindow("ComponentAdder")) {
+        if (ImGui.menuItem("Add RigidBody")) {
+          if (activeGameObject.getComponent(RigidBody.class) == null) {
+            activeGameObject.addComponent(new RigidBody());
+          }
+        }
+        if (ImGui.menuItem("Add BoxCollider")) {
+          if (activeGameObject.getComponent(Box2DCollider.class) == null
+                  && activeGameObject.getComponent(CircleCollider.class) == null) {
+            activeGameObject.addComponent(new Box2DCollider());
+          }
+        }
+
+        if (ImGui.menuItem("Add CircleCollider")) {
+          if (activeGameObject.getComponent(CircleCollider.class) == null
+          && activeGameObject.getComponent(Box2DCollider.class) == null) {
+            activeGameObject.addComponent(new CircleCollider());
+          }
+        }
+
+        ImGui.endPopup();
+      }
+
       activeGameObject.imgui();
       ImGui.end();
     }

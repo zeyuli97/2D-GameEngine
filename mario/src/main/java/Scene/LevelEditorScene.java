@@ -4,11 +4,7 @@ import components.*;
 import imgui.ImGui;
 import imgui.ImVec2;
 import jade.*;
-import org.joml.Vector2d;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-import renders.DebugDraw;
 import util.AssetPool;
 
 public class LevelEditorScene extends Scene {
@@ -18,7 +14,7 @@ public class LevelEditorScene extends Scene {
   private SpriteRender obj1Sprite;
   private SpriteRender obj2Sprite;
   private MouseControl mouseControl = new MouseControl();
-  private GameObject levelEditorStuff = new GameObject("LevelEditor", new Transform(), 0);
+  private GameObject levelEditorStuff = this.createGameObject("LevelEditor");
 
   public LevelEditorScene() {
 

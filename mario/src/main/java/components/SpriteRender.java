@@ -1,11 +1,10 @@
 package components;
 
+import editor.JImGui;
 import imgui.ImGui;
-import jade.Transform;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 import renders.Texture;
-import util.AssetPool;
 
 public class SpriteRender extends Component {
 
@@ -19,7 +18,9 @@ public class SpriteRender extends Component {
 
   @Override
   public void start() {
-    this.lastTransform = this.gameObject.getTransform().copy();
+    if (this.gameObject.getTransform() != null) {
+      this.lastTransform = this.gameObject.getTransform().copy();
+    }
 
   }
   @Override
@@ -32,9 +33,7 @@ public class SpriteRender extends Component {
 
   @Override
   public void imgui() {
-    float[] imColor = {color.x, color.y, color.z, color.w};
-    if (ImGui.colorPicker4("Color Picker", imColor)) {
-      this.color.set(imColor[0], imColor[1], imColor[2], imColor[3]);
+    if (JImGui.colorPicker4("Color Picker", color)) {
       this.isDirty = true;
     }
   }

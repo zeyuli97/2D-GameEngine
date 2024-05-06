@@ -1,6 +1,7 @@
 package components;
 
 
+import editor.JImGui;
 import imgui.ImGui;
 import jade.GameObject;
 import org.joml.Vector2f;
@@ -53,10 +54,7 @@ public abstract class Component {
 
         if (type == int.class) {
           int val = (int) object;
-          int[] imInt = {val};
-          if (ImGui.dragInt(name + ": ", imInt)) {
-            field.set(this, imInt[0]);
-          }
+          field.setInt(this, JImGui.dragInt(name, val));
         } else if (type == boolean.class) {
           boolean val = (boolean) object;
           if (ImGui.checkbox(name + ": ", val)) {
@@ -64,16 +62,10 @@ public abstract class Component {
           }
         } else if (type == float.class) {
           float val = (float) object;
-          float[] imFloat = {val};
-          if (ImGui.dragFloat(name + ": ", imFloat)) {
-            field.set(this, imFloat[0]);
-          }
+          field.set(this, JImGui.dragFloat(name, val));
         } else if (type == Vector3f.class) {
           Vector3f val = (Vector3f) object;
-          float[] imFloat = {val.x, val.y, val.z};
-          if (ImGui.dragFloat3(name + ": ", imFloat)) {
-            val.set(imFloat[0], imFloat[1], imFloat[2]);
-          }
+          JImGui.drawVector3Control(name, val);
         } else if (type == Vector4f.class) {
           Vector4f val = (Vector4f) object;
           float[] imFloat = {val.x, val.y, val.z, val.w};
@@ -82,10 +74,7 @@ public abstract class Component {
           }
         } else if (type == Vector2f.class) {
           Vector2f val = (Vector2f) object;
-          float[] imFloat = {val.x, val.y};
-          if (ImGui.dragFloat2(name + ": ", imFloat)) {
-            val.set(imFloat[0], imFloat[1]);
-          }
+          JImGui.drawVector2Control(name, val);
         }
         field.setAccessible(false);
       }
