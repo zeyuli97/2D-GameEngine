@@ -16,7 +16,7 @@ public class WindowProperties {
   private GameObject activeGameObject = null;
   private PickingTexture pickingTexture;
 
-  private float deBounce = 0.2f;
+  private float deBounce = 0.005f;
 
   public WindowProperties(PickingTexture pickingTexture) {
     this.pickingTexture = pickingTexture;
@@ -29,13 +29,16 @@ public class WindowProperties {
       int x = (int) MouseListener.getScreenX();
       int y = (int) MouseListener.getScreenY();
       int gameObjectID = pickingTexture.readPixel(x, y);
+      System.out.println(gameObjectID);
       GameObject picked = currentScene.getGameObject(gameObjectID);
       if (picked != null && picked.getComponent(NonActiveGameObjectClass.class) == null) {
         activeGameObject = picked;
+      } else if (gameObjectID == -1) {
+        activeGameObject = null;
       } else if (picked == null && !MouseListener.getIsDragging()) {
         activeGameObject = null;
       }
-      this.deBounce = 0.2f;
+      this.deBounce = 0.005f;
     }
   }
 

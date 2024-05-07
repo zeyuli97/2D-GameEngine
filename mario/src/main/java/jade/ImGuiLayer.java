@@ -153,8 +153,8 @@ public class ImGuiLayer {
 
     // ------------------------------------------------------------
     // Use freetype instead of stb_truetype to build a fonts texture
-    fontAtlas.setFlags(ImGuiFreeTypeBuilderFlags.LightHinting);
-    fontAtlas.build();
+    //fontAtlas.setFlags(ImGuiFreeTypeBuilderFlags.LightHinting);
+    //fontAtlas.build();
 
     // Method initializes LWJGL3 renderer.
     // This method SHOULD be called after you've initialized your ImGui configuration (fonts and so on).
@@ -216,8 +216,6 @@ public class ImGuiLayer {
     ImGui.setNextWindowPos(mainViewport.getWorkPosX(), mainViewport.getWorkPosY());
     ImGui.setNextWindowSize(mainViewport.getWorkSizeX(), mainViewport.getWorkSizeY());
     ImGui.setNextWindowViewport(mainViewport.getID());
-    //ImGui.setNextWindowPos(0.0f, 0.0f);
-    //ImGui.setNextWindowSize(Window.getWidth(), Window.getHeight());
     ImGui.pushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
     ImGui.pushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
     windowFlags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse |

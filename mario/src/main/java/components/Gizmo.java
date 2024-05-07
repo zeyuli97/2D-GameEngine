@@ -14,8 +14,8 @@ public class Gizmo extends Component {
   private Vector4f xAxisColorHover = new Vector4f(1,0,0,1);
   private Vector4f yAxisColorHover = new Vector4f(0,1,0,1);
 
-  private Vector2f xAxisOffset = new Vector2f(24f/80f, -6f/80f);
-  private Vector2f yAxisOffset = new Vector2f(-7/80f, 21/80f);
+  private Vector2f xAxisOffset = new Vector2f(0.175f, 0);
+  private Vector2f yAxisOffset = new Vector2f(0, 0.145f);
 
   private GameObject xAxisObject;
   private GameObject yAxisObject;
@@ -30,8 +30,8 @@ public class Gizmo extends Component {
 
   protected GameObject activeGameObject = null;
 
-  private float gizmoWidth = 0.22f;
-  private float gizmoHeight = 0.66f;
+  private float gizmoWidth = 0.1f;
+  private float gizmoHeight = 0.3f;
 
   private boolean using = false;
 
@@ -131,10 +131,10 @@ public class Gizmo extends Component {
   }
 
   private boolean checkXHoverState() {
-    Vector2f mousePos = new Vector2f(MouseListener.getOrthoX(), MouseListener.getOrthoY());
+    Vector2f mousePos = MouseListener.getWorldCoord();
     if (mousePos.x <= xAxisObject.getTransform().getPosition().x + (gizmoHeight / 2f)
-            && mousePos.x >= xAxisObject.getTransform().getPosition().x - (gizmoWidth / 2f)
-            && mousePos.y >= xAxisObject.getTransform().getPosition().y - (gizmoHeight / 2f)
+            && mousePos.x >= xAxisObject.getTransform().getPosition().x - (gizmoHeight / 2f)
+            && mousePos.y >= xAxisObject.getTransform().getPosition().y - (gizmoWidth / 2f)
             && mousePos.y <= xAxisObject.getTransform().getPosition().y + (gizmoWidth / 2f)) {
       xAxisSprite.setColor(xAxisColorHover);
       return true;
@@ -144,7 +144,7 @@ public class Gizmo extends Component {
   }
 
   private boolean checkYHoverState() {
-    Vector2f mousePos = new Vector2f(MouseListener.getOrthoX(), MouseListener.getOrthoY());
+    Vector2f mousePos = MouseListener.getWorldCoord();
     if (mousePos.x <= yAxisObject.getTransform().getPosition().x + (gizmoWidth / 2f)
             && mousePos.x >= yAxisObject.getTransform().getPosition().x - gizmoWidth / 2
             && mousePos.y <= yAxisObject.getTransform().getPosition().y + gizmoHeight / 2f

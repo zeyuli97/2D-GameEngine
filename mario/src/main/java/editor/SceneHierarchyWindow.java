@@ -9,6 +9,8 @@ import java.util.List;
 
 public class SceneHierarchyWindow {
 
+  private static String payloadDragDropType = "SceneHierarchy";
+
   public void imgui() {
     ImGui.begin("Scene Hierarchy");
 
@@ -42,7 +44,7 @@ public class SceneHierarchyWindow {
     ImGui.popID();
 
     if (ImGui.beginDragDropSource()) {
-      ImGui.setDragDropPayload("SceneHierarchy", go);
+      ImGui.setDragDropPayload(payloadDragDropType, go);
 
       ImGui.text(go.name);
       ImGui.button("This is a button");
@@ -51,6 +53,13 @@ public class SceneHierarchyWindow {
     }
 
     if (ImGui.beginDragDropTarget()) {
+      Object payloadObj = ImGui.acceptDragDropPayload(payloadDragDropType);
+      if (payloadObj != null) {
+        if (payloadObj.getClass().isAssignableFrom(GameObject.class)) {
+          GameObject playerGo = (GameObject) payloadObj;
+          System.out.println("Payload accepted " + playerGo.name);
+        }
+      }
       ImGui.endDragDropTarget();
     }
 

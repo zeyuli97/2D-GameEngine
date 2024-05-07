@@ -20,7 +20,7 @@ public class MouseListener {
   private int mouseButtonDownCounter = 0;
   private Vector2f gameViewportPos = new Vector2f();
   private Vector2f gameViewportSize = new Vector2f();
-  private double worldX, worldY, lastWorldX, lastWorldY;
+  private double lastWorldX, lastWorldY;
 
   private MouseListener() {
     this.scrollX = 0.0;
@@ -44,12 +44,10 @@ public class MouseListener {
     }
     get().lastX = get().xPos;
     get().lastY = get().yPos;
-    get().lastWorldX = get().worldX;
-    get().lastWorldY = get().worldY;
+    get().lastWorldX = MouseListener.getWorldCoordX();
+    get().lastWorldY = MouseListener.getWorldCoordY();
     get().xPos = xPos;
     get().yPos = yPos;
-    calOrthoX();
-    calOrthoY();
   }
 
   public static void mouseButtonCallback(long window, int button, int action, int mods) {
@@ -77,8 +75,8 @@ public class MouseListener {
     get().scrollY = 0;
     get().lastX = get().xPos;
     get().lastY = get().yPos;
-    get().lastWorldX = get().worldX;
-    get().lastWorldY = get().worldY;
+    get().lastWorldX = MouseListener.getWorldCoordX();
+    get().lastWorldY = MouseListener.getWorldCoordY();
   }
 
   public static float getxPos() {
@@ -89,38 +87,28 @@ public class MouseListener {
     return (float) get().yPos;
   }
 
-  private static void calOrthoX() {
+  public static float getWorldCoordX() {
+    return getWorldCoord().x;
+  }
+
+  public static float getWorldCoordY() {
+    return getWorldCoord().y;
+  }
+
+  public static Vector2f getWorldCoord() {
     float currentX = getxPos() - get().gameViewportPos.x;
-    currentX = (currentX / get().gameViewportSize.x) * 2.0f - 1.0f;
-    Vector4f tmp = new Vector4f(currentX, 0, 0, 1);
+    currentX = (2.0f * (currentX / get().gameViewportSize.x)) - 1.0f;
+    float currentY = (getyPos() - get().gameViewportPos.y);
+    currentY = (2.0f * (1.0f - (currentY / get().gameViewportSize.y))) - 1;
 
     Camera camera = Window.getCurrentScene().getCamera();
-    Matrix4f viewProjection = new Matrix4f();
-    camera.getInverseViewMatrix().mul(camera.getInverseProjectionMatrix(), viewProjection);
-    tmp.mul(viewProjection);
+    Vector4f tmp = new Vector4f(currentX, currentY, 0, 1);
 
-    get().worldX = tmp.x;
-  }
+    Matrix4f inverseView = new Matrix4f(camera.getInverseViewMatrix());
+    Matrix4f inverseProjection = new Matrix4f(camera.getInverseProjectionMatrix());
+    tmp.mul(inverseView.mul(inverseProjection));
 
-  public static float getOrthoX() {
-    return (float) get().worldX;
-  }
-
-  public static float getOrthoY() {
-    return (float) get().worldY;
-  }
-
-  private static void calOrthoY() {
-    float currentY = getyPos() - get().gameViewportPos.y;
-    currentY = -((currentY / get().gameViewportSize.y) * 2.0f - 1.0f);
-    Vector4f tmp = new Vector4f(0, currentY, 0, 1);
-
-    Camera camera = Window.getCurrentScene().getCamera();
-    Matrix4f viewProjection = new Matrix4f();
-    camera.getInverseViewMatrix().mul(camera.getInverseProjectionMatrix(), viewProjection);
-    tmp.mul(viewProjection);
-
-    get().worldY = tmp.y;;
+    return new Vector2f(tmp.x, tmp.y);
   }
 
   public static double getDx() {
@@ -131,12 +119,12 @@ public class MouseListener {
     return (get().lastY - get().yPos);
   }
 
-  public static float getWorldDx() {
-    return (float) (get().lastWorldX - get().worldX);
+  public static float getWorldDeltaX() {
+    return (float) (get().lastWorldX - MouseListener.getWorldCoordX());
   }
 
-  public static float getWorldDy() {
-    return (float) (get().lastWorldY - get().worldY);
+  public static float getWorldDeltaY() {
+    return (float) (get().lastWorldY - MouseListener.getWorldCoordY());
   }
 
   public static double getScrollX() {
@@ -173,17 +161,6 @@ public class MouseListener {
     return currentY;
   }
 
-  public static void clear() {
-    get().scrollX = 0.0;
-    get().scrollY = 0.0;
-    get().xPos = 0.0;
-    get().yPos = 0.0;
-    get().lastX = 0.0;
-    get().lastY = 0.0;
-    get().mouseButtonDownCounter = 0;
-    get().isDragging = false;
-    Arrays.fill(get().mouseButtonPressed, false);
-  }
 
   public static void setGameViewportPos(Vector2f gameViewportPos) {
     get().gameViewportPos.set(gameViewportPos);
@@ -192,4 +169,5 @@ public class MouseListener {
   public static void setGameViewportSize(Vector2f gameViewportSize) {
     get().gameViewportSize.set(gameViewportSize);
   }
+
 }

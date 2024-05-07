@@ -36,11 +36,11 @@ public class EditorCamera extends Component {
   public void editorUpdate(double deltaTime) {
     float dt = (float) deltaTime;
     if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT) && dragDebounce > 0) {
-      this.clickOrigin = new Vector2f(MouseListener.getOrthoX(), MouseListener.getOrthoY());
+      this.clickOrigin = MouseListener.getWorldCoord();
       dragDebounce -=  dt;
       return;
     } else if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)) {
-      Vector2f mousePos = new Vector2f(MouseListener.getOrthoX(), MouseListener.getOrthoY());
+      Vector2f mousePos = MouseListener.getWorldCoord();
       Vector2f delta = new Vector2f(mousePos).sub(clickOrigin);
       levelEditorCamera.setPosition(levelEditorCamera.getPosition().sub(delta.mul(dt).mul(dragSensitivity)));
       this.clickOrigin.lerp(mousePos, dt);

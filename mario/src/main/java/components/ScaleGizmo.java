@@ -12,9 +12,9 @@ public class ScaleGizmo extends Gizmo{
   public void editorUpdate(double dt) {
     if (activeGameObject != null) {
       if (xAxisActive && !yAxisActive) {
-        activeGameObject.getTransform().setScaleX(activeGameObject.getTransform().getScale().x - MouseListener.getWorldDx());
+        activeGameObject.getTransform().setScaleX(activeGameObject.getTransform().getScale().x - MouseListener.getWorldDeltaX());
       } else if (yAxisActive) {
-        activeGameObject.getTransform().setScaleY(activeGameObject.getTransform().getScale().y - MouseListener.getWorldDy());
+        activeGameObject.getTransform().setScaleY(activeGameObject.getTransform().getScale().y - MouseListener.getWorldDeltaY());
       }
     }
 
