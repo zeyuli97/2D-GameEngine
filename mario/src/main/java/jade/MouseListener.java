@@ -5,6 +5,8 @@ import org.joml.Vector2f;
 import org.joml.Vector4d;
 import org.joml.Vector4f;
 
+import java.util.Arrays;
+
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
@@ -171,6 +173,17 @@ public class MouseListener {
     return currentY;
   }
 
+  public static void clear() {
+    get().scrollX = 0.0;
+    get().scrollY = 0.0;
+    get().xPos = 0.0;
+    get().yPos = 0.0;
+    get().lastX = 0.0;
+    get().lastY = 0.0;
+    get().mouseButtonDownCounter = 0;
+    get().isDragging = false;
+    Arrays.fill(get().mouseButtonPressed, false);
+  }
 
   public static void setGameViewportPos(Vector2f gameViewportPos) {
     get().gameViewportPos.set(gameViewportPos);

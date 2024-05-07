@@ -15,7 +15,7 @@ import java.util.List;
 public class GameObject {
 
   private int gameObjectID = -1;
-  private String name;
+  public String name;
 
   private List<Component> components;
 

@@ -2,7 +2,6 @@ package jade;
 
 import Observers.EventSystem;
 import Observers.Events.Event;
-import Observers.Events.EventType;
 import Observers.Observer;
 import Scene.*;
 import org.lwjgl.Version;
