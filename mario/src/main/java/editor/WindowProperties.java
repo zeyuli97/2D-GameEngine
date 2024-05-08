@@ -4,19 +4,22 @@ import Scene.Scene;
 import components.NonActiveGameObjectClass;
 import imgui.ImGui;
 import jade.GameObject;
+import jade.KeyListerner;
 import jade.MouseListener;
 import physics2d.components.Box2DCollider;
 import physics2d.components.CircleCollider;
 import physics2d.components.RigidBody2D;
 import renders.PickingTexture;
 
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_P;
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
 public class WindowProperties {
   private GameObject activeGameObject = null;
   private PickingTexture pickingTexture;
 
-  private float deBounce = 0.005f;
+  private float debounceTimer = 0.02f;
+  private float deBounce = debounceTimer;
 
   public WindowProperties(PickingTexture pickingTexture) {
     this.pickingTexture = pickingTexture;
@@ -25,6 +28,20 @@ public class WindowProperties {
   public void update(double dt, Scene currentScene) {
     deBounce -= dt;
 
+
+    /**
+     * The issue is the isDragging is not correctly working for macbook track pad.
+     *
+     *
+     * There is dragging happening:
+     * When dragging occur, we should not update current active game object
+     * There is active do nothing.
+     * There is no active do nothing
+     *
+     *
+     * There is no dragging happening.
+     * Cases1 : there is active game object and no dragging we can switch freely.
+     * */
     if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && deBounce < 0) {
       int x = (int) MouseListener.getScreenX();
       int y = (int) MouseListener.getScreenY();
@@ -33,12 +50,10 @@ public class WindowProperties {
       GameObject picked = currentScene.getGameObject(gameObjectID);
       if (picked != null && picked.getComponent(NonActiveGameObjectClass.class) == null) {
         activeGameObject = picked;
-      } else if (gameObjectID == -1) {
-        activeGameObject = null;
-      } else if (picked == null && !MouseListener.getIsDragging()) {
+      }  else if (picked == null) {
         activeGameObject = null;
       }
-      this.deBounce = 0.005f;
+      this.deBounce = debounceTimer;
     }
   }
 

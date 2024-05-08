@@ -6,7 +6,7 @@ import renders.DebugDraw;
 
 public class Box2DCollider extends Collider {
 
-  private Vector2f halfSize = new Vector2f(1);
+  private Vector2f halfSize = new Vector2f(0.3f);
   private Vector2f origin = new Vector2f();
 
   public Vector2f getHalfSize() {

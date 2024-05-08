@@ -83,7 +83,7 @@ public class Gizmo extends Component {
       if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT_CONTROL) && KeyListerner.isKeyFirstPressed(GLFW_KEY_D)) {
         GameObject go = this.activeGameObject.copy();
         Window.getCurrentScene().addGameObjectToScene(go);
-        go.transform.position.add(0.1f,0.1f); // slide off for dragging.
+        go.transform.position.add(0.25f,0f); // slide off for dragging.
         this.windowProperties.setActiveGameObject(go);
         return;
       } else if (KeyListerner.isKeyPressed(GLFW_KEY_BACKSPACE)) {
@@ -91,6 +91,12 @@ public class Gizmo extends Component {
         activeGameObject.destroy();
         this.setInActive();
         this.windowProperties.setActiveGameObject(null);
+        return;
+      } else if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT_CONTROL) && KeyListerner.isKeyFirstPressed(GLFW_KEY_V)) {
+        GameObject go = this.activeGameObject.copy();
+        Window.getCurrentScene().addGameObjectToScene(go);
+        go.transform.position.add(0f,0.25f); // slide off for dragging.
+        this.windowProperties.setActiveGameObject(go);
         return;
       }
     } else {

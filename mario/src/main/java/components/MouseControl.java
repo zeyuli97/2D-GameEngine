@@ -7,6 +7,8 @@ import jade.Window;
 import org.joml.Vector4f;
 import util.Settings;
 
+import javax.swing.plaf.nimbus.State;
+
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
@@ -30,12 +32,15 @@ public class MouseControl extends Component {
 
   public void place() {
     GameObject go = this.holdingObj.copy();
+    if (go.getComponent(StateMachine.class) != null) {
+      go.getComponent(StateMachine.class).refreshTextures();
+    }
     go.getComponent(SpriteRender.class).setColor(new Vector4f(1,1,1,1));
     go.removeComponent(NonActiveGameObjectClass.class);
     Window.getCurrentScene().addGameObjectToScene(go);
 
-    this.holdingObj.destroy();
-    this.holdingObj = null;
+    //this.holdingObj.destroy();
+    //this.holdingObj = null;
   }
 
   public void editorUpdate(double dt) {
