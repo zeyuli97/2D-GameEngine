@@ -11,6 +11,7 @@ public class Sprite {
   private int width, height;
 
   private Texture texture = null;
+
   private Vector2f[] textCoords = new Vector2f[] {
           new Vector2f(1,1),
           new Vector2f(1,0),

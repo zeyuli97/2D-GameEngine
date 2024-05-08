@@ -30,14 +30,14 @@ public class RenderBatch implements Comparable<RenderBatch>{
   private final int TEXTURE_COORDS_SIZE = 2;
   private final int TEXTURE_ID_SIZE = 1;
   private final int ENTITY_ID_SIZE = 1;
-  private final int COLOR_OFFSET = POS_OFFSET + POS_SIZE * Double.BYTES;
+  private final int COLOR_OFFSET = POS_OFFSET + POS_SIZE * Float.BYTES;
 
-  private final int TEXTURE_COORDS_OFFSET = COLOR_OFFSET + COLOR_SIZE * Double.BYTES;
+  private final int TEXTURE_COORDS_OFFSET = COLOR_OFFSET + COLOR_SIZE * Float.BYTES;
 
-  private final int TEXTURE_ID_OFFSET = TEXTURE_COORDS_OFFSET + TEXTURE_COORDS_SIZE * Double.BYTES;
-  private final int ENTITY_ID_OFFSET = TEXTURE_ID_OFFSET + TEXTURE_ID_SIZE * Double.BYTES;
+  private final int TEXTURE_ID_OFFSET = TEXTURE_COORDS_OFFSET + TEXTURE_COORDS_SIZE * Float.BYTES;
+  private final int ENTITY_ID_OFFSET = TEXTURE_ID_OFFSET + TEXTURE_ID_SIZE * Float.BYTES;
   private final int VERTEX_SIZE = 10; // For each vertex we have 6 double in it
-  private final int VERTEX_SIZE_BYTE = VERTEX_SIZE * Double.BYTES;
+  private final int VERTEX_SIZE_BYTE = VERTEX_SIZE * Float.BYTES;
 
   private List<Texture> textures;
 
@@ -46,7 +46,7 @@ public class RenderBatch implements Comparable<RenderBatch>{
   private int numSprites;
 
   private boolean hasRoom;
-  private double[] vertices;
+  private float[] vertices;
   private int vaoID, vboID;
   private int maxBatchSize; // The max number of sprites we can hold in this batch.
   //private Shader shader;
@@ -58,12 +58,11 @@ public class RenderBatch implements Comparable<RenderBatch>{
    * Each batch is a quad or two triangles so total six indices per quad.
    * */
   public RenderBatch(int maxBatchSize, int zIndex, Render theRender) {
-    //this.shader = AssetPool.getShader("assets/shaders/default.glsl");
     this.maxBatchSize = maxBatchSize;
     this.sprites = new SpriteRender[maxBatchSize];
 
-    // For each, we have 4 vertices and each vertex has 9 double values.
-    vertices = new double[maxBatchSize * 4 * VERTEX_SIZE];
+    // For each, we have 4 vertices and each vertex has float values.
+    vertices = new float[maxBatchSize * 4 * VERTEX_SIZE];
 
     this.numSprites = 0;
     this.hasRoom = true;
@@ -84,7 +83,7 @@ public class RenderBatch implements Comparable<RenderBatch>{
     vboID = glGenBuffers();
     glBindBuffer(GL_ARRAY_BUFFER, vboID);
     // Here we use dynamic draw since vertices will change.
-    glBufferData(GL_ARRAY_BUFFER, (long) vertices.length * Double.BYTES, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER,vertices.length * Float.BYTES, GL_DYNAMIC_DRAW);
 
     // Create and upload the indices
     int eboID = glGenBuffers();
@@ -93,19 +92,19 @@ public class RenderBatch implements Comparable<RenderBatch>{
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices, GL_STATIC_DRAW);
 
     // Enable the buffer attribute pointers
-    glVertexAttribPointer(0, POS_SIZE, GL_DOUBLE, false, VERTEX_SIZE_BYTE, POS_OFFSET);
+    glVertexAttribPointer(0, POS_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTE, POS_OFFSET);
     glEnableVertexAttribArray(0);
 
-    glVertexAttribPointer(1, COLOR_SIZE, GL_DOUBLE, false, VERTEX_SIZE_BYTE, COLOR_OFFSET);
+    glVertexAttribPointer(1, COLOR_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTE, COLOR_OFFSET);
     glEnableVertexAttribArray(1);
 
-    glVertexAttribPointer(2, TEXTURE_COORDS_SIZE, GL_DOUBLE, false, VERTEX_SIZE_BYTE, TEXTURE_COORDS_OFFSET);
+    glVertexAttribPointer(2, TEXTURE_COORDS_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTE, TEXTURE_COORDS_OFFSET);
     glEnableVertexAttribArray(2);
 
-    glVertexAttribPointer(3, TEXTURE_ID_SIZE, GL_DOUBLE, false, VERTEX_SIZE_BYTE, TEXTURE_ID_OFFSET);
+    glVertexAttribPointer(3, TEXTURE_ID_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTE, TEXTURE_ID_OFFSET);
     glEnableVertexAttribArray(3);
 
-    glVertexAttribPointer(4, ENTITY_ID_SIZE, GL_DOUBLE, false, VERTEX_SIZE_BYTE, ENTITY_ID_OFFSET);
+    glVertexAttribPointer(4, ENTITY_ID_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTE, ENTITY_ID_OFFSET);
     glEnableVertexAttribArray(4);
   }
 
@@ -114,9 +113,14 @@ public class RenderBatch implements Comparable<RenderBatch>{
     for (int i = 0; i < numSprites; i++) {
       SpriteRender sprite = sprites[i];
       if (sprite.isDirty()) {
-        this.loadVertexProperties(i);
-        sprite.setDirtyToClean();
-        thereIsUpdate = true;
+        if (!containsTexture(sprite.getTexture())) {
+          this.theRender.destroyGameObject(sprite.getGameObject());
+          this.theRender.add(sprite.getGameObject());
+        } else {
+          loadVertexProperties(i);
+          sprite.setDirtyToClean();
+          thereIsUpdate = true;
+        }
       }
 
       if (sprite.getGameObject().transform.zIndex != this.zIndex) {
@@ -265,22 +269,22 @@ public class RenderBatch implements Comparable<RenderBatch>{
     // (0,1)  (1,1)
     // (0,0)  (1,0)
 
-    double xAdd = 0.5;
-    double yAdd= 0.5;
+    float xAdd = 0.5f;
+    float yAdd= 0.5f;
     for (int i = 0; i < 4; i++) {
       if (i == 1) {
-        yAdd = -.5;
+        yAdd = -.5f;
       } else if (i == 2) {
-        xAdd = -.5;
+        xAdd = -.5f;
       } else if (i == 3) {
-        yAdd = .5;
+        yAdd = .5f;
       }
 
-      Vector4f currentPos = new Vector4f((float) (sprite.getGameObject().getTransform().getPosition().x + (xAdd * sprite.getGameObject().getTransform().getScale().x)),
-              (float) (sprite.getGameObject().getTransform().getPosition().y + (yAdd * sprite.getGameObject().getTransform().getScale().y)), 0, 1);
+      Vector4f currentPos = new Vector4f((sprite.getGameObject().getTransform().getPosition().x + (xAdd * sprite.getGameObject().getTransform().getScale().x)),
+               (sprite.getGameObject().getTransform().getPosition().y + (yAdd * sprite.getGameObject().getTransform().getScale().y)), 0, 1);
 
       if (isRotated) {
-        currentPos = new Vector4f((float) xAdd, (float) yAdd, 0, 1).mul(transferMatrix);
+        currentPos = new Vector4f(xAdd, yAdd, 0, 1).mul(transferMatrix);
         //System.out.println("Rotation occurred.");
       }
 
@@ -314,7 +318,7 @@ public class RenderBatch implements Comparable<RenderBatch>{
   }
 
   public boolean hasTextureRoom() {
-    return this.textures.size() < 8;
+    return this.textures.size() < 7;
   }
 
   public boolean containsTexture(Texture texture) {

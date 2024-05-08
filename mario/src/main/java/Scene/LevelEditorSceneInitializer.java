@@ -42,12 +42,15 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
     AssetPool.addSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png",
             new SpriteSheet(AssetPool.getTexture("assets/images/spritesheets/decorationsAndBlocks.png"),
                     16, 16, 81, 0));
+
     AssetPool.addSpriteSheet("assets/images/spritesheet.png",
             new SpriteSheet(AssetPool.getTexture("assets/images/spritesheet.png"),
                     16, 16, 26, 0));
+
     AssetPool.addSpriteSheet("assets/images/items.png",
             new SpriteSheet(AssetPool.getTexture("assets/images/items.png"),
                     16, 16, 43, 0));
+
     AssetPool.addSpriteSheet("assets/images/gizmos.png",
             new SpriteSheet(AssetPool.getTexture("assets/images/gizmos.png"),
                     24, 48, 3, 0));

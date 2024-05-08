@@ -2,10 +2,7 @@ package jade;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import components.Component;
-import components.ComponentDeserializer;
-import components.SpriteRender;
-import components.Transform;
+import components.*;
 import imgui.ImGui;
 import util.AssetPool;
 
@@ -149,7 +146,7 @@ public class GameObject {
 
   public GameObject copy() {
     Gson gson = new GsonBuilder().registerTypeAdapter(Component.class, new ComponentDeserializer())
-            .registerTypeAdapter(GameObject.class, new GameObjectDeserializer()).create();
+            .registerTypeAdapter(GameObject.class, new GameObjectDeserializer()).enableComplexMapKeySerialization().create();
     String json = gson.toJson(this);
 
     GameObject go = gson.fromJson(json, GameObject.class);
@@ -158,9 +155,15 @@ public class GameObject {
     for (Component component : components) {
       component.generateID();
     }
+
     SpriteRender spr = go.getComponent(SpriteRender.class);
     if (spr != null && spr.getTexture() != null) {
       spr.setTexture(AssetPool.getTexture(spr.getTexture().getFilePath()));
+    }
+
+    if (go.getComponent(StateMachine.class) != null) {
+      StateMachine stateMachine = go.getComponent(StateMachine.class);
+      stateMachine.refreshTextures();
     }
     return go;
   }

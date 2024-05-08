@@ -61,7 +61,7 @@ public class Window implements Observer {
     System.out.println("I am about start current scene");
     currentScene.start();
 
-    System.out.println(currentScene.getGameObjects().size());
+    //System.out.println(currentScene.getGameObjects().size());
   }
 
   /**
@@ -116,12 +116,13 @@ public class Window implements Observer {
     // Some new window hints needed so that shader could run.
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Create the window.
     // The function returns the window memory address in long.
     // The NULL here is a special keep of NULL.
     glfwWindow = glfwCreateWindow(this.width, this.height, this.title, NULL, NULL);
+
     if (glfwWindow == NULL) {
       throw new IllegalStateException("The glfw window creation failed.");
     }
@@ -166,10 +167,10 @@ public class Window implements Observer {
   }
 
   public void loop() {
-    double beginTime = Time.getTime();
-    double endTime;
+    float beginTime = Time.getTime();
+    float endTime;
 
-    double dt = -1.0;
+    float dt = -1.0f;
 
     Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
     Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
@@ -182,21 +183,21 @@ public class Window implements Observer {
       // Render path 1. Render to picking texture.
       glDisable(GL_BLEND); // We do not want blend, we just want pure pixel data.
       pickingTexture.enableWriting();
+
       glViewport(0, 0, 3456, 2234);
       glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
       Render.bindShader(pickingShader);
       currentScene.render();
 
-
       pickingTexture.disableWriting();
+
       glEnable(GL_BLEND);
 
       // Render path 2. Render actual game engine related.
       DebugDraw.beginFrame();
-      Render.bindShader(defaultShader);
-
       this.frameBuffer.bind();
 
       glClearColor(r, g, b, a); // Set clear color to a tone defined by rgba.
@@ -207,7 +208,7 @@ public class Window implements Observer {
 
       if (dt >= 0) {
         DebugDraw.draw();
-        //currentScene.update(dt);
+        Render.bindShader(defaultShader);
         if (runTimePlaying) {
           currentScene.update(dt);
         } else {
@@ -218,7 +219,7 @@ public class Window implements Observer {
 
       this.frameBuffer.unbind();
 
-      imGuiLayer.update((float) dt, currentScene);
+      imGuiLayer.update(dt, currentScene);
       // Now we perform color buffer swap.
       glfwSwapBuffers(glfwWindow);
 
@@ -228,7 +229,6 @@ public class Window implements Observer {
       endTime = Time.getTime();
       dt = endTime - beginTime;
       beginTime = endTime;
-      //System.out.println(currentScene.getGameObjects().size());
     }
 
   }
