@@ -2,10 +2,12 @@ package util;
 
 import components.Sprite;
 import components.SpriteSheet;
+import jade.Sound;
 import renders.Shader;
 import renders.Texture;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +20,8 @@ public class AssetPool {
   private static Map<String, Texture> textures = new HashMap<>();
 
   private static Map<String, SpriteSheet> spriteSheets = new HashMap<>();
+
+  private static Map<String, Sound> sounds = new HashMap<>();
 
   /**
    * Resource manager for the shaders.
@@ -66,5 +70,29 @@ public class AssetPool {
     }
 
     return AssetPool.spriteSheets.getOrDefault(file.getAbsolutePath(), null);
+  }
+
+  public static Collection<Sound> getSounds() {
+    return sounds.values();
+  }
+
+  public static Sound getSound(String filePath) {
+    File file = new File(filePath);
+    if (sounds.containsKey(file.getAbsolutePath())) {
+      return sounds.get(file.getAbsolutePath());
+    } else {
+      assert false : "Error: the requested sound has not added yet.\n";
+    }
+
+    return null;
+  }
+
+  public static Sound addSound(String filePath, boolean loops) {
+    File file = new File(filePath);
+    if (!AssetPool.sounds.containsKey(file.getAbsolutePath())) {
+      AssetPool.sounds.put(file.getAbsolutePath(), new Sound(file.getAbsolutePath(), loops));
+    }
+
+    return sounds.get(file.getAbsolutePath());
   }
 }

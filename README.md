@@ -11,6 +11,6 @@ The GUI is integrating the Dear ImGui Java version. Link: https://github.com/Spa
 Physics is delegate to Box2D. Link: https://box2d.org/
 
 
-Currently working on physics and ImGui.
+Currently working on OpenAl.
 
 More coming up.

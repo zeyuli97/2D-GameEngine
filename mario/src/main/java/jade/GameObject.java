@@ -128,7 +128,6 @@ public class GameObject {
 
   }
 
-
   public void destroy() {
     this.isDead = true;
     for (int i = 0; i < components.size(); i++) {
@@ -140,9 +139,6 @@ public class GameObject {
     return isDead;
   }
 
-  public int getZIndex() {
-    return this.transform.getZIndex();
-  }
 
   public GameObject copy() {
     Gson gson = new GsonBuilder().registerTypeAdapter(Component.class, new ComponentDeserializer())

@@ -6,6 +6,10 @@ import Observers.Observer;
 import Scene.*;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.openal.AL;
+import org.lwjgl.openal.ALC;
+import org.lwjgl.openal.ALCCapabilities;
+import org.lwjgl.openal.ALCapabilities;
 import org.lwjgl.opengl.GL;
 import renders.*;
 import util.AssetPool;
@@ -13,6 +17,7 @@ import util.Time;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.openal.ALC10.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
@@ -28,7 +33,8 @@ public class Window implements Observer {
   private FrameBuffer frameBuffer;
   private PickingTexture pickingTexture;
   private boolean runTimePlaying = false; // Whether we are currently at runtime or just editing the scene.
-
+  private long audioContext;
+  private long audioDevice;
 
 
  /**
@@ -84,6 +90,10 @@ public class Window implements Observer {
 
     this.init();
     this.loop();
+
+    //Destroy Audio context
+    alcDestroyContext(audioContext);
+    alcCloseDevice(audioDevice);
 
     // For being proper, we need to free the memory.
     glfwFreeCallbacks(glfwWindow);
@@ -144,6 +154,19 @@ public class Window implements Observer {
 
     // Make the window visible
     glfwShowWindow(glfwWindow);
+
+    // Initialize the audio device
+    String defaultDeviceName = alcGetString(0, ALC_DEFAULT_DEVICE_SPECIFIER);
+    audioDevice = alcOpenDevice(defaultDeviceName);
+
+    int[] attributes = {0};
+    audioContext = alcCreateContext(audioDevice, attributes);
+    alcMakeContextCurrent(audioContext);
+
+    ALCCapabilities alcCapabilities = ALC.createCapabilities(audioDevice);
+    ALCapabilities alCapabilities = org.lwjgl.openal.AL.createCapabilities(alcCapabilities);
+
+    assert alCapabilities.OpenAL10 : "Audio library is not supported";
 
     // This line is critical for LWJGL's interoperation with GLFW's
     // OpenGL context, or any context that is managed externally.
