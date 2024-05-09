@@ -24,7 +24,7 @@ public class SpriteRender extends Component {
   }
 
   @Override
-  public void editorUpdate(double dt) {
+  public void editorUpdate(float dt) {
     if (!this.lastTransform.equals(this.gameObject.getTransform())) {
       this.gameObject.getTransform().copyTo(lastTransform);
       isDirty = true;
@@ -32,7 +32,7 @@ public class SpriteRender extends Component {
   }
 
   @Override
-  public void update(double dt) {
+  public void update(float dt) {
     if (!this.lastTransform.equals(this.gameObject.getTransform())) {
       this.gameObject.getTransform().copyTo(lastTransform);
       isDirty = true;

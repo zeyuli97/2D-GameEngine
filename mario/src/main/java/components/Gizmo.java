@@ -63,7 +63,7 @@ public class Gizmo extends Component {
   }
 
   @Override
-  public void update(double dt) {
+  public void update(float dt) {
     if (using) {
       this.setInActive();
     }
@@ -73,35 +73,13 @@ public class Gizmo extends Component {
   }
 
   @Override
-  public void editorUpdate(double dt) {
+  public void editorUpdate(float dt) {
     if (!using) {
       return;
     }
     this.activeGameObject = this.windowProperties.getActiveGameObject();
     if (this.activeGameObject != null) {
       this.setActive();
-
-      // TODO: Ideally should not put key callback inside gizmo.
-      //System.out.println("about to update active");
-      if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT_CONTROL) && KeyListerner.isKeyFirstPressed(GLFW_KEY_D)) {
-        GameObject go = this.activeGameObject.copy();
-        Window.getCurrentScene().addGameObjectToScene(go);
-        go.transform.position.add(0.25f,0f); // slide off for dragging.
-        this.windowProperties.setActiveGameObject(go);
-        return;
-      } else if (KeyListerner.isKeyPressed(GLFW_KEY_BACKSPACE)) {
-        System.out.println("Deleting active pressed.");
-        activeGameObject.destroy();
-        this.setInActive();
-        this.windowProperties.setActiveGameObject(null);
-        return;
-      } else if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT_CONTROL) && KeyListerner.isKeyFirstPressed(GLFW_KEY_V)) {
-        GameObject go = this.activeGameObject.copy();
-        Window.getCurrentScene().addGameObjectToScene(go);
-        go.transform.position.add(0f,0.25f); // slide off for dragging.
-        this.windowProperties.setActiveGameObject(go);
-        return;
-      }
     } else {
       this.setInActive();
       return;

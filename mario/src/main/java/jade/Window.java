@@ -11,6 +11,7 @@ import org.lwjgl.openal.ALC;
 import org.lwjgl.openal.ALCCapabilities;
 import org.lwjgl.openal.ALCapabilities;
 import org.lwjgl.opengl.GL;
+import physics2d.Physics2D;
 import renders.*;
 import util.AssetPool;
 import util.Time;
@@ -35,6 +36,8 @@ public class Window implements Observer {
   private boolean runTimePlaying = false; // Whether we are currently at runtime or just editing the scene.
   private long audioContext;
   private long audioDevice;
+  private static int myDeviceWidth = 3456;
+  private static int myDeviceHeight = 2234;
 
 
  /**
@@ -178,10 +181,10 @@ public class Window implements Observer {
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-    this.frameBuffer = new FrameBuffer(3456, 2234);
+    this.frameBuffer = new FrameBuffer(myDeviceWidth, myDeviceHeight);
     // We are mimic the above frame buffer and replace color info with component's uid.
-    this.pickingTexture = new PickingTexture(3456, 2234);
-    glViewport(0,0,3456, 2234);
+    this.pickingTexture = new PickingTexture(myDeviceWidth, myDeviceHeight);
+    glViewport(0,0,myDeviceWidth, myDeviceHeight);
 
     imGuiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
     imGuiLayer.initImGui();
@@ -207,7 +210,7 @@ public class Window implements Observer {
       glDisable(GL_BLEND); // We do not want blend, we just want pure pixel data.
       pickingTexture.enableWriting();
 
-      glViewport(0, 0, 3456, 2234);
+      glViewport(0, 0, myDeviceWidth, myDeviceHeight);
       glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -230,7 +233,7 @@ public class Window implements Observer {
 
 
       if (dt >= 0) {
-        DebugDraw.draw();
+
         Render.bindShader(defaultShader);
         if (runTimePlaying) {
           currentScene.update(dt);
@@ -238,16 +241,19 @@ public class Window implements Observer {
           currentScene.editorUpdate(dt);
         }
         currentScene.render();
+        DebugDraw.draw();
       }
 
       this.frameBuffer.unbind();
 
       imGuiLayer.update(dt, currentScene);
+
+      KeyListerner.endFrame();
+      MouseListener.endFrame();
       // Now we perform color buffer swap.
       glfwSwapBuffers(glfwWindow);
 
-      MouseListener.endFrame();
-
+      //MouseListener.endFrame();
       // The following function will give us the time cost for one iteration.
       endTime = Time.getTime();
       dt = endTime - beginTime;
@@ -257,11 +263,11 @@ public class Window implements Observer {
   }
 
   public static int getHeight() {
-    return Window.get().height;
+    return myDeviceHeight;
   }
 
   public static int getWidth() {
-    return Window.get().width;
+    return myDeviceWidth;
   }
 
   public static void setWidth(int newWidth) {
@@ -282,6 +288,10 @@ public class Window implements Observer {
 
   public static ImGuiLayer getImGuiLayer() {
     return imGuiLayer;
+  }
+
+  public static Physics2D getPhysics() {
+    return currentScene.getPhysics();
   }
 
   @Override

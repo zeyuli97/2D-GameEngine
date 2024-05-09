@@ -78,7 +78,7 @@ public class StateMachine extends Component {
     for (StateTrigger state : stateTransfers.keySet()) {
       if (state.state.equals(currentState.title) && state.trigger.equals(trigger)) {
         if (stateTransfers.get(state) != null) {
-          int newStateIndex = states.indexOf(stateTransfers.get(state));
+          int newStateIndex = stateIndexOf(stateTransfers.get(state));
           if (newStateIndex > -1) {
             currentState = states.get(newStateIndex);
           }
@@ -87,7 +87,6 @@ public class StateMachine extends Component {
       }
     }
 
-    System.out.println("Unable to find trigger '" + trigger + "'");
   }
 
   @Override
@@ -101,7 +100,7 @@ public class StateMachine extends Component {
   }
 
   @Override
-  public void update(double dt) {
+  public void update(float dt) {
     if (currentState != null) {
       currentState.update(dt);
       SpriteRender sprite = gameObject.getComponent(SpriteRender.class);
@@ -112,7 +111,7 @@ public class StateMachine extends Component {
   }
 
   @Override
-  public void editorUpdate(double dt) {
+  public void editorUpdate(float dt) {
     if (currentState != null) {
       currentState.update(dt);
       SpriteRender sprite = gameObject.getComponent(SpriteRender.class);
@@ -138,6 +137,18 @@ public class StateMachine extends Component {
         index++;
       }
     }
+  }
+
+  private int stateIndexOf(String stateTile) {
+    int index = 0;
+    for (AnimationState state : states) {
+      if (state.title.equals(stateTile)) {
+        return index;
+      }
+      index++;
+    }
+
+    return -1;
   }
 
 }

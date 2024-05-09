@@ -33,8 +33,7 @@ public class EditorCamera extends Component {
 
 
   @Override
-  public void editorUpdate(double deltaTime) {
-    float dt = (float) deltaTime;
+  public void editorUpdate(float dt) {
     if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT) && dragDebounce > 0) {
       this.clickOrigin = MouseListener.getWorldCoord();
       dragDebounce -=  dt;
@@ -73,7 +72,7 @@ public class EditorCamera extends Component {
 
       if (Math.abs(levelEditorCamera.getPosition().x) <= 1.0f && Math.abs(levelEditorCamera.getPosition().y) <= 1.0f) {
         this.lerpTime = 0;
-        levelEditorCamera.setPosition(new Vector2f(-250,0));
+        levelEditorCamera.setPosition(new Vector2f(0,0));
         this.levelEditorCamera.setZoom(1.0f);
         reset = false;
       }

@@ -27,6 +27,7 @@ public class Scene {
   private boolean isRunning;
   private List<GameObject> gameObjects;
   private SceneInitializer sceneInitializer;
+  private List<GameObject> pendingGameObjects; // Using this to prevent adding new gameObject during middle of frame to interrupt the physic engine.
   private Physics2D physics2D;
 
   public Scene(SceneInitializer sceneInitializer) {
@@ -35,7 +36,7 @@ public class Scene {
     this.isRunning = false;
     this.gameObjects = new ArrayList<>();
     this.theRender = new Render();
-
+    pendingGameObjects = new ArrayList<>();
   }
 
   public void init() {
@@ -63,10 +64,11 @@ public class Scene {
     if (!isRunning) {
       gameObjects.add(go);
     } else {
-      gameObjects.add(go);
-      go.start();
-      this.theRender.add(go);
-      this.physics2D.add(go);
+      pendingGameObjects.add(go);
+//      gameObjects.add(go);
+//      go.start();
+//      this.theRender.add(go);
+//      this.physics2D.add(go);
     }
   }
 
@@ -76,7 +78,7 @@ public class Scene {
     return result.orElse(null);
   }
 
-  public void editorUpdate(double dt) {
+  public void editorUpdate(float dt) {
     this.camera.adjustProjection();
 
     for (int i = 0; i < gameObjects.size(); i++) {
@@ -89,9 +91,18 @@ public class Scene {
         i--;
       }
     }
+
+    for (GameObject go : pendingGameObjects) {
+      gameObjects.add(go);
+      go.start();
+      this.theRender.add(go);
+      this.physics2D.add(go);
+    }
+
+    pendingGameObjects.clear();
   }
 
-  public void update(double dt) {
+  public void update(float dt) {
     this.camera.adjustProjection();
     this.physics2D.update(dt);
 
@@ -106,6 +117,15 @@ public class Scene {
         go.update(dt);
       }
     }
+
+    for (GameObject go : pendingGameObjects) {
+      gameObjects.add(go);
+      go.start();
+      this.theRender.add(go);
+      this.physics2D.add(go);
+    }
+
+    pendingGameObjects.clear();
   }
 
   public void destroy() {
@@ -142,6 +162,7 @@ public class Scene {
     Gson gson = new GsonBuilder().setPrettyPrinting()
             .registerTypeAdapter(Component.class, new ComponentDeserializer())
             .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
+            .enableComplexMapKeySerialization()
             .create();
 
     try {
@@ -163,6 +184,7 @@ public class Scene {
     Gson gson = new GsonBuilder().setPrettyPrinting()
             .registerTypeAdapter(Component.class, new ComponentDeserializer())
             .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
+            .enableComplexMapKeySerialization()
             .create();
     String inFile = "";
     try {
@@ -196,5 +218,9 @@ public class Scene {
 
   public List<GameObject> getGameObjects() {
     return gameObjects;
+  }
+
+  public Physics2D getPhysics() {
+    return this.physics2D;
   }
 }

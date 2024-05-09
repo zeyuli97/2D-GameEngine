@@ -30,7 +30,7 @@ public class AnimationState extends Component {
     }
   }
 
-  public void update(double dt) {
+  public void update(float dt) {
     if (currentSprite < animationFrames.size()) {
       timeTracker -= dt;
       if (timeTracker <= 0) {
@@ -48,5 +48,9 @@ public class AnimationState extends Component {
       return animationFrames.get(currentSprite).sprite;
     }
     return defaultSprite;
+  }
+
+  public void setLoop(boolean loop) {
+    doesLoop = loop;
   }
 }

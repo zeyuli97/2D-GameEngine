@@ -187,4 +187,8 @@ public class DebugDraw {
   public static void addCircle(Vector2f center, float radius, Vector3f color) {
     addCircle(center, radius, color, 1);
   }
+
+  public static void addCircle(Vector2f center, float radius) {
+    addCircle(center, radius, new Vector3f(0, 1, 0), 1);
+  }
 }

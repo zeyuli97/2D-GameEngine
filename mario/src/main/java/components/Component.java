@@ -5,6 +5,8 @@ import editor.JImGui;
 import imgui.ImGui;
 import imgui.type.ImInt;
 import jade.GameObject;
+import org.jbox2d.collision.Manifold;
+import org.jbox2d.dynamics.contacts.Contact;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
@@ -27,11 +29,11 @@ public abstract class Component {
 
   }
 
-  public void editorUpdate(double dt) {
+  public void editorUpdate(float dt) {
 
   }
 
-  public void update(double dt) {
+  public void update(float dt) {
 
   };
 
@@ -44,6 +46,22 @@ public abstract class Component {
   }
 
   public void destroy() {
+
+  }
+
+  public void beginCollision(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
+
+  }
+
+  public void endCollision(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
+
+  }
+
+  public void preSolve(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
+
+  }
+
+  public void postSolve(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
 
   }
 

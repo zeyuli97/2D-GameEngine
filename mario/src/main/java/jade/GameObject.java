@@ -65,13 +65,13 @@ public class GameObject {
 
   }
 
-  public void editorUpdate(double dt) {
+  public void editorUpdate(float dt) {
     for (int i = 0; i < components.size(); i++) {
       components.get(i).editorUpdate(dt);
     }
   }
 
-  public void update(double dt) {
+  public void update(float dt) {
     for (int i = 0; i < components.size(); i++) {
       components.get(i).update(dt);
     }
@@ -158,8 +158,7 @@ public class GameObject {
     }
 
     if (go.getComponent(StateMachine.class) != null) {
-      StateMachine stateMachine = go.getComponent(StateMachine.class);
-      stateMachine.refreshTextures();
+      go.getComponent(StateMachine.class).refreshTextures();
     }
     return go;
   }

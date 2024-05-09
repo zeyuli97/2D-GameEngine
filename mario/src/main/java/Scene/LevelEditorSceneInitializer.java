@@ -5,6 +5,9 @@ import imgui.ImGui;
 import imgui.ImVec2;
 import jade.*;
 import org.joml.Vector2f;
+import physics2d.components.Box2DCollider;
+import physics2d.components.Rigidbody2D;
+import physics2d.enums.BodyType;
 import util.AssetPool;
 
 import java.io.File;
@@ -24,6 +27,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
     SpriteSheet gizmos = AssetPool.getSpriteSheet("assets/images/gizmos.png");
     sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/decorationsAndBlocks.png");
 
+
     levelEditorStuff = scene.createGameObject("levelEditorStuff");
     levelEditorStuff.setNoSerialize();
 
@@ -32,6 +36,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
     levelEditorStuff.addComponent(new GridLines());
     levelEditorStuff.addComponent(new EditorCamera(scene.getCamera()));
     levelEditorStuff.addComponent(new GizmoSystem(gizmos));
+    levelEditorStuff.addComponent(new KeyControl());
 
     scene.addGameObjectToScene(levelEditorStuff);
   }
@@ -57,6 +62,15 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
     AssetPool.addSpriteSheet("assets/images/gizmos.png",
             new SpriteSheet(AssetPool.getTexture("assets/images/gizmos.png"),
                     24, 48, 3, 0));
+    AssetPool.addSpriteSheet("assets/images/turtle.png",
+            new SpriteSheet(AssetPool.getTexture("assets/images/turtle.png"),
+                    16, 24, 4, 0));
+    AssetPool.addSpriteSheet("assets/images/bigSpritesheet.png",
+            new SpriteSheet(AssetPool.getTexture("assets/images/bigSpritesheet.png"),
+                    16, 32, 42, 0));
+    AssetPool.addSpriteSheet("assets/images/pipes.png",
+            new SpriteSheet(AssetPool.getTexture("assets/images/pipes.png"),
+                    32, 32, 4, 0));
 
     AssetPool.addSound("assets/sounds/main-theme-overworld.ogg", true);
     AssetPool.addSound("assets/sounds/flagpole.ogg", false);
@@ -94,7 +108,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
   }
 
-  public void update(double dt) {
+  public void update(float dt) {
 
     levelEditorStuff.update(dt);
   }
@@ -122,6 +136,9 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
         float windowX2 = windowPos.x + windowSize.x;
         for (int i = 0; i < sprites.size(); i++) {
+          if (i == 34) continue;
+          if (i >= 38 && i < 61) continue;
+
           Sprite sprite = sprites.getSprite(i);
           float spriteWidth = sprite.getWidth() * 2;
           float spriteHeight = sprite.getHeight() * 2;
@@ -131,6 +148,18 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
           ImGui.pushID(i);
           if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
             GameObject genSprite = Prefabs.generateSpriteWithinGameObject(sprite, .25f, .25f);
+            Rigidbody2D rb = new Rigidbody2D();
+            rb.setBodyType(BodyType.Static);
+            genSprite.addComponent(rb);
+            Box2DCollider box2DCollider = new Box2DCollider();
+            box2DCollider.setHalfSize(new Vector2f(0.25f));
+            genSprite.addComponent(box2DCollider);
+            genSprite.addComponent(new Ground());
+            // The breakable brick
+            if (i == 12) {
+              genSprite.addComponent(new BreakableBrick());
+            }
+
             // Attach this to the cursor.
             levelEditorStuff.getComponent(MouseControl.class).pickupObject(genSprite);
           }
