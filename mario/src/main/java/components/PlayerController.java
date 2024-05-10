@@ -54,6 +54,10 @@ public class PlayerController extends Component {
   private transient Vector2f velocity = new Vector2f();
   private transient boolean isDead = false;
   private transient int enemyBounce = 0;
+  private transient boolean won = false;
+  private transient float timeToCastle = 4.5f;
+  private transient float walkTime = 2.2f;
+
 
   @Override
   public void start() {
@@ -65,6 +69,35 @@ public class PlayerController extends Component {
 
   @Override
   public void update(float dt) {
+    if (won) {
+      checkOnGround();
+      if (!onGround) {
+        gameObject.transform.scale.x = -0.25f;
+        gameObject.transform.position.y -= dt;
+        stateMachine.trigger("stopRunning");
+        stateMachine.trigger("stopJumping");
+      } else {
+        if (this.walkTime > 0) {
+          gameObject.transform.scale.x = 0.25f;
+          gameObject.transform.position.x += dt;
+          stateMachine.trigger("startRunning");
+        }
+        if (!AssetPool.getSound("assets/sounds/stage_clear.ogg").isPlaying()) {
+          AssetPool.getSound("assets/sounds/stage_clear.ogg").playSound();
+        }
+        timeToCastle -= dt;
+        walkTime -= dt;
+
+        if (timeToCastle <= 0) {
+          Window.setRunTimePlaying(false);
+          Window.changeScene(new LevelEditorSceneInitializer());
+        }
+      }
+
+
+      return;
+    }
+
     if (isDead) {
       if (this.gameObject.transform.position.y < deadMaxHeight && deadGoingUp) {
         this.gameObject.transform.position.y += dt * walkSpeed / 2.0f;
@@ -183,6 +216,20 @@ public class PlayerController extends Component {
     onGround = Physics2D.checkOnGround(this.gameObject, innerPlayerWidth, yVal);
   }
 
+  public void playWinAnimation(GameObject flagpole) {
+    if (!won) {
+      won = true;
+      velocity.set(0,0);
+      acceleration.set(0, 0);
+      rb.setVelocity(velocity);
+      rb.setIsSensor();
+      rb.setBodyType(BodyType.Static);
+      gameObject.transform.position.x = flagpole.transform.position.x;
+      gameObject.transform.position.y = flagpole.transform.position.y;
+      AssetPool.getSound("assets/sounds/flagpole.ogg").playSound();
+    }
+  }
+
   @Override
   public void beginCollision(GameObject collidingObject, Contact contact, Vector2f contactNormal) {
     if (isDead) return;
@@ -234,7 +281,7 @@ public class PlayerController extends Component {
   }
 
   public boolean isHurtInvincible() {
-    return this.hurtInvincibilityTimeLeft > 0;
+    return this.hurtInvincibilityTimeLeft > 0 || won;
   }
 
   public boolean isInvincible() {

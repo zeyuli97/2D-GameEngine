@@ -23,6 +23,10 @@ public class KeyControl extends Component {
     GameObject activeGameObject = windowProperties.getActiveGameObject();
     List<GameObject> activeGameObjects = windowProperties.getActiveGoGroup();
 
+    if (activeGameObject == null) {
+      return;
+    }
+
     float mutiplier = 1;
     if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT_SHIFT)) {
       mutiplier = 0.1f;
@@ -42,7 +46,6 @@ public class KeyControl extends Component {
 //      }
 
     } else if (KeyListerner.isKeyPressed(GLFW_KEY_BACKSPACE)) {
-      System.out.println("Deleting active pressed.");
       for (GameObject go : activeGameObjects) {
         go.destroy();
       }

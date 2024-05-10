@@ -296,6 +296,10 @@ public class Window implements Observer {
     return currentScene.getPhysics();
   }
 
+  public static void setRunTimePlaying(boolean runTimePlaying) {
+    get().runTimePlaying = runTimePlaying;
+  }
+
   @Override
   public void onNotify(GameObject gameObject, Event event) {
     switch (event.getType()) {

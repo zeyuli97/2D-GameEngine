@@ -296,6 +296,40 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
           levelEditorStuff.getComponent(MouseControl.class).pickupObject(object);
         }
         ImGui.popID();
+        ImGui.sameLine();
+
+        SpriteSheet turtle = AssetPool.getSpriteSheet("assets/images/turtle.png");
+        sprite = turtle.getSprite(0);
+        id = sprite.getTexture().getTextID();
+        texCoords = sprite.getTextCoords();
+        ImGui.pushID(uniqueID++);
+        if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+          GameObject object = Prefabs.generateTurtle();
+          levelEditorStuff.getComponent(MouseControl.class).pickupObject(object);
+        }
+        ImGui.popID();
+        ImGui.sameLine();
+
+        sprite = items.getSprite(6);
+        id = sprite.getTexture().getTextID();
+        texCoords = sprite.getTextCoords();
+        ImGui.pushID(uniqueID++);
+        if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+          GameObject object = Prefabs.generateFlagTop();
+          levelEditorStuff.getComponent(MouseControl.class).pickupObject(object);
+        }
+        ImGui.popID();
+        ImGui.sameLine();
+
+        sprite = items.getSprite(33);
+        id = sprite.getTexture().getTextID();
+        texCoords = sprite.getTextCoords();
+        ImGui.pushID(uniqueID++);
+        if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+          GameObject object = Prefabs.generateFlagPole();
+          levelEditorStuff.getComponent(MouseControl.class).pickupObject(object);
+        }
+        ImGui.popID();
 
         ImGui.endTabItem();
       }
