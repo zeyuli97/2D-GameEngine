@@ -4,6 +4,7 @@ import Observers.EventSystem;
 import Observers.Events.Event;
 import Observers.Observer;
 import Scene.*;
+import org.joml.Vector4f;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.openal.AL;
@@ -211,7 +212,8 @@ public class Window implements Observer {
       pickingTexture.enableWriting();
 
       glViewport(0, 0, myDeviceWidth, myDeviceHeight);
-      glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+      Vector4f clearColor = new Vector4f(currentScene.getCamera().clearColor);
+      glClearColor(0,0,0,0);
 
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -226,7 +228,7 @@ public class Window implements Observer {
       DebugDraw.beginFrame();
       this.frameBuffer.bind();
 
-      glClearColor(r, g, b, a); // Set clear color to a tone defined by rgba.
+      glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w); // Set clear color to a tone defined by rgba.
       // glClear() called at the beginning of each iteration of the rendering loop to clear the color buffer.
       // This ensures that the framebuffer starts with a clean slate before rendering new content for the current frame.
       glClear(GL_COLOR_BUFFER_BIT); // Use the clear color to fill the color buffer
@@ -300,7 +302,7 @@ public class Window implements Observer {
       case GameEngineStartPlay:
         this.runTimePlaying = true;
         currentScene.save();
-        Window.changeScene(new LevelEditorSceneInitializer());
+        Window.changeScene(new LevelSceneInitializer());
         break;
       case GameEngineStopPlay:
         this.runTimePlaying = false;

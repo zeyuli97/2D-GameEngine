@@ -16,14 +16,14 @@ public class GridLines extends Component {
     Vector2f cameraPosition = camera.getPosition();
     Vector2f projectionSize = camera.getProjectionSize();
 
-    float firstX = ((int) (cameraPosition.x / Settings.Grid_Width) - 1) * Settings.Grid_Width;
-    float firstY = ((int) (cameraPosition.y / Settings.Grid_Height) -1) * Settings.Grid_Height;
+    float firstX = (((int) (cameraPosition.x / Settings.Grid_Width)) - 1) * Settings.Grid_Width;
+    float firstY = (((int) (cameraPosition.y / Settings.Grid_Height)) - 1) * Settings.Grid_Height;
 
-    float numVerticalLines = (int) (projectionSize.x * camera.getZoom()) / Settings.Grid_Width + 2;
-    float numHorizontalLines = (int) (projectionSize.y * camera.getZoom()) / Settings.Grid_Height + 2;
+    float numVerticalLines = (int) (projectionSize.x * camera.getZoom()) / Settings.Grid_Width + 8;
+    float numHorizontalLines = (int) (projectionSize.y * camera.getZoom()) / Settings.Grid_Height + 8;
 
-    float height = (int) (projectionSize.y * camera.getZoom()) + Settings.Grid_Height;
-    float width = (int) (projectionSize.x * camera.getZoom()) + Settings.Grid_Width;
+    float height = (int) (projectionSize.y * camera.getZoom()) + Settings.Grid_Height * 5;
+    float width = (int) (projectionSize.x * camera.getZoom()) + Settings.Grid_Width * 5;
 
     float maxLines = Math.max(numVerticalLines, numHorizontalLines);
 

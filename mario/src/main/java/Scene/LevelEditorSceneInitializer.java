@@ -103,11 +103,6 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
     }
   }
 
-  @Override
-  public void loadScene(Scene scene) {
-
-  }
-
   public void update(float dt) {
 
     levelEditorStuff.update(dt);

@@ -1,6 +1,7 @@
 package components;
 
 import Scene.LevelEditorSceneInitializer;
+import Scene.LevelSceneInitializer;
 import jade.GameObject;
 import jade.KeyListerner;
 import jade.Window;
@@ -77,7 +78,7 @@ public class PlayerController extends Component {
         this.rb.setVelocity(this.velocity);
         this.rb.setAngularVelocity(0);
       } else if (!deadGoingUp && gameObject.transform.position.y <= deadMinHeight) {
-        Window.changeScene(new LevelEditorSceneInitializer());
+        Window.changeScene(new LevelSceneInitializer());
       }
       return;
     }
@@ -281,5 +282,8 @@ public class PlayerController extends Component {
     this.rb.setPosition(position);
   }
 
+  public boolean hasWon() {
+    return false;
+  }
 
 }

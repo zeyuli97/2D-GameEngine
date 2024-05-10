@@ -1,6 +1,6 @@
 [
   {
-    "gameObjectID": 490,
+    "gameObjectID": 380,
     "name": "Generated",
     "components": [
       {
@@ -107,7 +107,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 491,
+    "gameObjectID": 381,
     "name": "Generated",
     "components": [
       {
@@ -214,7 +214,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 492,
+    "gameObjectID": 382,
     "name": "Generated",
     "components": [
       {
@@ -321,7 +321,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 493,
+    "gameObjectID": 383,
     "name": "Generated",
     "components": [
       {
@@ -428,7 +428,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 494,
+    "gameObjectID": 384,
     "name": "Generated",
     "components": [
       {
@@ -535,7 +535,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 495,
+    "gameObjectID": 385,
     "name": "Generated",
     "components": [
       {
@@ -642,7 +642,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 496,
+    "gameObjectID": 386,
     "name": "Generated",
     "components": [
       {
@@ -749,7 +749,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 497,
+    "gameObjectID": 387,
     "name": "Generated",
     "components": [
       {
@@ -856,7 +856,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 498,
+    "gameObjectID": 388,
     "name": "Generated",
     "components": [
       {
@@ -963,7 +963,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 499,
+    "gameObjectID": 389,
     "name": "Generated",
     "components": [
       {
@@ -1070,7 +1070,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 500,
+    "gameObjectID": 390,
     "name": "Generated",
     "components": [
       {
@@ -1177,7 +1177,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 501,
+    "gameObjectID": 391,
     "name": "Generated",
     "components": [
       {
@@ -1284,7 +1284,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 502,
+    "gameObjectID": 392,
     "name": "Generated",
     "components": [
       {
@@ -1391,7 +1391,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 503,
+    "gameObjectID": 393,
     "name": "Generated",
     "components": [
       {
@@ -1498,7 +1498,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 504,
+    "gameObjectID": 394,
     "name": "Generated",
     "components": [
       {
@@ -1605,7 +1605,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 505,
+    "gameObjectID": 395,
     "name": "Generated",
     "components": [
       {
@@ -1712,7 +1712,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 506,
+    "gameObjectID": 396,
     "name": "Generated",
     "components": [
       {
@@ -1819,7 +1819,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 507,
+    "gameObjectID": 397,
     "name": "Generated",
     "components": [
       {
@@ -1926,7 +1926,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 508,
+    "gameObjectID": 398,
     "name": "Generated",
     "components": [
       {
@@ -2033,7 +2033,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 509,
+    "gameObjectID": 399,
     "name": "Generated",
     "components": [
       {
@@ -2140,7 +2140,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 510,
+    "gameObjectID": 400,
     "name": "Generated",
     "components": [
       {
@@ -2247,7 +2247,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 511,
+    "gameObjectID": 401,
     "name": "Generated",
     "components": [
       {
@@ -2354,7 +2354,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 512,
+    "gameObjectID": 402,
     "name": "Generated",
     "components": [
       {
@@ -2461,7 +2461,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 513,
+    "gameObjectID": 403,
     "name": "Generated",
     "components": [
       {
@@ -2568,7 +2568,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 514,
+    "gameObjectID": 404,
     "name": "Generated",
     "components": [
       {
@@ -2675,7 +2675,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 515,
+    "gameObjectID": 405,
     "name": "Generated",
     "components": [
       {
@@ -2782,7 +2782,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 516,
+    "gameObjectID": 406,
     "name": "Generated",
     "components": [
       {
@@ -2889,7 +2889,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 517,
+    "gameObjectID": 407,
     "name": "Generated",
     "components": [
       {
@@ -2996,7 +2996,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 518,
+    "gameObjectID": 408,
     "name": "Generated",
     "components": [
       {
@@ -3103,7 +3103,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 519,
+    "gameObjectID": 409,
     "name": "Generated",
     "components": [
       {
@@ -3210,7 +3210,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 520,
+    "gameObjectID": 410,
     "name": "Generated",
     "components": [
       {
@@ -3317,7 +3317,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 521,
+    "gameObjectID": 411,
     "name": "Generated",
     "components": [
       {
@@ -3424,7 +3424,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 522,
+    "gameObjectID": 412,
     "name": "Generated",
     "components": [
       {
@@ -3531,7 +3531,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 523,
+    "gameObjectID": 413,
     "name": "Generated",
     "components": [
       {
@@ -3638,7 +3638,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 524,
+    "gameObjectID": 414,
     "name": "Generated",
     "components": [
       {
@@ -3745,7 +3745,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 525,
+    "gameObjectID": 415,
     "name": "Generated",
     "components": [
       {
@@ -3852,7 +3852,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 526,
+    "gameObjectID": 416,
     "name": "Generated",
     "components": [
       {
@@ -3959,7 +3959,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 527,
+    "gameObjectID": 417,
     "name": "Generated",
     "components": [
       {
@@ -4066,7 +4066,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 528,
+    "gameObjectID": 418,
     "name": "Generated",
     "components": [
       {
@@ -4173,7 +4173,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 529,
+    "gameObjectID": 419,
     "name": "Generated",
     "components": [
       {
@@ -4280,7 +4280,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 530,
+    "gameObjectID": 420,
     "name": "Generated",
     "components": [
       {
@@ -4387,7 +4387,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 531,
+    "gameObjectID": 421,
     "name": "Generated",
     "components": [
       {
@@ -4494,7 +4494,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 532,
+    "gameObjectID": 422,
     "name": "Generated",
     "components": [
       {
@@ -4601,7 +4601,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 533,
+    "gameObjectID": 423,
     "name": "Generated",
     "components": [
       {
@@ -4708,7 +4708,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 534,
+    "gameObjectID": 424,
     "name": "Generated",
     "components": [
       {
@@ -4815,7 +4815,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 535,
+    "gameObjectID": 425,
     "name": "Generated",
     "components": [
       {
@@ -4922,7 +4922,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 536,
+    "gameObjectID": 426,
     "name": "Generated",
     "components": [
       {
@@ -5029,7 +5029,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 537,
+    "gameObjectID": 427,
     "name": "Generated",
     "components": [
       {
@@ -5136,7 +5136,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 538,
+    "gameObjectID": 428,
     "name": "Generated",
     "components": [
       {
@@ -5243,7 +5243,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 539,
+    "gameObjectID": 429,
     "name": "Generated",
     "components": [
       {
@@ -5350,7 +5350,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 540,
+    "gameObjectID": 430,
     "name": "Generated",
     "components": [
       {
@@ -5457,7 +5457,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 541,
+    "gameObjectID": 431,
     "name": "Generated",
     "components": [
       {
@@ -5564,7 +5564,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 542,
+    "gameObjectID": 432,
     "name": "Generated",
     "components": [
       {
@@ -5671,7 +5671,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 543,
+    "gameObjectID": 433,
     "name": "Generated",
     "components": [
       {
@@ -5778,7 +5778,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 544,
+    "gameObjectID": 434,
     "name": "Generated",
     "components": [
       {
@@ -5885,7 +5885,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 545,
+    "gameObjectID": 435,
     "name": "Generated",
     "components": [
       {
@@ -5992,7 +5992,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 546,
+    "gameObjectID": 436,
     "name": "Generated",
     "components": [
       {
@@ -6099,7 +6099,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 547,
+    "gameObjectID": 437,
     "name": "Generated",
     "components": [
       {
@@ -6206,7 +6206,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 548,
+    "gameObjectID": 438,
     "name": "Generated",
     "components": [
       {
@@ -6313,7 +6313,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 549,
+    "gameObjectID": 439,
     "name": "Generated",
     "components": [
       {
@@ -6420,7 +6420,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 550,
+    "gameObjectID": 440,
     "name": "Generated",
     "components": [
       {
@@ -6527,7 +6527,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 551,
+    "gameObjectID": 441,
     "name": "Generated",
     "components": [
       {
@@ -6634,7 +6634,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 552,
+    "gameObjectID": 442,
     "name": "Generated",
     "components": [
       {
@@ -6741,7 +6741,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 553,
+    "gameObjectID": 443,
     "name": "Generated",
     "components": [
       {
@@ -6848,7 +6848,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 554,
+    "gameObjectID": 444,
     "name": "Generated",
     "components": [
       {
@@ -6955,7 +6955,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 555,
+    "gameObjectID": 445,
     "name": "Generated",
     "components": [
       {
@@ -7062,221 +7062,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 556,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 6.375,
-            "y": 0.625
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 21
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.14285715,
-                "y": 1.0
-              },
-              {
-                "x": 0.14285715,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.0,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.0,
-                "y": 1.0
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 22
-        }
-      },
-      {
-        "type": "physics2d.components.Rigidbody2D",
-        "properties": {
-          "velocity": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "angularDamping": 0.8,
-          "linearDamping": 0.9,
-          "mass": 0.0,
-          "bodyType": "Static",
-          "friction": 0.1,
-          "angularVelocity": 0.0,
-          "gravityScale": 1.0,
-          "isSensor": false,
-          "fixedRotation": false,
-          "continuousCollision": true,
-          "componentID": 23
-        }
-      },
-      {
-        "type": "physics2d.components.Box2DCollider",
-        "properties": {
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "componentID": 24
-        }
-      },
-      {
-        "type": "components.Ground",
-        "properties": {
-          "componentID": 25
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 557,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 6.375,
-            "y": 0.875
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 21
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.14285715,
-                "y": 1.0
-              },
-              {
-                "x": 0.14285715,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.0,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.0,
-                "y": 1.0
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 22
-        }
-      },
-      {
-        "type": "physics2d.components.Rigidbody2D",
-        "properties": {
-          "velocity": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "angularDamping": 0.8,
-          "linearDamping": 0.9,
-          "mass": 0.0,
-          "bodyType": "Static",
-          "friction": 0.1,
-          "angularVelocity": 0.0,
-          "gravityScale": 1.0,
-          "isSensor": false,
-          "fixedRotation": false,
-          "continuousCollision": true,
-          "componentID": 23
-        }
-      },
-      {
-        "type": "physics2d.components.Box2DCollider",
-        "properties": {
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "componentID": 24
-        }
-      },
-      {
-        "type": "components.Ground",
-        "properties": {
-          "componentID": 25
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 558,
+    "gameObjectID": 447,
     "name": "Generated",
     "components": [
       {
@@ -7383,7 +7169,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 559,
+    "gameObjectID": 448,
     "name": "Generated",
     "components": [
       {
@@ -7490,7 +7276,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 560,
+    "gameObjectID": 449,
     "name": "Generated",
     "components": [
       {
@@ -7597,7 +7383,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 561,
+    "gameObjectID": 450,
     "name": "Generated",
     "components": [
       {
@@ -7704,7 +7490,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 562,
+    "gameObjectID": 451,
     "name": "Generated",
     "components": [
       {
@@ -7811,7 +7597,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 563,
+    "gameObjectID": 452,
     "name": "Generated",
     "components": [
       {
@@ -7918,7 +7704,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 564,
+    "gameObjectID": 453,
     "name": "Generated",
     "components": [
       {
@@ -8025,7 +7811,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 565,
+    "gameObjectID": 454,
     "name": "Generated",
     "components": [
       {
@@ -8132,7 +7918,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 566,
+    "gameObjectID": 455,
     "name": "Generated",
     "components": [
       {
@@ -8195,7 +7981,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 567,
+    "gameObjectID": 456,
     "name": "Generated",
     "components": [
       {
@@ -8258,7 +8044,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 568,
+    "gameObjectID": 457,
     "name": "Generated",
     "components": [
       {
@@ -8321,7 +8107,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 569,
+    "gameObjectID": 458,
     "name": "Generated",
     "components": [
       {
@@ -8384,7 +8170,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 570,
+    "gameObjectID": 459,
     "name": "Generated",
     "components": [
       {
@@ -8447,7 +8233,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 571,
+    "gameObjectID": 460,
     "name": "Generated",
     "components": [
       {
@@ -8510,7 +8296,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 572,
+    "gameObjectID": 461,
     "name": "Generated",
     "components": [
       {
@@ -8573,7 +8359,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 573,
+    "gameObjectID": 462,
     "name": "Generated",
     "components": [
       {
@@ -8680,7 +8466,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 574,
+    "gameObjectID": 463,
     "name": "Generated",
     "components": [
       {
@@ -8787,7 +8573,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 575,
+    "gameObjectID": 464,
     "name": "Generated",
     "components": [
       {
@@ -9009,7 +8795,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 576,
+    "gameObjectID": 465,
     "name": "Generated",
     "components": [
       {
@@ -9123,7 +8909,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 577,
+    "gameObjectID": 466,
     "name": "Generated",
     "components": [
       {
@@ -9237,7 +9023,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 578,
+    "gameObjectID": 467,
     "name": "Generated",
     "components": [
       {
@@ -9504,7 +9290,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 579,
+    "gameObjectID": 468,
     "name": "Generated",
     "components": [
       {
@@ -10881,7 +10667,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 580,
+    "gameObjectID": 469,
     "name": "Entrance1",
     "components": [
       {
@@ -10889,7 +10675,7 @@
         "properties": {
           "position": {
             "x": 5.125,
-            "y": 0.625
+            "y": 0.7499999
           },
           "scale": {
             "x": 0.5,
@@ -10997,15 +10783,15 @@
     "isDead": false
   },
   {
-    "gameObjectID": 581,
+    "gameObjectID": 470,
     "name": "Exit1",
     "components": [
       {
         "type": "components.Transform",
         "properties": {
           "position": {
-            "x": 0.825,
-            "y": 0.675
+            "x": 5.15,
+            "y": 2.7500002
           },
           "scale": {
             "x": 0.5,

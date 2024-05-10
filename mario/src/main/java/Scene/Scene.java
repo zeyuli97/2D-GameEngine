@@ -84,6 +84,15 @@ public class Scene {
     return result.orElse(null);
   }
 
+  public <T extends Component> GameObject getGameObjectWithClass(Class<T> componentClass) {
+    for (GameObject go : gameObjects) {
+      if (go.getComponent(componentClass) != null) {
+        return go;
+      }
+    }
+    return null;
+  }
+
   public void editorUpdate(float dt) {
     this.camera.adjustProjection();
 

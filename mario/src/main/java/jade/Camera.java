@@ -4,11 +4,12 @@ import org.joml.*;
 
 public class Camera {
   private Matrix4f projectionMatrix, viewMatrix, inverseViewMatrix, inverseProjectionMatrix;
-  private Vector2f position;
+  public Vector2f position;
   private float projectionWidth = 6;
   private float projectionHeight = 3;
   private Vector2f projectionSize = new Vector2f(projectionWidth, projectionHeight);
   private float zoom = 1f;
+  public Vector4f clearColor = new Vector4f(1f, 1f, 1f, 1f);
 
   public Camera(Vector2f position) {
     this.position = position;
