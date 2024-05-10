@@ -335,4 +335,36 @@ public class Prefabs {
 
     return goomba;
   }
+
+  public static GameObject generatePipe(Direction direction) {
+    SpriteSheet pipes = AssetPool.getSpriteSheet("assets/images/pipes.png");
+    int index;
+    if (direction == Direction.Down) {
+      index = 0;
+    } else if (direction == Direction.Up) {
+      index = 1;
+    } else if (direction == Direction.Right) {
+      index = 2;
+    } else if (direction == Direction.Left) {
+      index = 3;
+    } else {
+      index = -1;
+    }
+    assert index != -1 : "Invalid pipe direction.";
+    GameObject pipe = generateSpriteWithinGameObject(pipes.getSprite(index), 0.5f, 0.5f);
+
+    Rigidbody2D rb = new Rigidbody2D();
+    rb.setBodyType(BodyType.Static);
+    rb.setFixedRotation(true);
+    rb.setContinuousCollision(false);
+    pipe.addComponent(rb);
+
+    Box2DCollider b2d = new Box2DCollider();
+    b2d.setHalfSize(new Vector2f(0.5f, 0.5f));
+    pipe.addComponent(b2d);
+    pipe.addComponent(new Pipe(direction));
+    pipe.addComponent(new Ground());
+
+    return pipe;
+  }
 }

@@ -1,6 +1,6 @@
 [
   {
-    "gameObjectID": 390,
+    "gameObjectID": 490,
     "name": "Generated",
     "components": [
       {
@@ -107,7 +107,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 391,
+    "gameObjectID": 491,
     "name": "Generated",
     "components": [
       {
@@ -214,7 +214,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 392,
+    "gameObjectID": 492,
     "name": "Generated",
     "components": [
       {
@@ -321,7 +321,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 393,
+    "gameObjectID": 493,
     "name": "Generated",
     "components": [
       {
@@ -428,7 +428,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 394,
+    "gameObjectID": 494,
     "name": "Generated",
     "components": [
       {
@@ -535,7 +535,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 395,
+    "gameObjectID": 495,
     "name": "Generated",
     "components": [
       {
@@ -642,7 +642,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 396,
+    "gameObjectID": 496,
     "name": "Generated",
     "components": [
       {
@@ -749,7 +749,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 397,
+    "gameObjectID": 497,
     "name": "Generated",
     "components": [
       {
@@ -856,7 +856,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 398,
+    "gameObjectID": 498,
     "name": "Generated",
     "components": [
       {
@@ -963,7 +963,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 399,
+    "gameObjectID": 499,
     "name": "Generated",
     "components": [
       {
@@ -1070,7 +1070,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 400,
+    "gameObjectID": 500,
     "name": "Generated",
     "components": [
       {
@@ -1177,7 +1177,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 401,
+    "gameObjectID": 501,
     "name": "Generated",
     "components": [
       {
@@ -1284,7 +1284,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 402,
+    "gameObjectID": 502,
     "name": "Generated",
     "components": [
       {
@@ -1391,7 +1391,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 403,
+    "gameObjectID": 503,
     "name": "Generated",
     "components": [
       {
@@ -1498,7 +1498,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 404,
+    "gameObjectID": 504,
     "name": "Generated",
     "components": [
       {
@@ -1605,7 +1605,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 405,
+    "gameObjectID": 505,
     "name": "Generated",
     "components": [
       {
@@ -1712,7 +1712,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 406,
+    "gameObjectID": 506,
     "name": "Generated",
     "components": [
       {
@@ -1819,7 +1819,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 407,
+    "gameObjectID": 507,
     "name": "Generated",
     "components": [
       {
@@ -1926,7 +1926,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 408,
+    "gameObjectID": 508,
     "name": "Generated",
     "components": [
       {
@@ -2033,7 +2033,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 409,
+    "gameObjectID": 509,
     "name": "Generated",
     "components": [
       {
@@ -2140,7 +2140,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 410,
+    "gameObjectID": 510,
     "name": "Generated",
     "components": [
       {
@@ -2247,7 +2247,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 411,
+    "gameObjectID": 511,
     "name": "Generated",
     "components": [
       {
@@ -2354,7 +2354,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 412,
+    "gameObjectID": 512,
     "name": "Generated",
     "components": [
       {
@@ -2461,7 +2461,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 413,
+    "gameObjectID": 513,
     "name": "Generated",
     "components": [
       {
@@ -2568,7 +2568,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 414,
+    "gameObjectID": 514,
     "name": "Generated",
     "components": [
       {
@@ -2675,7 +2675,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 415,
+    "gameObjectID": 515,
     "name": "Generated",
     "components": [
       {
@@ -2782,7 +2782,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 416,
+    "gameObjectID": 516,
     "name": "Generated",
     "components": [
       {
@@ -2889,7 +2889,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 417,
+    "gameObjectID": 517,
     "name": "Generated",
     "components": [
       {
@@ -2996,7 +2996,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 418,
+    "gameObjectID": 518,
     "name": "Generated",
     "components": [
       {
@@ -3103,7 +3103,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 419,
+    "gameObjectID": 519,
     "name": "Generated",
     "components": [
       {
@@ -3210,7 +3210,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 420,
+    "gameObjectID": 520,
     "name": "Generated",
     "components": [
       {
@@ -3317,7 +3317,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 421,
+    "gameObjectID": 521,
     "name": "Generated",
     "components": [
       {
@@ -3424,7 +3424,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 422,
+    "gameObjectID": 522,
     "name": "Generated",
     "components": [
       {
@@ -3531,7 +3531,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 423,
+    "gameObjectID": 523,
     "name": "Generated",
     "components": [
       {
@@ -3638,7 +3638,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 424,
+    "gameObjectID": 524,
     "name": "Generated",
     "components": [
       {
@@ -3745,7 +3745,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 425,
+    "gameObjectID": 525,
     "name": "Generated",
     "components": [
       {
@@ -3852,7 +3852,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 426,
+    "gameObjectID": 526,
     "name": "Generated",
     "components": [
       {
@@ -3959,7 +3959,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 427,
+    "gameObjectID": 527,
     "name": "Generated",
     "components": [
       {
@@ -4066,7 +4066,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 428,
+    "gameObjectID": 528,
     "name": "Generated",
     "components": [
       {
@@ -4173,7 +4173,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 429,
+    "gameObjectID": 529,
     "name": "Generated",
     "components": [
       {
@@ -4280,7 +4280,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 430,
+    "gameObjectID": 530,
     "name": "Generated",
     "components": [
       {
@@ -4387,7 +4387,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 431,
+    "gameObjectID": 531,
     "name": "Generated",
     "components": [
       {
@@ -4494,7 +4494,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 432,
+    "gameObjectID": 532,
     "name": "Generated",
     "components": [
       {
@@ -4601,7 +4601,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 433,
+    "gameObjectID": 533,
     "name": "Generated",
     "components": [
       {
@@ -4708,7 +4708,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 434,
+    "gameObjectID": 534,
     "name": "Generated",
     "components": [
       {
@@ -4815,7 +4815,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 435,
+    "gameObjectID": 535,
     "name": "Generated",
     "components": [
       {
@@ -4922,7 +4922,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 436,
+    "gameObjectID": 536,
     "name": "Generated",
     "components": [
       {
@@ -5029,7 +5029,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 437,
+    "gameObjectID": 537,
     "name": "Generated",
     "components": [
       {
@@ -5136,7 +5136,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 438,
+    "gameObjectID": 538,
     "name": "Generated",
     "components": [
       {
@@ -5243,7 +5243,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 439,
+    "gameObjectID": 539,
     "name": "Generated",
     "components": [
       {
@@ -5350,7 +5350,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 440,
+    "gameObjectID": 540,
     "name": "Generated",
     "components": [
       {
@@ -5457,7 +5457,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 441,
+    "gameObjectID": 541,
     "name": "Generated",
     "components": [
       {
@@ -5564,7 +5564,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 442,
+    "gameObjectID": 542,
     "name": "Generated",
     "components": [
       {
@@ -5671,7 +5671,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 443,
+    "gameObjectID": 543,
     "name": "Generated",
     "components": [
       {
@@ -5778,7 +5778,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 444,
+    "gameObjectID": 544,
     "name": "Generated",
     "components": [
       {
@@ -5885,7 +5885,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 445,
+    "gameObjectID": 545,
     "name": "Generated",
     "components": [
       {
@@ -5992,7 +5992,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 446,
+    "gameObjectID": 546,
     "name": "Generated",
     "components": [
       {
@@ -6099,7 +6099,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 447,
+    "gameObjectID": 547,
     "name": "Generated",
     "components": [
       {
@@ -6206,7 +6206,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 448,
+    "gameObjectID": 548,
     "name": "Generated",
     "components": [
       {
@@ -6313,7 +6313,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 449,
+    "gameObjectID": 549,
     "name": "Generated",
     "components": [
       {
@@ -6420,7 +6420,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 450,
+    "gameObjectID": 550,
     "name": "Generated",
     "components": [
       {
@@ -6527,7 +6527,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 451,
+    "gameObjectID": 551,
     "name": "Generated",
     "components": [
       {
@@ -6634,7 +6634,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 452,
+    "gameObjectID": 552,
     "name": "Generated",
     "components": [
       {
@@ -6741,7 +6741,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 453,
+    "gameObjectID": 553,
     "name": "Generated",
     "components": [
       {
@@ -6848,7 +6848,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 454,
+    "gameObjectID": 554,
     "name": "Generated",
     "components": [
       {
@@ -6955,7 +6955,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 455,
+    "gameObjectID": 555,
     "name": "Generated",
     "components": [
       {
@@ -7062,7 +7062,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 456,
+    "gameObjectID": 556,
     "name": "Generated",
     "components": [
       {
@@ -7169,7 +7169,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 457,
+    "gameObjectID": 557,
     "name": "Generated",
     "components": [
       {
@@ -7276,7 +7276,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 458,
+    "gameObjectID": 558,
     "name": "Generated",
     "components": [
       {
@@ -7383,7 +7383,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 459,
+    "gameObjectID": 559,
     "name": "Generated",
     "components": [
       {
@@ -7490,7 +7490,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 460,
+    "gameObjectID": 560,
     "name": "Generated",
     "components": [
       {
@@ -7597,7 +7597,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 461,
+    "gameObjectID": 561,
     "name": "Generated",
     "components": [
       {
@@ -7704,7 +7704,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 462,
+    "gameObjectID": 562,
     "name": "Generated",
     "components": [
       {
@@ -7811,7 +7811,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 463,
+    "gameObjectID": 563,
     "name": "Generated",
     "components": [
       {
@@ -7918,7 +7918,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 464,
+    "gameObjectID": 564,
     "name": "Generated",
     "components": [
       {
@@ -8025,7 +8025,7 @@
     "isDead": false
   },
   {
-    "gameObjectID": 465,
+    "gameObjectID": 565,
     "name": "Generated",
     "components": [
       {
@@ -8132,14 +8132,891 @@
     "isDead": false
   },
   {
-    "gameObjectID": 466,
+    "gameObjectID": 566,
     "name": "Generated",
     "components": [
       {
         "type": "components.Transform",
         "properties": {
           "position": {
-            "x": 1.125,
+            "x": 1.625,
+            "y": 2.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 60
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.2857143,
+                "y": 0.41666666
+              },
+              {
+                "x": 0.2857143,
+                "y": 0.33333334
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.33333334
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.41666666
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 61
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 567,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 1.375,
+            "y": 2.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 63
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.41666666
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.33333334
+              },
+              {
+                "x": 0.0,
+                "y": 0.33333334
+              },
+              {
+                "x": 0.0,
+                "y": 0.41666666
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 64
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 568,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 1.875,
+            "y": 2.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 66
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.42857143,
+                "y": 0.41666666
+              },
+              {
+                "x": 0.42857143,
+                "y": 0.33333334
+              },
+              {
+                "x": 0.2857143,
+                "y": 0.33333334
+              },
+              {
+                "x": 0.2857143,
+                "y": 0.41666666
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 67
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 569,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 1.875,
+            "y": 0.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 69
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.5714286,
+                "y": 0.5
+              },
+              {
+                "x": 0.5714286,
+                "y": 0.41666666
+              },
+              {
+                "x": 0.42857143,
+                "y": 0.41666666
+              },
+              {
+                "x": 0.42857143,
+                "y": 0.5
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 70
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 570,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 2.125,
+            "y": 0.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 72
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.71428573,
+                "y": 0.5
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.41666666
+              },
+              {
+                "x": 0.5714286,
+                "y": 0.41666666
+              },
+              {
+                "x": 0.5714286,
+                "y": 0.5
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 73
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 571,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 2.375,
+            "y": 0.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 75
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.85714287,
+                "y": 0.5
+              },
+              {
+                "x": 0.85714287,
+                "y": 0.41666666
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.41666666
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.5
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 76
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 572,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 2.125,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 78
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.71428573,
+                "y": 0.5833333
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.5
+              },
+              {
+                "x": 0.5714286,
+                "y": 0.5
+              },
+              {
+                "x": 0.5714286,
+                "y": 0.5833333
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 79
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 573,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 3.125,
+            "y": 0.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 116
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.2857143,
+                "y": 1.0
+              },
+              {
+                "x": 0.2857143,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.14285715,
+                "y": 1.0
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 117
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "componentID": 118
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "componentID": 119
+        }
+      },
+      {
+        "type": "components.Ground",
+        "properties": {
+          "componentID": 120
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 574,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 4.625,
+            "y": 0.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 116
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.2857143,
+                "y": 1.0
+              },
+              {
+                "x": 0.2857143,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.14285715,
+                "y": 1.0
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 117
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "componentID": 118
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "componentID": 119
+        }
+      },
+      {
+        "type": "components.Ground",
+        "properties": {
+          "componentID": 120
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 575,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 3.625,
+            "y": 0.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 149
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 224,
+              "height": 32,
+              "filePath": "assets/images/spritesheet.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.071428575,
+                "y": 0.5
+              },
+              {
+                "x": 0.071428575,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.5
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 150
+        }
+      },
+      {
+        "type": "components.StateMachine",
+        "properties": {
+          "stateTransfers": [
+            [
+              {
+                "state": "Walk",
+                "trigger": "squashMe"
+              },
+              "Squashed"
+            ]
+          ],
+          "states": [
+            {
+              "title": "Walk",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 16,
+                    "height": 16,
+                    "texture": {
+                      "width": 224,
+                      "height": 32,
+                      "filePath": "assets/images/spritesheet.png"
+                    },
+                    "textCoords": [
+                      {
+                        "x": 0.071428575,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.071428575,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.5
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 16,
+                    "height": 16,
+                    "texture": {
+                      "width": 224,
+                      "height": 32,
+                      "filePath": "assets/images/spritesheet.png"
+                    },
+                    "textCoords": [
+                      {
+                        "x": 0.14285715,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.071428575,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.071428575,
+                        "y": 0.5
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                }
+              ],
+              "doesLoop": true,
+              "componentID": -1
+            },
+            {
+              "title": "Squashed",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 16,
+                    "height": 16,
+                    "texture": {
+                      "width": 224,
+                      "height": 32,
+                      "filePath": "assets/images/spritesheet.png"
+                    },
+                    "textCoords": [
+                      {
+                        "x": 0.21428572,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.21428572,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 0.5
+                      }
+                    ]
+                  },
+                  "frameTime": 0.1
+                }
+              ],
+              "doesLoop": false,
+              "componentID": -1
+            }
+          ],
+          "defaultStateTitle": "Walk",
+          "componentID": 151
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.1,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": true,
+          "componentID": 152
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.12,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "componentID": 153
+        }
+      },
+      {
+        "type": "components.GoombaAI",
+        "properties": {
+          "componentID": 154
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 576,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 1.875,
             "y": 1.125
           },
           "scale": {
@@ -8148,7 +9025,502 @@
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "componentID": 53
+          "componentID": 176
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.85714287,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.85714287,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.9166667
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 177
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "componentID": 178
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "componentID": 179
+        }
+      },
+      {
+        "type": "components.Ground",
+        "properties": {
+          "componentID": 180
+        }
+      },
+      {
+        "type": "components.BreakableBrick",
+        "properties": {
+          "bopSpeed": 0.4,
+          "componentID": 181
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 577,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 2.375,
+            "y": 1.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 176
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 192,
+              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.85714287,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.85714287,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.9166667
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 177
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "componentID": 178
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "componentID": 179
+        }
+      },
+      {
+        "type": "components.Ground",
+        "properties": {
+          "componentID": 180
+        }
+      },
+      {
+        "type": "components.BreakableBrick",
+        "properties": {
+          "bopSpeed": 0.4,
+          "componentID": 181
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 578,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 2.125,
+            "y": 1.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 183
+        }
+      },
+      {
+        "type": "components.SpriteRender",
+        "properties": {
+          "sprite": {
+            "width": 16,
+            "height": 16,
+            "texture": {
+              "width": 112,
+              "height": 80,
+              "filePath": "assets/images/items.png"
+            },
+            "textCoords": [
+              {
+                "x": 0.14285715,
+                "y": 1.0
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.8
+              },
+              {
+                "x": 0.0,
+                "y": 0.8
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "componentID": 184
+        }
+      },
+      {
+        "type": "components.StateMachine",
+        "properties": {
+          "stateTransfers": [
+            [
+              {
+                "state": "Question",
+                "trigger": "setInactive"
+              },
+              "Inactive"
+            ]
+          ],
+          "states": [
+            {
+              "title": "Question",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 16,
+                    "height": 16,
+                    "texture": {
+                      "width": 112,
+                      "height": 80,
+                      "filePath": "assets/images/items.png"
+                    },
+                    "textCoords": [
+                      {
+                        "x": 0.14285715,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.57
+                },
+                {
+                  "sprite": {
+                    "width": 16,
+                    "height": 16,
+                    "texture": {
+                      "width": 112,
+                      "height": 80,
+                      "filePath": "assets/images/items.png"
+                    },
+                    "textCoords": [
+                      {
+                        "x": 0.2857143,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.2857143,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.14285715,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 16,
+                    "height": 16,
+                    "texture": {
+                      "width": 112,
+                      "height": 80,
+                      "filePath": "assets/images/items.png"
+                    },
+                    "textCoords": [
+                      {
+                        "x": 0.42857143,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.42857143,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.2857143,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.2857143,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                }
+              ],
+              "doesLoop": true,
+              "componentID": -1
+            },
+            {
+              "title": "Inactive",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 16,
+                    "height": 16,
+                    "texture": {
+                      "width": 112,
+                      "height": 80,
+                      "filePath": "assets/images/items.png"
+                    },
+                    "textCoords": [
+                      {
+                        "x": 0.5714286,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5714286,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.42857143,
+                        "y": 0.8
+                      },
+                      {
+                        "x": 0.42857143,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.1
+                }
+              ],
+              "doesLoop": false,
+              "componentID": -1
+            }
+          ],
+          "defaultStateTitle": "Question",
+          "componentID": 185
+        }
+      },
+      {
+        "type": "components.QuestionBlock",
+        "properties": {
+          "blockType": "Powerup",
+          "bopSpeed": 0.4,
+          "componentID": 186
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "componentID": 187
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "componentID": 188
+        }
+      },
+      {
+        "type": "components.Ground",
+        "properties": {
+          "componentID": 189
+        }
+      }
+    ],
+    "SERIALIZATION": true,
+    "isDead": false
+  },
+  {
+    "gameObjectID": 579,
+    "name": "Generated",
+    "components": [
+      {
+        "type": "components.Transform",
+        "properties": {
+          "position": {
+            "x": 0.625,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "componentID": 211
         }
       },
       {
@@ -8187,7 +9559,7 @@
             "z": 1.0,
             "w": 1.0
           },
-          "componentID": 54
+          "componentID": 212
         }
       },
       {
@@ -9454,7 +10826,7 @@
             }
           ],
           "defaultStateTitle": "Idle",
-          "componentID": 55
+          "componentID": 213
         }
       },
       {
@@ -9474,7 +10846,7 @@
           "isSensor": false,
           "fixedRotation": true,
           "continuousCollision": false,
-          "componentID": 56
+          "componentID": 214
         }
       },
       {
@@ -9486,14 +10858,14 @@
             "x": 0.0,
             "y": 0.0
           },
-          "componentID": 57
+          "componentID": 215
         }
       },
       {
         "type": "components.PlayerController",
         "properties": {
           "walkSpeed": 1.9,
-          "jumpBoost": 1.0,
+          "jumpBoost": 10.5,
           "jumpImpulse": 3.0,
           "slowDownForce": 0.05,
           "velocityCap": {
@@ -9501,7 +10873,7 @@
             "y": 3.1
           },
           "playerState": "Small",
-          "componentID": 58
+          "componentID": 216
         }
       }
     ],
@@ -9509,492 +10881,51 @@
     "isDead": false
   },
   {
-    "gameObjectID": 467,
-    "name": "Generated",
+    "gameObjectID": 580,
+    "name": "Entrance1",
     "components": [
       {
         "type": "components.Transform",
         "properties": {
           "position": {
-            "x": 1.625,
-            "y": 2.375
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 60
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.2857143,
-                "y": 0.41666666
-              },
-              {
-                "x": 0.2857143,
-                "y": 0.33333334
-              },
-              {
-                "x": 0.14285715,
-                "y": 0.33333334
-              },
-              {
-                "x": 0.14285715,
-                "y": 0.41666666
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 61
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 468,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 1.375,
-            "y": 2.375
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 63
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.14285715,
-                "y": 0.41666666
-              },
-              {
-                "x": 0.14285715,
-                "y": 0.33333334
-              },
-              {
-                "x": 0.0,
-                "y": 0.33333334
-              },
-              {
-                "x": 0.0,
-                "y": 0.41666666
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 64
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 469,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 1.875,
-            "y": 2.375
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 66
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.42857143,
-                "y": 0.41666666
-              },
-              {
-                "x": 0.42857143,
-                "y": 0.33333334
-              },
-              {
-                "x": 0.2857143,
-                "y": 0.33333334
-              },
-              {
-                "x": 0.2857143,
-                "y": 0.41666666
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 67
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 470,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 1.875,
+            "x": 5.125,
             "y": 0.625
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.5,
+            "y": 0.5
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "componentID": 69
+          "componentID": 238
         }
       },
       {
         "type": "components.SpriteRender",
         "properties": {
           "sprite": {
-            "width": 16,
-            "height": 16,
+            "width": 32,
+            "height": 32,
             "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+              "width": 128,
+              "height": 64,
+              "filePath": "assets/images/pipes.png"
             },
             "textCoords": [
               {
-                "x": 0.5714286,
-                "y": 0.5
-              },
-              {
-                "x": 0.5714286,
-                "y": 0.41666666
-              },
-              {
-                "x": 0.42857143,
-                "y": 0.41666666
-              },
-              {
-                "x": 0.42857143,
-                "y": 0.5
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 70
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 471,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 2.125,
-            "y": 0.625
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 72
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.71428573,
-                "y": 0.5
-              },
-              {
-                "x": 0.71428573,
-                "y": 0.41666666
-              },
-              {
-                "x": 0.5714286,
-                "y": 0.41666666
-              },
-              {
-                "x": 0.5714286,
-                "y": 0.5
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 73
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 472,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 2.375,
-            "y": 0.625
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 75
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.85714287,
-                "y": 0.5
-              },
-              {
-                "x": 0.85714287,
-                "y": 0.41666666
-              },
-              {
-                "x": 0.71428573,
-                "y": 0.41666666
-              },
-              {
-                "x": 0.71428573,
-                "y": 0.5
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 76
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 473,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 2.125,
-            "y": 0.875
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 78
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.71428573,
-                "y": 0.5833333
-              },
-              {
-                "x": 0.71428573,
-                "y": 0.5
-              },
-              {
-                "x": 0.5714286,
-                "y": 0.5
-              },
-              {
-                "x": 0.5714286,
-                "y": 0.5833333
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 79
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 474,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 3.125,
-            "y": 0.625
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 116
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.2857143,
+                "x": 0.5,
                 "y": 1.0
               },
               {
-                "x": 0.2857143,
-                "y": 0.9166667
+                "x": 0.5,
+                "y": 0.5
               },
               {
-                "x": 0.14285715,
-                "y": 0.9166667
+                "x": 0.25,
+                "y": 0.5
               },
               {
-                "x": 0.14285715,
+                "x": 0.25,
                 "y": 1.0
               }
             ]
@@ -10005,7 +10936,7 @@
             "z": 1.0,
             "w": 1.0
           },
-          "componentID": 117
+          "componentID": 239
         }
       },
       {
@@ -10019,457 +10950,21 @@
           "linearDamping": 0.9,
           "mass": 0.0,
           "bodyType": "Static",
-          "friction": 0.1,
-          "angularVelocity": 0.0,
-          "gravityScale": 1.0,
-          "isSensor": false,
-          "fixedRotation": false,
-          "continuousCollision": true,
-          "componentID": 118
-        }
-      },
-      {
-        "type": "physics2d.components.Box2DCollider",
-        "properties": {
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "componentID": 119
-        }
-      },
-      {
-        "type": "components.Ground",
-        "properties": {
-          "componentID": 120
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 475,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 4.625,
-            "y": 0.625
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 116
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.2857143,
-                "y": 1.0
-              },
-              {
-                "x": 0.2857143,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.14285715,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.14285715,
-                "y": 1.0
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 117
-        }
-      },
-      {
-        "type": "physics2d.components.Rigidbody2D",
-        "properties": {
-          "velocity": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "angularDamping": 0.8,
-          "linearDamping": 0.9,
-          "mass": 0.0,
-          "bodyType": "Static",
-          "friction": 0.1,
-          "angularVelocity": 0.0,
-          "gravityScale": 1.0,
-          "isSensor": false,
-          "fixedRotation": false,
-          "continuousCollision": true,
-          "componentID": 118
-        }
-      },
-      {
-        "type": "physics2d.components.Box2DCollider",
-        "properties": {
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "componentID": 119
-        }
-      },
-      {
-        "type": "components.Ground",
-        "properties": {
-          "componentID": 120
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 476,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 3.625,
-            "y": 0.625
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 149
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 224,
-              "height": 32,
-              "filePath": "assets/images/spritesheet.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.071428575,
-                "y": 0.5
-              },
-              {
-                "x": 0.071428575,
-                "y": 0.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.5
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 150
-        }
-      },
-      {
-        "type": "components.StateMachine",
-        "properties": {
-          "stateTransfers": [
-            [
-              {
-                "state": "Walk",
-                "trigger": "squashMe"
-              },
-              "Squashed"
-            ]
-          ],
-          "states": [
-            {
-              "title": "Walk",
-              "animationFrames": [
-                {
-                  "sprite": {
-                    "width": 16,
-                    "height": 16,
-                    "texture": {
-                      "width": 224,
-                      "height": 32,
-                      "filePath": "assets/images/spritesheet.png"
-                    },
-                    "textCoords": [
-                      {
-                        "x": 0.071428575,
-                        "y": 0.5
-                      },
-                      {
-                        "x": 0.071428575,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.0,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.0,
-                        "y": 0.5
-                      }
-                    ]
-                  },
-                  "frameTime": 0.23
-                },
-                {
-                  "sprite": {
-                    "width": 16,
-                    "height": 16,
-                    "texture": {
-                      "width": 224,
-                      "height": 32,
-                      "filePath": "assets/images/spritesheet.png"
-                    },
-                    "textCoords": [
-                      {
-                        "x": 0.14285715,
-                        "y": 0.5
-                      },
-                      {
-                        "x": 0.14285715,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.071428575,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.071428575,
-                        "y": 0.5
-                      }
-                    ]
-                  },
-                  "frameTime": 0.23
-                }
-              ],
-              "doesLoop": true,
-              "componentID": -1
-            },
-            {
-              "title": "Squashed",
-              "animationFrames": [
-                {
-                  "sprite": {
-                    "width": 16,
-                    "height": 16,
-                    "texture": {
-                      "width": 224,
-                      "height": 32,
-                      "filePath": "assets/images/spritesheet.png"
-                    },
-                    "textCoords": [
-                      {
-                        "x": 0.21428572,
-                        "y": 0.5
-                      },
-                      {
-                        "x": 0.21428572,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.14285715,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.14285715,
-                        "y": 0.5
-                      }
-                    ]
-                  },
-                  "frameTime": 0.1
-                }
-              ],
-              "doesLoop": false,
-              "componentID": -1
-            }
-          ],
-          "defaultStateTitle": "Walk",
-          "componentID": 151
-        }
-      },
-      {
-        "type": "physics2d.components.Rigidbody2D",
-        "properties": {
-          "velocity": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "angularDamping": 0.8,
-          "linearDamping": 0.9,
-          "mass": 0.1,
-          "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
           "fixedRotation": true,
-          "continuousCollision": true,
-          "componentID": 152
-        }
-      },
-      {
-        "type": "physics2d.components.CircleCollider",
-        "properties": {
-          "radius": 0.12,
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "componentID": 153
-        }
-      },
-      {
-        "type": "components.GoombaAI",
-        "properties": {
-          "componentID": 154
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 477,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 1.875,
-            "y": 1.125
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 176
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.85714287,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.85714287,
-                "y": 0.8333333
-              },
-              {
-                "x": 0.71428573,
-                "y": 0.8333333
-              },
-              {
-                "x": 0.71428573,
-                "y": 0.9166667
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 177
-        }
-      },
-      {
-        "type": "physics2d.components.Rigidbody2D",
-        "properties": {
-          "velocity": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "angularDamping": 0.8,
-          "linearDamping": 0.9,
-          "mass": 0.0,
-          "bodyType": "Static",
-          "friction": 0.1,
-          "angularVelocity": 0.0,
-          "gravityScale": 1.0,
-          "isSensor": false,
-          "fixedRotation": false,
-          "continuousCollision": true,
-          "componentID": 178
+          "continuousCollision": false,
+          "componentID": 240
         }
       },
       {
         "type": "physics2d.components.Box2DCollider",
         "properties": {
           "halfSize": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.5,
+            "y": 0.5
           },
           "origin": {
             "x": 0.0,
@@ -10479,20 +10974,22 @@
             "x": 0.0,
             "y": 0.0
           },
-          "componentID": 179
+          "componentID": 241
+        }
+      },
+      {
+        "type": "components.Pipe",
+        "properties": {
+          "direction": "Up",
+          "connectionPipeName": "Exit1",
+          "isEntrance": true,
+          "componentID": 242
         }
       },
       {
         "type": "components.Ground",
         "properties": {
-          "componentID": 180
-        }
-      },
-      {
-        "type": "components.BreakableBrick",
-        "properties": {
-          "bopSpeed": 0.4,
-          "componentID": 181
+          "componentID": 243
         }
       }
     ],
@@ -10500,336 +10997,62 @@
     "isDead": false
   },
   {
-    "gameObjectID": 478,
-    "name": "Generated",
+    "gameObjectID": 581,
+    "name": "Exit1",
     "components": [
       {
         "type": "components.Transform",
         "properties": {
           "position": {
-            "x": 2.375,
-            "y": 1.125
+            "x": 0.825,
+            "y": 0.675
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.5,
+            "y": 0.5
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "componentID": 176
+          "componentID": 245
         }
       },
       {
         "type": "components.SpriteRender",
         "properties": {
           "sprite": {
-            "width": 16,
-            "height": 16,
+            "width": 32,
+            "height": 32,
             "texture": {
-              "width": 112,
-              "height": 192,
-              "filePath": "assets/images/spritesheets/decorationsAndBlocks.png"
+              "width": 128,
+              "height": 64,
+              "filePath": "assets/images/pipes.png"
             },
             "textCoords": [
               {
-                "x": 0.85714287,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.85714287,
-                "y": 0.8333333
-              },
-              {
-                "x": 0.71428573,
-                "y": 0.8333333
-              },
-              {
-                "x": 0.71428573,
-                "y": 0.9166667
-              }
-            ]
-          },
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "componentID": 177
-        }
-      },
-      {
-        "type": "physics2d.components.Rigidbody2D",
-        "properties": {
-          "velocity": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "angularDamping": 0.8,
-          "linearDamping": 0.9,
-          "mass": 0.0,
-          "bodyType": "Static",
-          "friction": 0.1,
-          "angularVelocity": 0.0,
-          "gravityScale": 1.0,
-          "isSensor": false,
-          "fixedRotation": false,
-          "continuousCollision": true,
-          "componentID": 178
-        }
-      },
-      {
-        "type": "physics2d.components.Box2DCollider",
-        "properties": {
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "componentID": 179
-        }
-      },
-      {
-        "type": "components.Ground",
-        "properties": {
-          "componentID": 180
-        }
-      },
-      {
-        "type": "components.BreakableBrick",
-        "properties": {
-          "bopSpeed": 0.4,
-          "componentID": 181
-        }
-      }
-    ],
-    "SERIALIZATION": true,
-    "isDead": false
-  },
-  {
-    "gameObjectID": 479,
-    "name": "Generated",
-    "components": [
-      {
-        "type": "components.Transform",
-        "properties": {
-          "position": {
-            "x": 2.125,
-            "y": 1.125
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "componentID": 183
-        }
-      },
-      {
-        "type": "components.SpriteRender",
-        "properties": {
-          "sprite": {
-            "width": 16,
-            "height": 16,
-            "texture": {
-              "width": 112,
-              "height": 80,
-              "filePath": "assets/images/items.png"
-            },
-            "textCoords": [
-              {
-                "x": 0.42857143,
+                "x": 0.25,
                 "y": 1.0
               },
               {
-                "x": 0.42857143,
-                "y": 0.8
+                "x": 0.25,
+                "y": 0.5
               },
               {
-                "x": 0.2857143,
-                "y": 0.8
+                "x": 0.0,
+                "y": 0.5
               },
               {
-                "x": 0.2857143,
+                "x": 0.0,
                 "y": 1.0
               }
             ]
           },
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
+            "x": 0.8,
+            "y": 0.8,
+            "z": 0.0,
+            "w": 0.8
           },
-          "componentID": 184
-        }
-      },
-      {
-        "type": "components.StateMachine",
-        "properties": {
-          "stateTransfers": [
-            [
-              {
-                "state": "Question",
-                "trigger": "setInactive"
-              },
-              "Inactive"
-            ]
-          ],
-          "states": [
-            {
-              "title": "Question",
-              "animationFrames": [
-                {
-                  "sprite": {
-                    "width": 16,
-                    "height": 16,
-                    "texture": {
-                      "width": 112,
-                      "height": 80,
-                      "filePath": "assets/images/items.png"
-                    },
-                    "textCoords": [
-                      {
-                        "x": 0.14285715,
-                        "y": 1.0
-                      },
-                      {
-                        "x": 0.14285715,
-                        "y": 0.8
-                      },
-                      {
-                        "x": 0.0,
-                        "y": 0.8
-                      },
-                      {
-                        "x": 0.0,
-                        "y": 1.0
-                      }
-                    ]
-                  },
-                  "frameTime": 0.57
-                },
-                {
-                  "sprite": {
-                    "width": 16,
-                    "height": 16,
-                    "texture": {
-                      "width": 112,
-                      "height": 80,
-                      "filePath": "assets/images/items.png"
-                    },
-                    "textCoords": [
-                      {
-                        "x": 0.2857143,
-                        "y": 1.0
-                      },
-                      {
-                        "x": 0.2857143,
-                        "y": 0.8
-                      },
-                      {
-                        "x": 0.14285715,
-                        "y": 0.8
-                      },
-                      {
-                        "x": 0.14285715,
-                        "y": 1.0
-                      }
-                    ]
-                  },
-                  "frameTime": 0.23
-                },
-                {
-                  "sprite": {
-                    "width": 16,
-                    "height": 16,
-                    "texture": {
-                      "width": 112,
-                      "height": 80,
-                      "filePath": "assets/images/items.png"
-                    },
-                    "textCoords": [
-                      {
-                        "x": 0.42857143,
-                        "y": 1.0
-                      },
-                      {
-                        "x": 0.42857143,
-                        "y": 0.8
-                      },
-                      {
-                        "x": 0.2857143,
-                        "y": 0.8
-                      },
-                      {
-                        "x": 0.2857143,
-                        "y": 1.0
-                      }
-                    ]
-                  },
-                  "frameTime": 0.23
-                }
-              ],
-              "doesLoop": true,
-              "componentID": -1
-            },
-            {
-              "title": "Inactive",
-              "animationFrames": [
-                {
-                  "sprite": {
-                    "width": 16,
-                    "height": 16,
-                    "texture": {
-                      "width": 112,
-                      "height": 80,
-                      "filePath": "assets/images/items.png"
-                    },
-                    "textCoords": [
-                      {
-                        "x": 0.5714286,
-                        "y": 1.0
-                      },
-                      {
-                        "x": 0.5714286,
-                        "y": 0.8
-                      },
-                      {
-                        "x": 0.42857143,
-                        "y": 0.8
-                      },
-                      {
-                        "x": 0.42857143,
-                        "y": 1.0
-                      }
-                    ]
-                  },
-                  "frameTime": 0.1
-                }
-              ],
-              "doesLoop": false,
-              "componentID": -1
-            }
-          ],
-          "defaultStateTitle": "Question",
-          "componentID": 185
-        }
-      },
-      {
-        "type": "components.QuestionBlock",
-        "properties": {
-          "blockType": "Powerup",
-          "bopSpeed": 0.4,
-          "componentID": 186
+          "componentID": 246
         }
       },
       {
@@ -10847,17 +11070,17 @@
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
-          "fixedRotation": false,
-          "continuousCollision": true,
-          "componentID": 187
+          "fixedRotation": true,
+          "continuousCollision": false,
+          "componentID": 247
         }
       },
       {
         "type": "physics2d.components.Box2DCollider",
         "properties": {
           "halfSize": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.5,
+            "y": 0.5
           },
           "origin": {
             "x": 0.0,
@@ -10867,13 +11090,22 @@
             "x": 0.0,
             "y": 0.0
           },
-          "componentID": 188
+          "componentID": 248
+        }
+      },
+      {
+        "type": "components.Pipe",
+        "properties": {
+          "direction": "Right",
+          "connectionPipeName": "Entrance1",
+          "isEntrance": false,
+          "componentID": 249
         }
       },
       {
         "type": "components.Ground",
         "properties": {
-          "componentID": 189
+          "componentID": 250
         }
       }
     ],

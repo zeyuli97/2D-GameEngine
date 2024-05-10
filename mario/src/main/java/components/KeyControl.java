@@ -14,14 +14,25 @@ import static org.lwjgl.glfw.GLFW.*;
 
 public class KeyControl extends Component {
 
+  private float debounceTime = 0.2f;
+  private float debounce = 0f;
+
   @Override
   public void editorUpdate(float dt) {
     WindowProperties windowProperties = Window.getImGuiLayer().getWindowProperties();
     GameObject activeGameObject = windowProperties.getActiveGameObject();
     List<GameObject> activeGameObjects = windowProperties.getActiveGoGroup();
 
+    float mutiplier = 1;
+    if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT_SHIFT)) {
+      mutiplier = 0.1f;
+    }
 
-    if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT_CONTROL) && KeyListerner.isKeyFirstPressed(GLFW_KEY_D) && activeGameObject != null &&activeGameObjects.size() <= 1) {
+    debounce -= dt;
+
+
+    if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT_CONTROL) && KeyListerner.isKeyFirstPressed(GLFW_KEY_D)
+            && activeGameObject != null &&activeGameObjects.size() <= 1) {
       GameObject go = activeGameObject.copy();
       Window.getCurrentScene().addGameObjectToScene(go);
       go.transform.position.add(Settings.Grid_Width,0f); // slide off for dragging.
@@ -53,6 +64,36 @@ public class KeyControl extends Component {
 //        if (copy.getComponent(StateMachine.class) != null) {
 //          copy.getComponent(StateMachine.class).refreshTextures();
 //        }
+      }
+    } else if (KeyListerner.isKeyPressed(GLFW_KEY_F) && debounce < 0) {
+      debounce = debounceTime;
+      for (GameObject go : activeGameObjects) {
+        go.transform.zIndex++;
+      }
+    } else if (KeyListerner.isKeyPressed(GLFW_KEY_B) && debounce < 0) {
+      debounce = debounceTime;
+      for (GameObject go : activeGameObjects) {
+        go.transform.zIndex--;
+      }
+    } else if (KeyListerner.isKeyPressed(GLFW_KEY_UP) && debounce < 0) {
+      debounce = debounceTime;
+      for (GameObject go : activeGameObjects) {
+        go.transform.position.y += Settings.Grid_Height * mutiplier;
+      }
+    } else if (KeyListerner.isKeyPressed(GLFW_KEY_DOWN) && debounce < 0) {
+      debounce = debounceTime;
+      for (GameObject go : activeGameObjects) {
+        go.transform.position.y -= Settings.Grid_Height * mutiplier;
+      }
+    } else if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT) && debounce < 0) {
+      debounce = debounceTime;
+      for (GameObject go : activeGameObjects) {
+        go.transform.position.x -= Settings.Grid_Width * mutiplier;
+      }
+    } else if (KeyListerner.isKeyPressed(GLFW_KEY_RIGHT) && debounce < 0) {
+      debounce = debounceTime;
+      for (GameObject go : activeGameObjects) {
+        go.transform.position.x += Settings.Grid_Width * mutiplier;
       }
     }
   }

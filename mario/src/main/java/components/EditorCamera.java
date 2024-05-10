@@ -54,14 +54,12 @@ public class EditorCamera extends Component {
 
       //System.out.println(MouseListener.getScrollY());
       float addValue = (float) Math.pow(Math.abs(MouseListener.getScrollY() * scrollSensitivity), 1 / (levelEditorCamera.getZoom()));
-      System.out.println(addValue);
 
       addValue *= (float) (Math.signum(MouseListener.getScrollY()));
       levelEditorCamera.addZoom(addValue);
     }
 
     if (KeyListerner.isKeyPressed(GLFW_KEY_C)) {
-      System.out.println("Key pressed");
       reset = true;
     }
 

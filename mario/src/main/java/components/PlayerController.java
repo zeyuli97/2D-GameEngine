@@ -35,7 +35,7 @@ public class PlayerController extends Component {
   private transient SpriteRender spr;
 
   public float walkSpeed = 1.9f;
-  public float jumpBoost = 1.0f;
+  public float jumpBoost = .5f;
   public float jumpImpulse = 3.0f;
   public float slowDownForce = 0.05f; // The speed reduced due to Mario turn direction.
   public Vector2f velocityCap = new Vector2f(2.1f, 3.1f);
@@ -274,6 +274,11 @@ public class PlayerController extends Component {
       hurtInvincibilityTimeLeft = hurtInVincibilityTimer;
       AssetPool.getSound("assets/sounds/pipe.ogg").playSound();
     }
+  }
+
+  public void setPosition(Vector2f position) {
+    this.gameObject.transform.position.set(position);
+    this.rb.setPosition(position);
   }
 
 
