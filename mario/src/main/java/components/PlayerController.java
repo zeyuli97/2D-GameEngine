@@ -4,6 +4,7 @@ import Scene.LevelEditorSceneInitializer;
 import Scene.LevelSceneInitializer;
 import jade.GameObject;
 import jade.KeyListerner;
+import jade.Prefabs;
 import jade.Window;
 import org.jbox2d.dynamics.contacts.Contact;
 import org.joml.Vector2f;
@@ -16,6 +17,7 @@ import renders.DebugDraw;
 import util.AssetPool;
 
 import java.util.Objects;
+import java.util.Vector;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -167,6 +169,19 @@ public class PlayerController extends Component {
       }
     }
 
+    if (KeyListerner.isKeyFirstPressed(GLFW_KEY_E) && playerState == PlayerState.Fire && Fireball.canSpawn()) {
+      Vector2f fireballPosition = new Vector2f(gameObject.transform.position.x, gameObject.transform.position.y);
+      if (this.gameObject.transform.scale.x > 0) {
+        fireballPosition.add(new Vector2f(0.26f, 0));
+      } else {
+        fireballPosition.add(new Vector2f(-0.26f, 0));
+      }
+
+      GameObject fireball  = Prefabs.generateFireball(fireballPosition);
+      fireball.getComponent(Fireball.class).goingRight = (this.gameObject.transform.scale.x > 0);
+      Window.getCurrentScene().addGameObjectToScene(fireball);
+    }
+
     checkOnGround();
     if (KeyListerner.isKeyPressed(GLFW_KEY_SPACE) && (jumpTime > 0 || onGround || groundDebounce > 0)) {
       if ((onGround || groundDebounce > 0) && jumpTime == 0) {
@@ -254,7 +269,7 @@ public class PlayerController extends Component {
       if (pb != null) {
         jumpBoost *= bigJumpBoostFactor;
         walkSpeed *= bigJumpBoostFactor;
-        pb.setHeight(0.63f);
+        pb.setHeight(0.42f);
       }
     } else if (playerState == PlayerState.Big) {
       playerState = PlayerState.Fire;

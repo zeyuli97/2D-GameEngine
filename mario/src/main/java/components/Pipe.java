@@ -40,28 +40,32 @@ public class Pipe extends Component {
         case Up:
           if ((KeyListerner.isKeyPressed(GLFW_KEY_DOWN)
                   || KeyListerner.isKeyPressed(GLFW_KEY_S))
-                  && isEntrance) {
+                  && isEntrance
+                  && playerAtEntrance()) {
             playerEntering = true;
           }
           break;
         case Left:
           if ((KeyListerner.isKeyPressed(GLFW_KEY_RIGHT)
                   || KeyListerner.isKeyPressed(GLFW_KEY_D))
-                  && isEntrance) {
+                  && isEntrance
+                  && playerAtEntrance()) {
             playerEntering = true;
           }
           break;
         case Right:
           if ((KeyListerner.isKeyPressed(GLFW_KEY_LEFT)
                   || KeyListerner.isKeyPressed(GLFW_KEY_A))
-                  && isEntrance) {
+                  && isEntrance
+                  && playerAtEntrance()) {
             playerEntering = true;
           }
           break;
         case Down:
           if ((KeyListerner.isKeyPressed(GLFW_KEY_UP)
                   || KeyListerner.isKeyPressed(GLFW_KEY_W))
-                  && isEntrance) {
+                  && isEntrance
+                  && playerAtEntrance()) {
             playerEntering = true;
           }
           break;
@@ -73,32 +77,47 @@ public class Pipe extends Component {
     }
   }
 
+  public boolean playerAtEntrance() {
+    if (collidingPlayerController == null) {
+      return false;
+    }
+
+    Vector2f min = new Vector2f(gameObject.transform.position).
+            sub(new Vector2f(gameObject.transform.scale).mul(0.5f));
+    Vector2f max = new Vector2f(gameObject.transform.position).
+            add(new Vector2f(gameObject.transform.scale).mul(0.5f));
+    Vector2f playerMax = new Vector2f(collidingPlayerController.gameObject.transform.position).
+            add(new Vector2f(collidingPlayerController.gameObject.transform.scale).mul(0.5f));
+    Vector2f playerMin = new Vector2f(collidingPlayerController.gameObject.transform.position).
+            sub(new Vector2f(collidingPlayerController.gameObject.transform.scale).mul(0.5f));
+
+    switch (direction) {
+      case Up:
+        return playerMin.y >= max.y &&
+                playerMax.x > min.x &&
+                playerMin.x < max.x;
+      case Down:
+        return playerMax.y <= min.y &&
+                playerMax.x > min.x &&
+                playerMin.x < max.x;
+      case Right:
+        return playerMax.x <= min.x &&
+                playerMax.y > min.y &&
+                playerMin.y < max.y;
+      case Left:
+        return playerMin.x >= max.x &&
+                playerMax.y > min.y &&
+                playerMin.y < max.y;
+    }
+
+    return false;
+
+  }
+
   @Override
   public void beginCollision(GameObject collidingObject, Contact contact, Vector2f contactNormal) {
     PlayerController playerController = collidingObject.getComponent(PlayerController.class);
     if (playerController != null) {
-      switch (direction) {
-        case Up:
-          if (contactNormal.y < entranceTolerance) {
-            return;
-          }
-          break;
-        case Right:
-          if (contactNormal.x < entranceTolerance) {
-            return;
-          }
-          break;
-        case Down:
-          if (contactNormal.y > -entranceTolerance) {
-            return;
-          }
-          break;
-        case Left:
-          if (contactNormal.x > - entranceTolerance) {
-            return;
-          }
-          break;
-      }
       collidingPlayerController = playerController;
     }
   }

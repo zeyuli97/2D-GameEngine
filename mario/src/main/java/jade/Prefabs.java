@@ -189,8 +189,8 @@ public class Prefabs {
     mario.addComponent(stateMachine);
 
     PillboxCollider pb = new PillboxCollider();
-    pb.width = 0.39f;
-    pb.height = 0.31f;
+    pb.width = 0.21f;
+    pb.height = 0.25f;
     Rigidbody2D rb = new Rigidbody2D();
     rb.setBodyType(BodyType.Dynamic);
     rb.setContinuousCollision(false);
@@ -442,5 +442,24 @@ public class Prefabs {
     flagtop.addComponent(new FlagPole(true));
 
     return flagtop;
+  }
+
+  public static GameObject generateFireball(Vector2f position) {
+    SpriteSheet items = AssetPool.getSpriteSheet("assets/images/items.png");
+    GameObject fireball = generateSpriteWithinGameObject(items.getSprite(32), 0.18f, 0.18f);
+    fireball.transform.position = position;
+
+    Rigidbody2D rb = new Rigidbody2D();
+    rb.setBodyType(BodyType.Dynamic);
+    rb.setFixedRotation(true);
+    rb.setContinuousCollision(false);
+    fireball.addComponent(rb);
+
+    CircleCollider circleCollider = new CircleCollider();
+    circleCollider.setRadius(0.08f);
+    fireball.addComponent(circleCollider);
+    fireball.addComponent(new Fireball());
+
+    return fireball;
   }
 }
