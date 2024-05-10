@@ -1,11 +1,16 @@
 package physics2d.components;
 
 import components.Component;
+import components.Ground;
+import jade.GameObject;
 import jade.Window;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.joml.Vector2f;
+import org.joml.Vector3f;
+import physics2d.RaycastInfo;
 import physics2d.enums.BodyType;
+import renders.DebugDraw;
 
 public class Rigidbody2D extends Component {
   private Vector2f velocity = new Vector2f();
@@ -162,4 +167,5 @@ public class Rigidbody2D extends Component {
   public void setRawBody(Body rawBody) {
     this.rawBody = rawBody;
   }
+
 }

@@ -125,7 +125,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
     if (ImGui.beginTabBar("WindowTabBar")) {
 
-      if (ImGui.beginTabItem("Blocks")) {
+      if (ImGui.beginTabItem("Solid Blocks")) {
 
         ImVec2 windowPos = new ImVec2();
         ImGui.getWindowPos(windowPos);
@@ -176,7 +176,48 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         ImGui.endTabItem();
       }
 
+      if (ImGui.beginTabItem("Decoration Blocks")) {
+        ImVec2 windowPos = new ImVec2();
+        ImGui.getWindowPos(windowPos);
+        ImVec2 windowSize = new ImVec2();
+        ImGui.getWindowSize(windowSize);
+        ImVec2 itemSpacing = new ImVec2();
+        ImGui.getStyle().getItemSpacing(itemSpacing);
+
+        float windowX2 = windowPos.x + windowSize.x;
+        for (int i = 34; i < 61; i++) {
+          if (i >= 35 && i < 38) continue;
+          if (i >= 42 && i < 45) continue;
+
+          Sprite sprite = sprites.getSprite(i);
+          float spriteWidth = sprite.getWidth() * 2;
+          float spriteHeight = sprite.getHeight() * 2;
+          int id = sprite.getTexture().getTextID();
+          Vector2f[] texCoords = sprite.getTextCoords();
+
+          ImGui.pushID(i);
+          if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+            GameObject genSprite = Prefabs.generateSpriteWithinGameObject(sprite, .25f, .25f);
+            // Attach this to the cursor.
+            levelEditorStuff.getComponent(MouseControl.class).pickupObject(genSprite);
+          }
+          ImGui.popID();
+
+          ImVec2 lastButtonPos = new ImVec2();
+          ImGui.getItemRectMax(lastButtonPos);
+          float lastButtonX2 = lastButtonPos.x;
+          float nextButtonX2 = lastButtonX2 + itemSpacing.x + spriteWidth;
+          if (i + 1 < sprites.size() && (nextButtonX2 + 8) < windowX2) {
+            ImGui.sameLine();
+          }
+        }
+
+        ImGui.endTabItem();
+      }
+
+
       if (ImGui.beginTabItem("Prefabs")) {
+        int uniqueID = 0;
         SpriteSheet playerSprite = AssetPool.getSpriteSheet("assets/images/spritesheet.png");
         Sprite sprite = playerSprite.getSprite(0);
         float spriteWidth = sprite.getWidth() * 2;
@@ -184,20 +225,37 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         int id = sprite.getTexture().getTextID();
         Vector2f[] texCoords = sprite.getTextCoords();
 
+        ImGui.pushID(uniqueID++);
         if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
           GameObject genSprite = Prefabs.generateMario();
           levelEditorStuff.getComponent(MouseControl.class).pickupObject(genSprite);
         }
+        ImGui.popID();
         ImGui.sameLine();
 
         SpriteSheet items = AssetPool.getSpriteSheet("assets/images/items.png");
         sprite = items.getSprite(0);
         id = sprite.getTexture().getTextID();
         texCoords = sprite.getTextCoords();
+
+        ImGui.pushID(uniqueID++);
         if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
           GameObject object = Prefabs.generateQuestionBlock();
           levelEditorStuff.getComponent(MouseControl.class).pickupObject(object);
         }
+
+        ImGui.popID();
+        ImGui.sameLine();
+
+        sprite = items.getSprite(14);
+        id = sprite.getTexture().getTextID();
+        texCoords = sprite.getTextCoords();
+        ImGui.pushID(uniqueID++);
+        if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+          GameObject object = Prefabs.generateGoomba();
+          levelEditorStuff.getComponent(MouseControl.class).pickupObject(object);
+        }
+        ImGui.popID();
         ImGui.endTabItem();
       }
 
