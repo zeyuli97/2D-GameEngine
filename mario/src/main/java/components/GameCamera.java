@@ -9,8 +9,8 @@ public class GameCamera extends Component {
   private transient GameObject player;
   private transient Camera gameCamera;
   private transient float xBoundary = Float.MIN_VALUE;
-  private transient float undergroundYBoundary = 0f;
-  private transient float cameraBuffer = 1.5f; // Which is 6 grids
+  private transient float undergroundYBoundary = -0.5f;
+  private transient float cameraBuffer = .5f; // Which is 6 grids
   private transient float playerBuffer = 0.25f;
 
   private Vector4f skyColor = new Vector4f(92/255f, 148/255f, 252/255f, 1.0f);
@@ -31,11 +31,16 @@ public class GameCamera extends Component {
   @Override
   public void update(float dt) {
     if (player != null && !player.getComponent(PlayerController.class).hasWon()) {
-      gameCamera.position.x = Math.max(player.transform.position.x - 3f, xBoundary);
-      xBoundary = Math.max(xBoundary, gameCamera.position.x);
+      if ((player.transform.position.x - gameCamera.position.x) > 3.5) {
+        gameCamera.position.x = Math.max(player.transform.position.x - 3.5f, xBoundary);
+        xBoundary = Math.max(xBoundary, gameCamera.position.x);
+      } else if ((player.transform.position.x - gameCamera.position.x) < 2.5f) {
+        gameCamera.position.x = Math.min(player.transform.position.x - 2.5f, xBoundary);
+        xBoundary = Math.min(xBoundary, gameCamera.position.x);
+      }
 
 
-      if (player.transform.position.y < -playerBuffer) {
+      if (player.transform.position.y < - playerBuffer) {
         this.gameCamera.position.y = undergroundYBoundary;
         this.gameCamera.clearColor.set(underGroundColor);
       } else if (player.transform.position.y > 0f) {

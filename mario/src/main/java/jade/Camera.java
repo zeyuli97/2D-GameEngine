@@ -1,7 +1,9 @@
 package jade;
 
 import org.joml.*;
-
+/**
+ * Camera has size 6 * 3 which is 24 grids * 18 grids.
+ * */
 public class Camera {
   private Matrix4f projectionMatrix, viewMatrix, inverseViewMatrix, inverseProjectionMatrix;
   public Vector2f position;

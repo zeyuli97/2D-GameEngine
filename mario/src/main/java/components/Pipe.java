@@ -30,7 +30,6 @@ public class Pipe extends Component {
   @Override
   public void update(float dt) {
     if (connectingPipe == null) {
-      System.out.println("Connecting pipe " + connectionPipeName + "is Null!");
       return;
     }
 
@@ -101,7 +100,7 @@ public class Pipe extends Component {
                 playerMax.x > min.x &&
                 playerMin.x < max.x;
       case Right:
-        return playerMax.x >= max.x &&
+        return playerMin.x >= max.x &&
                 playerMax.y > min.y &&
                 playerMin.y < max.y;
       case Left:
