@@ -6,6 +6,7 @@ import org.joml.Vector2f;
 import physics2d.components.Box2DCollider;
 import physics2d.components.CircleCollider;
 import physics2d.components.Rigidbody2D;
+import renders.DebugDraw;
 
 /**
  * The PillBox Collider represents the mario inside of physics world.
@@ -23,7 +24,7 @@ public class PillboxCollider extends Component {
 
   @Override
   public void start() {
-    this.topCircle.gameObject = this.gameObject;
+    //this.topCircle.gameObject = this.gameObject;
     this.bottomCircle.gameObject = this.gameObject;
     this.middleBox.gameObject = this.gameObject;
     recalculatedColliders();
@@ -38,9 +39,11 @@ public class PillboxCollider extends Component {
 
   @Override
   public void editorUpdate(float dt) {
-    topCircle.editorUpdate(dt);
+    //topCircle.editorUpdate(dt);
     bottomCircle.editorUpdate(dt);
     middleBox.editorUpdate(dt);
+    recalculatedColliders();
+
 
     if (resetFixtureNextFrame)  {
       resetFixture();
@@ -75,14 +78,21 @@ public class PillboxCollider extends Component {
   }
 
   public void recalculatedColliders() {
-    float circleRadius = width / 4;
-    float boxHeight = height - 2 * circleRadius;
-    topCircle.setRadius(circleRadius);
+//    float circleRadius = width / 4;
+//    float boxHeight = height - 2 * circleRadius;
+//    topCircle.setRadius(circleRadius);
+//    bottomCircle.setRadius(circleRadius);
+//    topCircle.setOffset(new Vector2f(offset).add(0, boxHeight / 4));
+//    bottomCircle.setOffset(new Vector2f(offset).sub(0, boxHeight / 4));
+//    middleBox.setHalfSize(new Vector2f(width / 2, boxHeight / 2));
+//    middleBox.setOffset(offset);
+
+    float circleRadius = width / 2f;
+    float boxHeight = height - circleRadius;
     bottomCircle.setRadius(circleRadius);
-    topCircle.setOffset(new Vector2f(offset).add(0, boxHeight / 4));
-    bottomCircle.setOffset(new Vector2f(offset).sub(0, boxHeight / 4));
-    middleBox.setHalfSize(new Vector2f(width / 2, boxHeight / 2));
-    middleBox.setOffset(offset);
+    bottomCircle.setOffset(new Vector2f(offset).sub(0, (height - (circleRadius * 2f)) / 2f));
+    middleBox.setHalfSize(new Vector2f(width - 0.01f, boxHeight));
+    middleBox.setOffset(new Vector2f(offset).add(0, (height - boxHeight) / 2f));
   }
 
   public Box2DCollider getMiddleBox() {

@@ -42,9 +42,11 @@ public class TurtleAI extends Component {
       if (goingRight) {
         gameObject.transform.scale.x = -0.25f;
         velocity.x = walkSpeed;
+        acceleration.x = 0;
       } else {
         gameObject.transform.scale.x = 0.25f;
         velocity.x = -walkSpeed;
+        acceleration.x = 0;
       }
     } else {
       velocity.x = 0;
@@ -86,7 +88,14 @@ public class TurtleAI extends Component {
   }
 
   @Override
-  public void beginCollision(GameObject obj, Contact contact, Vector2f contactNormal) {
+  public void preSolve(GameObject obj, Contact contact, Vector2f contactNormal) {
+    GoombaAI goombaAI = obj.getComponent(GoombaAI.class);
+    if (isDead && isMoving && goombaAI != null) {
+      goombaAI.stomp();
+      contact.setEnabled(false);
+      AssetPool.getSound("assets/sounds/kick.ogg").playSound();
+    }
+
     PlayerController playerController = obj.getComponent(PlayerController.class);
     if (playerController != null) {
       if (!isDead && !playerController.getIsDead() &&
@@ -99,6 +108,9 @@ public class TurtleAI extends Component {
               !playerController.isHurtInvincible() &&
               (isMoving || !isDead) && contactNormal.y < 0.58f) {
         playerController.die();
+        if (!playerController.getIsDead()) {
+          contact.setEnabled(false);
+        }
       } else if (!playerController.getIsDead() && !playerController.isHurtInvincible()) {
         if (isDead && contactNormal.y > 0.58f) {
           playerController.enemyBounce();
@@ -109,8 +121,10 @@ public class TurtleAI extends Component {
           goingRight = contactNormal.x < 0;
           movingDebounce = 0.32f;
         }
+      } else if (!playerController.getIsDead() && playerController.isHurtInvincible()) {
+        contact.setEnabled(false);
       }
-    } else if (Math.abs(contactNormal.y) < 0.1f && !obj.isDead()) {
+    } else if (Math.abs(contactNormal.y) < 0.1f && !obj.isDead() && obj.getComponent(MushroomAI.class) == null) {
       goingRight = contactNormal.x < 0;
       if (isMoving && isDead) {
         AssetPool.getSound("assets/sounds/bump.ogg").playSound();
@@ -119,17 +133,16 @@ public class TurtleAI extends Component {
 
     if (obj.getComponent(Fireball.class) != null) {
       stomp();
+      if (!isDead) {
+        walkSpeed = walkSpeed * 3f;
+        stomp();
+      } else {
+        isMoving = !isMoving;
+        goingRight = contactNormal.x < 0;
+      }
       obj.getComponent(Fireball.class).disappear();
+      contact.setEnabled(false);
     }
   }
 
-  @Override
-  public void preSolve(GameObject obj, Contact contact, Vector2f contactNormal) {
-    GoombaAI goomba = obj.getComponent(GoombaAI.class);
-    if (isDead && isMoving && goomba != null) {
-      goomba.stomp();
-      contact.setEnabled(false);
-      AssetPool.getSound("assets/sounds/kick.ogg").playSound();
-    }
-  }
 }

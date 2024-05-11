@@ -65,10 +65,6 @@ public class Scene {
       gameObjects.add(go);
     } else {
       pendingGameObjects.add(go);
-//      gameObjects.add(go);
-//      go.start();
-//      this.theRender.add(go);
-//      this.physics2D.add(go);
     }
   }
 
@@ -173,7 +169,6 @@ public class Scene {
 
 
   public void save() {
-
     Gson gson = new GsonBuilder().setPrettyPrinting()
             .registerTypeAdapter(Component.class, new ComponentDeserializer())
             .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
@@ -238,6 +233,5 @@ public class Scene {
   public Physics2D getPhysics() {
     return this.physics2D;
   }
-
 
 }

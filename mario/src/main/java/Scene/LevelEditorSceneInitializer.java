@@ -88,6 +88,8 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
     AssetPool.addSound("assets/sounds/kick.ogg", false);
     AssetPool.addSound("assets/sounds/invincible.ogg", false);
 
+    AssetPool.getSound("assets/sounds/main-theme-overworld.ogg").stopSound();
+
     for (GameObject g : scene.getGameObjects()) {
       if (g.getComponent(SpriteRender.class) != null) {
         SpriteRender spr = g.getComponent(SpriteRender.class);
@@ -239,6 +241,17 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
           levelEditorStuff.getComponent(MouseControl.class).pickupObject(object);
         }
 
+        ImGui.popID();
+        ImGui.sameLine();
+
+        sprite = items.getSprite(7);
+        id = sprite.getTexture().getTextID();
+        texCoords = sprite.getTextCoords();
+        ImGui.pushID(uniqueID++);
+        if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+          GameObject object = Prefabs.generateCoin();
+          levelEditorStuff.getComponent(MouseControl.class).pickupObject(object);
+        }
         ImGui.popID();
         ImGui.sameLine();
 

@@ -38,13 +38,17 @@ public class MouseControl extends Component {
       this.holdingObj.destroy();
     }
     holdingObj = gameObject;
+    //holdingObj.addComponent(new HoldingObj());
+    holdingObj.setNoSerialize();
     this.holdingObj.getComponent(SpriteRender.class).setColor(new Vector4f(0.8f, 0.8f, 0.8f, 0.5f));
     this.holdingObj.addComponent(new NonActiveGameObjectClass());
     Window.getCurrentScene().addGameObjectToScene(gameObject);
   }
 
   public void place() {
+    //holdingObj.removeComponent(HoldingObj.class);
     GameObject go = this.holdingObj.copy();
+    go.setSERIALIZATION();
     go.getComponent(SpriteRender.class).setColor(new Vector4f(1,1,1,1));
     go.removeComponent(NonActiveGameObjectClass.class);
     Window.getCurrentScene().addGameObjectToScene(go);

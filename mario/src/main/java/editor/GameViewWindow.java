@@ -14,6 +14,7 @@ public class GameViewWindow {
 
   private float leftX, rightX, topY, bottomY;
   private boolean isPlaying = false;
+  private boolean windowIsHovered;
 
   public void imgui() {
     ImGui.begin("Game Viewport", ImGuiWindowFlags.NoScrollbar
@@ -52,7 +53,7 @@ public class GameViewWindow {
     int textureID = Window.getFrameBuffer().getTexture().getTextID();
     ImGui.image(textureID, windowSize.x, windowSize.y, 0, 1, 1, 0);
 
-    //System.out.println(topLeft.x + " " + topLeft.y + " " + windowSize.x + " " + windowSize.y);
+    windowIsHovered = ImGui.isItemHovered();
 
     MouseListener.setGameViewportPos(new Vector2f(topLeft.x, topLeft.y));
     MouseListener.setGameViewportSize(new Vector2f(windowSize.x, windowSize.y));
@@ -61,8 +62,7 @@ public class GameViewWindow {
   }
 
   public boolean getWantCaptureMouse() {
-    return MouseListener.getxPos() >= leftX && MouseListener.getxPos() <= rightX
-            && MouseListener.getyPos() >= bottomY && MouseListener.getyPos() <= topY;
+    return windowIsHovered;
   }
 
   private ImVec2 getLargestSizeForViewport() {

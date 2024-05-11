@@ -101,11 +101,11 @@ public class Pipe extends Component {
                 playerMax.x > min.x &&
                 playerMin.x < max.x;
       case Right:
-        return playerMax.x <= min.x &&
+        return playerMax.x >= max.x &&
                 playerMax.y > min.y &&
                 playerMin.y < max.y;
       case Left:
-        return playerMin.x >= max.x &&
+        return playerMin.x <= min.x &&
                 playerMax.y > min.y &&
                 playerMin.y < max.y;
     }

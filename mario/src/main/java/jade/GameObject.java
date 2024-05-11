@@ -112,6 +112,10 @@ public class GameObject {
     this.SERIALIZATION = false;
   }
 
+  public void setSERIALIZATION() {
+    this.SERIALIZATION = true;
+  }
+
   public boolean isSERIALIZATION() {
 
     return SERIALIZATION;

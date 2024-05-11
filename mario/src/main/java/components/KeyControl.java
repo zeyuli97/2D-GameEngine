@@ -23,7 +23,7 @@ public class KeyControl extends Component {
     GameObject activeGameObject = windowProperties.getActiveGameObject();
     List<GameObject> activeGameObjects = windowProperties.getActiveGoGroup();
 
-    if (activeGameObject == null) {
+    if (activeGameObject == null || activeGameObjects.getFirst() == null) {
       return;
     }
 
@@ -36,14 +36,11 @@ public class KeyControl extends Component {
 
 
     if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT_CONTROL) && KeyListerner.isKeyFirstPressed(GLFW_KEY_D)
-            && activeGameObject != null &&activeGameObjects.size() <= 1) {
+            && activeGameObject != null && activeGameObjects.size() <= 1) {
       GameObject go = activeGameObject.copy();
       Window.getCurrentScene().addGameObjectToScene(go);
       go.transform.position.add(Settings.Grid_Width,0f); // slide off for dragging.
       windowProperties.setActiveGameObject(go);
-//      if (go.getComponent(StateMachine.class) != null) {
-//        go.getComponent(StateMachine.class).refreshTextures();
-//      }
 
     } else if (KeyListerner.isKeyPressed(GLFW_KEY_BACKSPACE)) {
       for (GameObject go : activeGameObjects) {
@@ -57,16 +54,13 @@ public class KeyControl extends Component {
       go.transform.position.add(0f,0.25f); // slide off for dragging.
       windowProperties.setActiveGameObject(go);
 
-    } else if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT_CONTROL) && activeGameObjects.size() > 1 && KeyListerner.isKeyPressed(GLFW_KEY_D)) {
+    } else if (KeyListerner.isKeyPressed(GLFW_KEY_LEFT_CONTROL) && activeGameObjects.size() > 1 && KeyListerner.isKeyFirstPressed(GLFW_KEY_D)) {
       List<GameObject> activeCopys = new ArrayList<>(activeGameObjects);
       windowProperties.clearSelected();
       for (GameObject go : activeCopys) {
         GameObject copy = go.copy();
         Window.getCurrentScene().addGameObjectToScene(copy);
         windowProperties.addActiveGameObject(copy);
-//        if (copy.getComponent(StateMachine.class) != null) {
-//          copy.getComponent(StateMachine.class).refreshTextures();
-//        }
       }
     } else if (KeyListerner.isKeyPressed(GLFW_KEY_F) && debounce < 0) {
       debounce = debounceTime;

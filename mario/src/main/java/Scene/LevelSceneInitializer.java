@@ -69,6 +69,8 @@ public class LevelSceneInitializer extends SceneInitializer {
     AssetPool.addSound("assets/sounds/kick.ogg", false);
     AssetPool.addSound("assets/sounds/invincible.ogg", false);
 
+    AssetPool.getSound("assets/sounds/main-theme-overworld.ogg").playSound();
+
     for (GameObject g : scene.getGameObjects()) {
       if (g.getComponent(SpriteRender.class) != null) {
         SpriteRender spr = g.getComponent(SpriteRender.class);

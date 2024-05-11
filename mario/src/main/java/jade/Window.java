@@ -4,6 +4,7 @@ import Observers.EventSystem;
 import Observers.Events.Event;
 import Observers.Observer;
 import Scene.*;
+import components.MouseControl;
 import org.joml.Vector4f;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -16,6 +17,8 @@ import physics2d.Physics2D;
 import renders.*;
 import util.AssetPool;
 import util.Time;
+
+import java.util.List;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
