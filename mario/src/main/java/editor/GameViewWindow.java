@@ -13,7 +13,7 @@ import org.joml.Vector2f;
 public class GameViewWindow {
 
   private float leftX, rightX, topY, bottomY;
-  private boolean isPlaying = false;
+  public boolean isPlaying = false;
   private boolean windowIsHovered;
 
   public void imgui() {

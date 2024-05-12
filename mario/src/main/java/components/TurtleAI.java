@@ -66,7 +66,7 @@ public class TurtleAI extends Component {
     if (this.gameObject.transform.position.x <
             Window.getCurrentScene().getCamera().position.x - 0.5f) {// ||
       //this.gameObject.transform.position.y < 0.0f) {
-      this.gameObject.destroy();
+      //this.gameObject.destroy();
     }
   }
 

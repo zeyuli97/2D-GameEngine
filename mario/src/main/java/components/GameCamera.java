@@ -47,6 +47,12 @@ public class GameCamera extends Component {
         this.gameCamera.position.y = 0f;
         this.gameCamera.clearColor.set(skyColor);
       }
+
+      if (player.transform.position.y < -4) {
+        PlayerController playerController = player.getComponent(PlayerController.class);
+        playerController.playerState = PlayerController.PlayerState.Small;
+        playerController.die();
+      }
     }
   }
 

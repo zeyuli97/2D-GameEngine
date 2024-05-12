@@ -16,7 +16,7 @@ public class GoombaAI extends Component {
   private transient float walkSpeed = 0.6f;
   private transient Vector2f velocity = new Vector2f();
   private transient Vector2f acceleration = new Vector2f();
-  private transient Vector2f terminalVelocity = new Vector2f();
+  private transient Vector2f terminalVelocity = new Vector2f(1f, 2.8f);
   private transient boolean onGround = false;
   private transient boolean isDead = false;
   private transient float timeToKill = 0.5f;
@@ -26,7 +26,7 @@ public class GoombaAI extends Component {
   public void start() {
     this.stateMachine = gameObject.getComponent(StateMachine.class);
     this.rb = gameObject.getComponent(Rigidbody2D.class);
-    this.acceleration.y = Window.getPhysics().getGravity().y * 0.7f;
+    this.acceleration.y = Window.getPhysics().getGravity().y * 1.7f;
   }
 
   @Override
@@ -57,10 +57,10 @@ public class GoombaAI extends Component {
       this.acceleration.y = 0;
       this.velocity.y = 0;
     } else {
-      this.acceleration.y = Window.getPhysics().getGravity().y * 0.7f;
+      this.acceleration.y = Window.getPhysics().getGravity().y * 1.7f;
     }
 
-    this.velocity.y += this.acceleration.y * dt;
+    this.velocity.y += this.acceleration.y * dt * 10;
     this.velocity.y = Math.max(Math.min(this.velocity.y, this.terminalVelocity.y), -terminalVelocity.y);
     this.rb.setVelocity(velocity);
 

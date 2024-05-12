@@ -31,7 +31,6 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
     levelEditorStuff = scene.createGameObject("levelEditorStuff");
     levelEditorStuff.setNoSerialize();
 
-    levelEditorStuff.addComponent(new Transform());
     levelEditorStuff.addComponent(new MouseControl());
     levelEditorStuff.addComponent(new GridLines());
     levelEditorStuff.addComponent(new EditorCamera(scene.getCamera()));

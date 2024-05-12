@@ -1,5 +1,8 @@
 package components;
 
+import Observers.EventSystem;
+import Observers.Events.Event;
+import Observers.Events.EventType;
 import Scene.LevelEditorSceneInitializer;
 import Scene.LevelSceneInitializer;
 import jade.GameObject;
@@ -22,7 +25,7 @@ import java.util.Vector;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class PlayerController extends Component {
-  private enum PlayerState {
+  public enum PlayerState {
     Small,
     Big,
     Fire,
@@ -38,12 +41,12 @@ public class PlayerController extends Component {
   private transient SpriteRender spr;
 
   public float walkSpeed = 1.9f;
-  public float jumpBoost = .5f;
+  public float jumpBoost = 1.5f;
   public float jumpImpulse = 3.0f;
   public float slowDownForce = 0.05f; // The speed reduced due to Mario turn direction.
   public Vector2f velocityCap = new Vector2f(2.1f, 3.1f);
 
-  private PlayerState playerState = PlayerState.Small;
+  public PlayerState playerState = PlayerState.Small;
   public transient boolean onGround = false;
   private transient float groundDebounce = 0.0f;
   private transient float groundDebounceTime = 0.1f; // use for grace time user can jump at the edge of the block.
@@ -91,8 +94,10 @@ public class PlayerController extends Component {
         walkTime -= dt;
 
         if (timeToCastle <= 0) {
-          Window.setRunTimePlaying(false);
-          Window.changeScene(new LevelEditorSceneInitializer());
+          //Window.setRunTimePlaying(false);
+          //Window.changeScene(new LevelEditorSceneInitializer());
+          EventSystem.notify(null, new Event(EventType.GameEngineStopPlay));
+          Window.getImGuiLayer().getGameViewWindow().isPlaying = false;
         }
       }
 
